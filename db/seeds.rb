@@ -357,7 +357,7 @@ guest16 = Guest.create!(
 ###################################################################################
 # EVE - second event
 # 01 - user, 02 - collab, 03 - event, 04 - task, 05 - assignment, 06 - expense, 07 - guest.
-# therefore eve user11, collab22, event23, task24, assign25, exp26, guest27
+# therefore Eve user11, collab22, event23, task24, assign25, exp26, guest27
 
 # user11 = User.create!(
 #   first_name: "Eve",
@@ -368,9 +368,9 @@ guest16 = Guest.create!(
 puts "User11 = #{user11.first_name}, user id: #{user11.id}, user email: #{user11.email}"
 puts "#{user11.first_name}'s second event is: #{event.name} at #{event23.venue_name}"
 
-collab23 = Collaboration.create!(
+collab22 = Collaboration.create!(
   user_id: user11.id #eve is still the event owner
-  event_id: event124.id
+  event_id: event23.id
   role: "Head Planner"
 )
 
@@ -386,7 +386,7 @@ event23 = Event.create!(
 )
 puts "Event24 =This is #{user11.first_name}'s #{event23.name} (event_id#{event23.id}), taking place on #{event23.start_at}, at #{event23.venue_name}"
 
-task14 = Task.create!(
+task24 = Task.create!(
   event_id: event23.id
   name: "Pay Floraelle for the Reception Hall Flowers"
   description: "Pay Floraelle for the Reception Hall Flowers, update the budget"
@@ -394,18 +394,18 @@ task14 = Task.create!(
   status: false
 )
 
-assign15 = Assignment.create!(
-  collaboration_id: collab23.id
+assign25 = Assignment.create!(
+  collaboration_id: collab22.id
   task_id: task14.id
 )
 
-exp16 = Expense.create!(
+exp26 = Expense.create!(
   event_id: event23.id
   name: exp_cat_array.sample + "welcome drinks"
   amount_spent: 5800.99
 )
 
-guest17 = Guest.create!(
+guest27 = Guest.create!(
 event_id: event23.id
 first_name: "Harold"
 last_name: "Murakiasetti"
@@ -418,83 +418,83 @@ rsvp_status: false
 #eve seed - add event tasks. add event expenses.
 #eve seed - add events. + collabs and assignments.
 
-# event 13
-task15 = Task.create!(
+
+task25 = Task.create!(
   event_id: event23.id
-  name: "Call Rob for plumbus spares"
-  description: "he still owes you a favour back"
+  name: "book cake lady"
+  description: "she takes forever"
   due_date:
   status: false
 )
-assign16 = Assignment.create!(
-  collaboration_id: collab23.id # change this ?
-  task_id: task15.id
+assign26 = Assignment.create!(
+  collaboration_id: collab22.id # change this ?
+  task_id: task25.id
 )
 
-task16 = Task.create!(
+task26 = Task.create!(
   event_id: event23.id
-  name: "'Pay' 'Floraelle' - 'decor_flwr'"
-  description: "Pay Floraelle for the Reception Hall Flowers, update the budget"
+  name: "'Pay' 'Rietta' - 'decor_flwr'"
+  description: "Pay Rieatta for the church Flowers, update the budget"
   due_date:
   status: false
 )
-assign17 = Assignment.create!(
-  collaboration_id: collab23.id
-  task_id: task16.id
+assign27 = Assignment.create!(
+  collaboration_id: collab22.id
+  task_id: task26.id
 )
 
-task17 = Task.create!(
+task27 = Task.create!(
   event_id: event23.id
-  name: "Book DJ BoogeyWoogey"
-  description: "Madmoiselle said she liked BGweegys set the most - lets book her asap so we don't miss out - shes a hoot"
+  name: "Book Band ChampanJey"
+  description: "honourable guest said she liked the energy of the team, fits her mood"
   due_date:
   status: false
 )
-assign18 = Assignment.create!(
-  collaboration_id: collab23.id # change ?
-  task_id: task17.id
+assign28 = Assignment.create!(
+  collaboration_id: collab22.id # change ?
+  task_id: task27.id
 )
 
-exp17 = Expense.create!(
+exp27 = Expense.create!(
   event_id: event23.id
   name: exp_cat_array.sample + "welcome drinks"
   amount_spent: 1500
 )
-exp18 = Expense.create!(
+exp28 = Expense.create!(
   event_id: event23.id
-  name: exp_cat_array.sample + "@Floraelle - 'decor_flwr'" # category and or tagable ? @suppliers ?
+  name: exp_cat_array.sample + "@Rietta - 'decor_flwr'" # category and or tagable ? @suppliers ?
   amount_spent: 5876.55
 )
-exp19 = Expense.create!(
+exp29 = Expense.create!(
   event_id: event23.id
-  name: exp_cat_array.sample + "DJ BJWG"
+  name: exp_cat_array.sample + "band ChampanJey"
   amount_spent: 12000
 )
 
-guest18 = Guest.create!(
+guest28 = Guest.create!(
   event_id: event23.id
-  first_name: "Humpty"
-  last_name: "Dumpty"
-  email_address: "humpty@test.com"
+  first_name: "Hillary"
+  last_name: "Clint"
+  email_address: "hillary@test.com"
   phone_number: 123 456 7890
   invite_status: false
   rsvp_status: false
 )
 
-guest19 = Guest.create!(
+guest29 = Guest.create!(
   event_id: event23.id
-  first_name: "Micky"
-  last_name: "Mouse"
-  email_address: "micky@test.com"
+  first_name: "Daffy"
+  last_name: "Ducket"
+  email_address: "daffy@test.com"
   phone_number: 123 456 7890
   invite_status: false
   rsvp_status: false
 )
-guest16 = Guest.create!(
+guest26 = Guest.create!(
   event_id: event23.id
-  first_name: "Minnie"
-  last_name: "Mouse"
-  email_address: "minnie@test.com"
+  first_name: "Auzo"
+  last_name: "Floot"
+  email_address: "Auzo@test.com"
   phone_number: 123 456 7890
   invite_status: false
   rsvp_status: false
