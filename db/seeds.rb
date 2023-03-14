@@ -100,17 +100,17 @@ user01 = User.create!(
 puts "User1 = #{user1.first_name}, user id: #{user1.id}, user email: #{user1.email}"
 
 collab02 = Collaboration.create!(
-  user_id: user01.id
-  event_id: event03.id
-  role: "Myself?"
+  user_id: user01.id,
+  event_id: event03.id,
+  role: "Myself?",
 )
 
 event03 = Event.create!(
   name: "My Sick 30th Bash",
   description: "Rave Birthday Party for myself because I'm awesome!! Hooray 30!",
-  start_at: "Dont know how to add a date properly fri 17 March 2023 at 19:00"
-  end_at: "same: date and time"
-  venue_name: "Riks Diner"
+  start_at: "Dont know how to add a date properly fri 17 March 2023 at 19:00",
+  end_at: "same: date and time",
+  venue_name: "Riks Diner",
   venue_address: "Salt River, Cape Town",
   est_guests: 21 #int
   total_budget: 2000 #currency/decimal
