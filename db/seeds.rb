@@ -19,7 +19,7 @@ require "open-uri"
 #   email: " @test.com",
 #   password: '123456',
 # )
-# puts "User01 = #{user1.first_name}, user id: #{user1.id}, user email: #{user1.email}"
+# puts "User01 = #{user01.first_name}, user id: #{user01.id}, user email: #{user01.email}"
 
 # collab02 = Collaboration.create!(
 #   user_id: user01.id
@@ -30,14 +30,14 @@ require "open-uri"
 # event03 = Event.create!(
 #   name: "evnt nm",
 #   description: "Safari themed wedding for the Zepelinni's", "short descript - limit chars on form input - validates length"
-#   start_at: start_at: DateTime.new(2023,7,3,4,5,6),
-#   end_at: start_at: DateTime.new(2023,7,3,4,5,6),
+#   start_date: start_date: DateTime.new(2023,7,3,4,5,6),
+#   end_date: start_date: DateTime.new(2023,7,3,4,5,6),
 #   venue_name: "Vineyard Hotel" #can be madeup
 #   venue_address: "Claremont, Cape Town", #use a real address
 #   est_guests: int
 #   total_budget: decimal
 # )
-# puts "Event03 =This is #{user01.first_name}'s #{event03.name} (event_id#{event03.id}), taking place on #{event03.start_at}, at #{event03.venue_name}"
+# puts "Event03 =This is #{user01.first_name}'s #{event03.name} (event_id#{event03.id}), taking place on #{event03.start_date}, at #{event03.venue_name}"
 
 # task04 = Task.create!(
 #   event_id: event03.id
@@ -97,25 +97,26 @@ user01 = User.create!(
   email: "adam@test.com",
   password: '123456'
 )
-puts "User1 = #{user1.first_name}, user id: #{user1.id}, user email: #{user1.email}"
+puts "user01 = #{user01.first_name}, user id: #{user01.id}, user email: #{user01.email}"
 
+
+event03 = Event.create!(
+  name: "My Sick 30th Bash",
+  description: "Rave Birthday Party for myself because I'm awesome!! Hooray 30!",
+  start_date: DateTime.new(2023, 7, 3, 18, 0, 0),
+  end_date: DateTime.new(2023, 7, 3, 23, 0, 0),
+  venue_name: "Riks Diner",
+  venue_address: "Salt River, Cape Town",
+  est_guests: 21,
+  total_budget: 4050.89
+)
 collab02 = Collaboration.create!(
   user_id: user01.id,
   event_id: event03.id,
   role: "Myself?"
 )
 
-event03 = Event.create!(
-  name: "My Sick 30th Bash",
-  description: "Rave Birthday Party for myself because I'm awesome!! Hooray 30!",
-  start_at: DateTime.new(2023, 7, 3, 18, 0, 0),
-  end_at: DateTime.new(2023, 7, 3, 23, 0, 0),
-  venue_name: "Riks Diner",
-  venue_address: "Salt River, Cape Town",
-  est_guests: 21,
-  total_budget: 4050.89
-)
-puts "Event03 =This is #{user01.first_name}'s #{event03.name} (event_id#{event03.id}), taking place on #{event03.start_at}, at #{event03.venue_name}"
+puts "Event03 =This is #{user01.first_name}'s #{event03.name} (event_id#{event03.id}), taking place on #{event03.start_date}, at #{event03.venue_name}"
 
 task04 = Task.create!(
   event_id: event03.id,
@@ -216,16 +217,16 @@ puts "-" * 20
 # EVE - An event planner who plans multiple events at once.
 # An Event (that belongs to Eve)
 # 01 - user, 02 - collab, 03 - event, 04 - task, 05 - assignment, 06 - expense, 07 - guest.
-user11 = User.create!(
+user011 = User.create!(
   first_name: "Eve",
   last_name: "Lorde",
   email: " eve@test.com",
   password: '123456'
 )
-puts "User11 = #{user11.first_name}, user id: #{user11.id}, user email: #{user11.email}"
+puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
 
 collab12 = Collaboration.create!(
-  user_id: user11.id,
+  user_id: user011.id,
   event_id: event13.id,
   role: "Head Planner"
 )
@@ -233,14 +234,14 @@ collab12 = Collaboration.create!(
 event13 = Event.create!(
   name: "Zepadelle",
   description: "Safari themed wedding for the Zepelinni's",
-  start_at: DateTime.new(2023, 7, 5, 15, 0, 0), # add date
-  end_at: DateTime.new(2023, 7, 6, 0, 0, 0), #date format
+  start_date: DateTime.new(2023, 7, 5, 15, 0, 0), # add date
+  end_date: DateTime.new(2023, 7, 6, 0, 0, 0), #date format
   venue_name: "Vineyard Hotel",
   venue_address: "Claremont, Cape Town",
   est_guests: 300, #int
   total_budget: 200000, #decimal
 )
-puts "Event13 =This is #{user11.first_name}'s #{event13.name} (event_id#{event13.id}), taking place on #{event13.start_at}, at #{event13.venue_name}"
+puts "Event13 =This is #{user011.first_name}'s #{event13.name} (event_id#{event13.id}), taking place on #{event13.start_date}, at #{event13.venue_name}"
 
 task14 = Task.create!(
   event_id: event13.id,
@@ -359,19 +360,19 @@ guest16 = Guest.create!(
 ###################################################################################
 # EVE - second event
 # 01 - user, 02 - collab, 03 - event, 04 - task, 05 - assignment, 06 - expense, 07 - guest.
-# therefore Eve user11, collab22, event23, task24, assign25, exp26, guest27
+# therefore Eve user011, collab22, event23, task24, assign25, exp26, guest27
 
-# user11 = User.create!(
+# user011 = User.create!(
 #   first_name: "Eve",
 #   last_name: "Lorde",
 #   email: " eve@test.com",
 #   password: '123456',
 # )
-puts "User11 = #{user11.first_name}, user id: #{user11.id}, user email: #{user11.email}"
-puts "#{user11.first_name}'s second event is: #{event.name} at #{event23.venue_name}"
+puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
+puts "#{user011.first_name}'s second event is: #{event.name} at #{event23.venue_name}"
 
 collab22 = Collaboration.create!(
-  user_id: user11.id,#eve is still the event owner
+  user_id: user011.id,#eve is still the event owner
   event_id: event23.id,
   role: "Head Planner",
 )
@@ -379,14 +380,14 @@ collab22 = Collaboration.create!(
 event23 = Event.create!(
   name: "Fox Wedding",
   description: "Mr and Mrs Fox are re-newing their vows and celebrating 10 years together with their besties",
-  start_at: DateTime.new(2023, 3, 17, 19, 0, 0),# add date
-  end_at: DateTime.new(2023, 3, 17, 23, 0, 0), #date format
+  start_date: DateTime.new(2023, 3, 17, 19, 0, 0),# add date
+  end_date: DateTime.new(2023, 3, 17, 23, 0, 0), #date format
   venue_name: "Babylonstorenepia",
   venue_address: "Meadowridge, Cape Town",
   est_guests: 20, #int
   total_budget: 20000.89 #decimal
 )
-puts "Event24 =This is #{user11.first_name}'s #{event23.name} (event_id#{event23.id}), taking place on #{event23.start_at}, at #{event23.venue_name}"
+puts "Event24 =This is #{user011.first_name}'s #{event23.name} (event_id#{event23.id}), taking place on #{event23.start_date}, at #{event23.venue_name}"
 
 task24 = Task.create!(
   event_id: event23.id,
