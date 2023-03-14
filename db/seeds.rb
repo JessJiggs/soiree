@@ -2,6 +2,9 @@
 # - open-uri to download images from the internet
 # - active storage to attach the images to the records
 require "open-uri"
+# use the following if you want to add img
+# file = File.open(File.join(__dir__, 'seed_images/doc2.png'))
+# doc_user_profile5.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # user email: "first_name@test.com",
@@ -66,8 +69,8 @@ require "open-uri"
 # )
 # ++++++++++++++++++++++++++++++++++++SEEDS+++++++++++++++++++++++++++++++++++++++++++++++
 
-venue_array = ["Rooftop on Cheese", "Rusticana", "Welgemeend", "Mountain Manor Guest House", "LukKron", "The Argyle", "The Lookout"]
-address_array = ["Gardens, Cape Town", "Rondebosch, Cape Town", "Bergvliet, Cape Town", "Greenpoint, Cape Town", "Salt River, Cape Town", "Vredehoek, Cape Town", "Edgemead, Cape Town"]
+venue_array = ["Rooftop Buiten", "Rusticana", "Welgemeend", "Mountain Manor Guest House", "LukKron", "The Argyle", "The Lookout", "Vineyard Hotel"]
+address_array = ["Gardens, Cape Town", "Rondebosch, Cape Town", "Constantia, Cape Town", "Greenpoint, Cape Town", "Salt River, Cape Town", "Vredehoek, Cape Town", "Meadowridge, Cape Town"]
 exp_cat_array = ["Food", "Drink", "Entertainment", "Decor", "Venue", "Services"]
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 puts "-" * 20
