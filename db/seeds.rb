@@ -76,13 +76,14 @@ exp_cat_array = ["Food", "Drink", "Entertainment", "Decor", "Venue", "Services"]
 puts "-" * 20
 puts "Cleaning database..."
 puts "-" * 20
-User.destroy_all
+
 Event.destroy_all
 Task.destroy_all
 Collaboration.destroy_all
 Assignment.destroy_all
 Expense.destroy_all
 Guest.destroy_all
+User.destroy_all
 puts "*" * 20
 puts "CREATING Planners, Collaborations, Events, Tasks, Assignments, Expenses, Guests"
 puts "*" * 20
