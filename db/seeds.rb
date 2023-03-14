@@ -185,7 +185,7 @@ event_id: event03.id,
 first_name: "Sandy",
 last_name: "Hamburg",
 email_address: "sandy@test.com",
-phone_number: 1234567890,
+phone_number: "1234567890",
 invite_status: false, #default
 rsvp_status: false #default => default false if invite status is also !=true
 )
@@ -194,7 +194,7 @@ guest08 = Guest.create!(
   first_name: "Marcus",
   last_name: "Flutoni",
   email_address: "marcus@test.com",
-  phone_number: 1236540890,
+  phone_number: "1236540890",
   invite_status: false,#default
   rsvp_status: false #default => default false if invite status is also !=true
 )
@@ -203,7 +203,7 @@ guest09 = Guest.create!(
   first_name: "Eric",
   last_name: "Clayptone",
   email_address: "eric@test.com",
-  phone_number: 1234567098,
+  phone_number: "1234567098",
   invite_status: false, #default
   rsvp_status: false #default => default false if invite status is also !=true
 )
@@ -266,7 +266,7 @@ event_id: event13.id,
 first_name: "Harold",
 last_name: "Murakiasetti",
 email_address: "harold@test.com",
-phone_number: 1234567890,
+phone_number: "1234567890",
 invite_status: false,
 rsvp_status: false
 )
@@ -332,7 +332,7 @@ guest18 = Guest.create!(
   first_name: "Humpty",
   last_name: "Dumpty",
   email_address: "humpty@test.com",
-  phone_number: 1234567890,
+  phone_number: "1234567890",
   invite_status: false,
   rsvp_status: false
 )
@@ -342,7 +342,7 @@ guest19 = Guest.create!(
   first_name: "Micky",
   last_name: "Mouse",
   email_address: "micky@test.com",
-  phone_number: 1234567890,
+  phone_number: "1234567890",
   invite_status: false,
   rsvp_status: false
 )
@@ -351,7 +351,7 @@ guest16 = Guest.create!(
   first_name: "Minnie",
   last_name: "Mouse",
   email_address: "minnie@test.com",
-  phone_number: 1234567890,
+  phone_number: "1234567890",
   invite_status: false,
   rsvp_status: false
 )
@@ -413,7 +413,7 @@ event_id: event23.id,
 first_name: "Harold",
 last_name: "Murakiasetti",
 email_address: "harold@test.com",
-phone_number: 1234567890,
+phone_number: "1234567890",
 invite_status: false,
 rsvp_status: false
 )
@@ -479,7 +479,7 @@ guest28 = Guest.create!(
   first_name: "Hillary",
   last_name: "Clint",
   email_address: "hillary@test.com",
-  phone_number: 1234567890,
+  phone_number: "1234567890",
   invite_status: false,
   rsvp_status: false
 )
@@ -489,7 +489,7 @@ guest29 = Guest.create!(
   first_name: "Daffy",
   last_name: "Ducket",
   email_address: "daffy@test.com",
-  phone_number: 1234567890,
+  phone_number: "1234567890",
   invite_status: false,
   rsvp_status: false
 )
@@ -498,7 +498,7 @@ guest26 = Guest.create!(
   first_name: "Auzo",
   last_name: "Floot",
   email_address: "Auzo@test.com",
-  phone_number: 1234567890,
+  phone_number: "1234567890",
   invite_status: false,
   rsvp_status: false
 )
