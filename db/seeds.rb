@@ -79,8 +79,8 @@ puts "-" * 20
 
 Event.destroy_all
 Task.destroy_all
-Collaboration.destroy_all
 Assignment.destroy_all
+Collaboration.destroy_all
 Expense.destroy_all
 Guest.destroy_all
 User.destroy_all
