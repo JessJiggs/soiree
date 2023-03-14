@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_14_093854) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_14_134300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,14 +18,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_093854) do
     t.bigint "collaboration_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "task_id", null: false
     t.index ["collaboration_id"], name: "index_assignments_on_collaboration_id"
+    t.index ["task_id"], name: "index_assignments_on_task_id"
   end
 
   create_table "collaborations", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "role"
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "event_id", null: false
+    t.index ["event_id"], name: "index_collaborations_on_event_id"
     t.index ["user_id"], name: "index_collaborations_on_user_id"
   end
 
@@ -53,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_093854) do
 
   create_table "guests", force: :cascade do |t|
     t.bigint "event_id", null: false
-    t.string "fist_name"
+    t.string "first_name"
     t.string "last_name"
     t.string "email_address"
     t.string "phone_number"
@@ -70,10 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_093854) do
     t.text "description"
     t.datetime "due_date"
     t.boolean "status"
-    t.bigint "assignment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assignment_id"], name: "index_tasks_on_assignment_id"
     t.index ["event_id"], name: "index_tasks_on_event_id"
   end
 
@@ -92,9 +94,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_093854) do
   end
 
   add_foreign_key "assignments", "collaborations"
+  add_foreign_key "assignments", "tasks"
+  add_foreign_key "collaborations", "events"
   add_foreign_key "collaborations", "users"
   add_foreign_key "expenses", "events"
   add_foreign_key "guests", "events"
-  add_foreign_key "tasks", "assignments"
   add_foreign_key "tasks", "events"
 end
