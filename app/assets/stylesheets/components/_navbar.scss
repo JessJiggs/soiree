@@ -1,12 +1,23 @@
-.navbar-lewagon {
+
+nav{
+  padding-bottom: 80px;
+}
+.navbar{
+  display: flex;
+  width: 100%;
+  align-items: center;
   justify-content: space-between;
-  background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+  background: #ffffff;
+  border-bottom: #64c0ae 2px solid;
+  position: fixed;
+  height: 100px;
+  // a.logo{
+  //   font-size: 25px;
+  //   letter-spacing: 2px;
+  //   font-weight: 600;
+  //   color: #000000;
+  //   padding: 0;
+  //   margin: 0;
+  //   text-decoration: none;
+  // }
 }
