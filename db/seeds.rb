@@ -372,13 +372,8 @@ guest16 = Guest.create!(
 #   password: '123456',
 # )
 puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
-puts "#{user011.first_name}'s second event is: #{event.name} at #{event23.venue_name}"
+puts "#{user011.first_name}'s second event is: #{event13.name} at #{event13.venue_name}"
 
-collab22 = Collaboration.create!(
-  user_id: user011.id,#eve is still the event owner
-  event_id: event23.id,
-   role: :owner
-)
 
 event23 = Event.create!(
   name: "Fox Wedding",
@@ -390,6 +385,12 @@ event23 = Event.create!(
   est_guests: 20, #int
   total_budget: 20000.89 #decimal
 )
+collab22 = Collaboration.create!(
+  user_id: user011.id,#eve is still the event owner
+  event_id: event23.id,
+   role: :owner
+)
+
 puts "Event24 =This is #{user011.first_name}'s #{event23.name} (event_id#{event23.id}), taking place on #{event23.start_date}, at #{event23.venue_name}"
 
 task24 = Task.create!(
