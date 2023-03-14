@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_14_133207) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_14_133544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,7 +18,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_133207) do
     t.bigint "collaboration_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "task_id", null: false
     t.index ["collaboration_id"], name: "index_assignments_on_collaboration_id"
+    t.index ["task_id"], name: "index_assignments_on_task_id"
   end
 
   create_table "collaborations", force: :cascade do |t|
@@ -92,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_133207) do
   end
 
   add_foreign_key "assignments", "collaborations"
+  add_foreign_key "assignments", "tasks"
   add_foreign_key "collaborations", "events"
   add_foreign_key "collaborations", "users"
   add_foreign_key "expenses", "events"
