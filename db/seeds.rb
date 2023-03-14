@@ -81,8 +81,8 @@ Event.destroy_all
 Task.destroy_all
 Collaboration.destroy_all
 Assignment.destroy_all
-Expenses.destroy_all
-Guests.destroy_all
+Expense.destroy_all
+Guest.destroy_all
 puts "*" * 20
 puts "CREATING Planners, Collaborations, Events, Tasks, Assignments, Expenses, Guests"
 puts "*" * 20
