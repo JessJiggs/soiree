@@ -15,6 +15,12 @@ class EventsController < ApplicationController
       render :new, status: :unprocessable_entity, notice: "Event was not successfully created."
     end
   end
+
+  def show
+    @event = Event.find(params[:id])
+    "This is the event bro!! #{@event}"
+  end
+
   private
 
   def event_params
