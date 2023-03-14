@@ -227,11 +227,7 @@ user011 = User.create!(
 )
 puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
 
-collab12 = Collaboration.create!(
-  user_id: user011.id,
-  event_id: event13.id,
-   role: :owner
-)
+
 
 event13 = Event.create!(
   name: "Zepadelle",
@@ -242,6 +238,11 @@ event13 = Event.create!(
   venue_address: "Claremont, Cape Town",
   est_guests: 300, #int
   total_budget: 200000, #decimal
+)
+collab12 = Collaboration.create!(
+  user_id: user011.id,
+  event_id: event13.id,
+   role: :owner
 )
 puts "Event13 =This is #{user011.first_name}'s #{event13.name} (event_id#{event13.id}), taking place on #{event13.start_date}, at #{event13.venue_name}"
 
