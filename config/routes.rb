@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :events, only: [ :index, :new, :create]
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # events # index show on dash
+  # tasks # dont need a whole new page - do from event
+
+  resources :events, only: %i[new create show] do
+    resources :tasks, only: %i[create index]
+    resources :expenses, only: %i[new create index]
+    resources :guests, only: %i[new create update index]
+  end
+
+  resources :tasks, only: [:update]
 end
