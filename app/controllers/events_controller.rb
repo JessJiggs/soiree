@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to root_path, notice: "Event was successfully created."
     else
-      render :new, status: :unprocessable_entity, notice: "Event profile was not successfully created."
+      render :new, status: :unprocessable_entity, notice: "Event was not successfully created."
     end
   end
   private
