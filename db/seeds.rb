@@ -24,7 +24,7 @@ require "open-uri"
 # collab02 = Collaboration.create!(
 #   user_id: user01.id
 #   event_id: event03.id
-#   role: "Planner"
+#    role: :owner: "Planner"
 # )
 
 # event03 = Event.create!(
@@ -113,7 +113,8 @@ event03 = Event.create!(
 collab02 = Collaboration.create!(
   user_id: user01.id,
   event_id: event03.id,
-  role: "Myself?"
+   role: :owner,
+
 )
 
 puts "Event03 =This is #{user01.first_name}'s #{event03.name} (event_id#{event03.id}), taking place on #{event03.start_date}, at #{event03.venue_name}"
@@ -228,7 +229,7 @@ puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{use
 collab12 = Collaboration.create!(
   user_id: user011.id,
   event_id: event13.id,
-  role: "Head Planner"
+   role: :owner
 )
 
 event13 = Event.create!(
@@ -374,7 +375,7 @@ puts "#{user011.first_name}'s second event is: #{event.name} at #{event23.venue_
 collab22 = Collaboration.create!(
   user_id: user011.id,#eve is still the event owner
   event_id: event23.id,
-  role: "Head Planner",
+   role: :owner
 )
 
 event23 = Event.create!(
