@@ -32,7 +32,13 @@
           <h5><strong><%= task.name %></strong></h5>
           <p><em><%= task.description %></em></p>
           <p><%= task.due_date %></p>
-          <p><%= task.status %></p>
+          <% if task.status == "to_do" %>
+            <p class="text-primary"> To do </p>
+          <% elsif task.status == "doing" %>
+            <p class="text-warning"> Doing </p>
+          <% else task.status == "done" %>
+            <p class="text-success"> Done </p>
+          <% end %>
       </div>
       <% end %>
     </div>
