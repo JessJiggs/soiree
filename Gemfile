@@ -81,3 +81,5 @@ gem "chartkick"
 
 gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
+
+gem "groupdate", "~> 6.2"
