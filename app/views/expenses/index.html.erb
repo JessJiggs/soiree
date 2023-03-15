@@ -8,4 +8,6 @@
       </li>
     <% end %>
   </ul>
+  <%= pie_chart Expense.group(:name).count %>
+
 </div>

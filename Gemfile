@@ -76,6 +76,8 @@ group :test do
 end
 
 gem "devise"
+gem "chartkick"
+
 
 gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
