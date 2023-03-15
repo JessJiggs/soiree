@@ -1,0 +1,11 @@
+<div class="container mt-10">
+  <h1>My expenses</h1>
+  <ul id="expenses">
+    <% @expenses.each do |e| %>
+      <li>
+        <%=  e.name %>
+        <%=  e.amount_spent %>
+      </li>
+    <% end %>
+  </ul>
+</div>
