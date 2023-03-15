@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :event_params, only: [ :create ]
+  before_action :event_params, only: [:create]
   def index
   end
 
@@ -24,6 +24,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :description, :start_date, :end_date, :venue_name, :venue_address, :est_guests, :total_budget, :photo)
+    params.require(:event).permit(:name, :description, :start_date, :end_date, :venue_name, :venue_address,
+                                  :est_guests, :total_budget, :photo)
   end
 end

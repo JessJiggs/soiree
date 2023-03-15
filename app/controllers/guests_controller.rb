@@ -1,5 +1,4 @@
 class GuestsController < ApplicationController
-
   def index
     @event = Event.find(params[:event_id])
     @guests = @event.guests
@@ -7,6 +6,7 @@ class GuestsController < ApplicationController
   end
 
   def create
+    # @guest = Guest.new(guest_params)
     # if @guest.save
     #   redirect_to event_guests_path(@event), notice: "Guest was successfully added to the list."
     # else
@@ -14,4 +14,9 @@ class GuestsController < ApplicationController
     # end
   end
 
+  # private
+
+  # def guest_params
+  #   params.require(:guest).permit(:first_name, :last_name, :email_address, :phone_number)
+  # end
 end

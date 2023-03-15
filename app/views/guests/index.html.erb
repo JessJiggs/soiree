@@ -5,8 +5,7 @@
     <div>
     <ol>
     <p>Name Surname </p>
-    <p>Invite Status</p>
-    <p>RSVP Status</p>
+    <p>Invitation Status</p>
     </ol>
       <% @guests.each do |guest| %>
         <p>Guest <%= guest.first_name + " " + guest.last_name%></p>
@@ -22,6 +21,7 @@
       <%= f.input :email_address, label: "Email" %>
       <%= f.input :phone_number, label: "Phone number" %>
       <%= f.button :submit, class:"btn btn-secondary" %>
+      <%# Im not 100% sure this button is working % %>
       <% end %>
     </div>
 
