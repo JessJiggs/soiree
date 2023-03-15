@@ -62,7 +62,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
-
+  config.active_storage.service = :cloudinary
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 
