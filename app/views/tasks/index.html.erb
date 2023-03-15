@@ -1,22 +1,55 @@
 <div class="container">
 
-  <h1>Tasks Index Page</h1>
+  <h1>Tasks</h1>
 
-  <div>
-    <h2>List of tasks</h2>
-    <ul> <% @tasks.each do |task| %>
-      <li> <%= task.name %> </li>
+
+  <h2>Task stats</h2>
+  <div class="task-stats d-flex">
+    <div class="card-task-stat">
+      <h4>Completed Tasks</h4>
+      <%= @done_tasks.count %>
+    </div>
+    <div class="card-task-stat">
+      <h4>Incomplete Tasks</h4>
+      <%= @incomplete_tasks.count %>
+    </div>
+    <div class="card-task-stat">
+      <h4>Overdue Tasks</h4>
+      <%= @overdue_tasks.count %>
+    </div>
+    <div class="card-task-stat">
+      <h4>Total Tasks</h4>
+      <%= @tasks.count %>
+    </div>
+
+</div>
+
+
+  <h2>List of tasks</h2>
+  <div class="cards-task">
+      <% @tasks.each do |task| %>
+      <div class="card-task">
+          <h5><strong><%= task.name %></strong></h5>
+          <p><em><%= task.description %></em></p>
+          <p><%= task.due_date %></p>
+          <% if task.status == "to_do" %>
+            <p class="text-primary"> To do </p>
+          <% elsif task.status == "doing" %>
+            <p class="text-warning"> Doing </p>
+          <% else task.status == "done" %>
+            <p class="text-success"> Done </p>
+          <% end %>
+      </div>
       <% end %>
-    </ul>
+    </div>
   </div>
 
-  <div>
+  <div class="container">
     <h2>Add a task</h2>
       <%= simple_form_for [@event, @task] do |f| %>
         <%= f.input :name %>
         <%= f.input :description %>
         <%= f.input :due_date %>
-        <%= f.input :status, collection: ["To-Do", "Doing", "Done"]%>
         <%= f.button :button, "Create Task", class:"btn-primary" %>
       <% end %>
     </div>

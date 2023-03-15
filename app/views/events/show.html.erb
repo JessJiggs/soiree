@@ -1,13 +1,26 @@
 <div class="container">
-  <h1>Event#show</h1>
-  <p>Find me in app/views/event/show.html.erb</p>
-  <p><%= @event.name %></p>
-  <p><%= @event.description %></p>
-  <p><%= @event.start_date %></p>
-  <p><%= @event.end_date %></p>
-  <p><%= @event.venue_name %></p>
-  <p><%= @event.venue_address %></p>
-  <p><%= @event.est_guests %></p>
-  <p><%= @event.total_budget %></p>
-</div>
+  <h1><%= @event.name %></h1>
 
+  <% if @event.photo.attached? %>
+    <%= cl_image_tag @event.photo.key, height: 300, width: 400, crop: :fill %>
+  <% else %>
+  <%= image_tag "https://simg.nicepng.com/png/small/125-1257327_events-icon-website-gray-events-icon-png-black.png", height: 300, width: 400, crop: :fill %>
+  <% end %>
+  
+  <p>Name: <i class="fa-solid fa-calendar-days"></i> <%= @event.name %></p>
+  <p>About Event: <i class="fa-solid fa-circle-info"></i> <%= @event.description %></p>
+  <p>Start Date: <i class="fa-regular fa-clock"></i> <%= @event.start_date %></p>
+  <p>End Date: <i class="fa-solid fa-clock"></i> <%= @event.end_date %></p>
+  <div class="">
+    <p>Venue: <i class="fa-solid fa-location-dot"></i> <%= @event.venue_name %>,
+    <%= @event.venue_address %></p>
+  </div>
+  <p>Guests: <i class="fa-solid fa-users"></i> <%= @event.est_guests %></p>
+  <p>Total Budget: R<%= @event.total_budget %></p>
+
+
+<%= link_to "View tasks & create a new task", event_tasks_path(@event)%>
+<%= link_to "Add expenses", new_event_expense_path(@event) %>
+<%= link_to "Guests", event_guests_path(@event)%>
+
+</div>

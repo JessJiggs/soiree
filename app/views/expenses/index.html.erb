@@ -8,4 +8,7 @@
       </li>
     <% end %>
   </ul>
+  <%= pie_chart @expenses.group(:name ).count, donut: true %>
+
+  <%= link_to "New expense", new_event_expense_path(@event) %>
 </div>

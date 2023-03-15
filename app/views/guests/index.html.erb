@@ -5,14 +5,13 @@
     <div>
     <ol>
     <p>Name Surname </p>
-    <p>Invite Status</p>
-    <p>RSVP Status</p>
+    <p>Invitation Status</p>
     </ol>
       <% @guests.each do |guest| %>
         <p>Guest <%= guest.first_name + " " + guest.last_name%></p>
-        <p>Invited? <%= guest.invite_status %></p>
-        <p>RSVP: <%= guest.rsvp_status %></p>
-      <% end %>
+        <p>Invitation Status <%= guest.invitation_status.humanize %></p></p>
+     <% end %>
+    </ol>
     </div>
 
   <h1>Add New Guest to Guests</h1>
@@ -22,9 +21,8 @@
       <%= f.input :last_name, label: "Last Name" %>
       <%= f.input :email_address, label: "Email" %>
       <%= f.input :phone_number, label: "Phone number" %>
-      <%= f.input :invite_status, label: "Invite Sent?" %>
-      <%= f.input :rsvp_status, label: "RSVP'ed" %>
       <%= f.button :submit, class:"btn btn-secondary" %>
+      <%# Im not 100% sure this button is working % %>
       <% end %>
     </div>
 
