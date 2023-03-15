@@ -11,10 +11,17 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all
     @task = Task.new
     @event = Event.find(params[:event_id])
     @task.event = @event
+    @tasks = @event.tasks
+
+    @todo_tasks = @tasks.where(status: :to_do)
+    @doing_tasks = @tasks.where(status: :doing)
+    @done_tasks = @tasks.where(status: :done)
+
+    @overdue_tasks = @tasks.where(status: [:to_do, :doing]).where("due_date < ?", Date.today)
+    @incomplete_tasks = @tasks.where(status: [:to_do, :doing])
   end
 
   private
