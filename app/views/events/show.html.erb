@@ -11,19 +11,3 @@
   <p><%= @event.total_budget %></p>
 </div>
 
-
-<div class="container">
-<h1>Guests</h1>
-
-<div>
-  <%= simple_form_for [@event, @guest] do |f| %>
-  <%= f.input :first_name, label: "First Name" %>
-  <%= f.input :last_name, label: "Last Name" %>
-  <%= f.input :email_address, label: "Email" %>
-  <%= f.input :phone_number, label: "Phone number" %>
-  <%= f.input :invite_status, label: "Invite Sent?" %>
-  <%= f.input :rsvp_status, label: "RSVP" %>
-  <%= f.button :submit, class:"btn btn-secondary" %>
-</div>
-
-</div>
