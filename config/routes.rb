@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'tasks/create'
+  get 'tasks/index'
+  get 'task/create'
+  get 'task/index'
   devise_for :users
   root to: "pages#home"
   # events # index show on dash
