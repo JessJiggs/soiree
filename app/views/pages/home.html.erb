@@ -1,4 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+<h1>Dashboard</h1>
+<p></p>
 
 <%= link_to "Create New Event", new_event_path %>
+
+<h1>All events</h1>
+
+<div class="dflex">
+  <div class="container">
+    <% @events.each do |event| %>
+      <p><%= link_to event.name, event_path(event) %></p>
+    <% end %>
+  </div>
+</div>
+</div>

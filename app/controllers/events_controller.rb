@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :event_params, only: [ :create ]
+  
   def index
   end
 
@@ -18,7 +19,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    "This is the event bro!! #{@event}"
   end
 
   private
