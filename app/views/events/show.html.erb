@@ -1,6 +1,8 @@
 <div class="container">
   <h1>Event#show</h1>
   <p>Find me in app/views/event/show.html.erb</p>
+
+  <%= cl_image_tag @event.photo.key, height: 300, width: 400, crop: :fill %>
   <p><%= @event.name %></p>
   <p><%= @event.description %></p>
   <p><%= @event.start_date %></p>

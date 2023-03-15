@@ -1,0 +1,31 @@
+
+<div class="container">
+  <h1>Guests</h1>
+
+    <div>
+    <ol>
+    <p>Name Surname </p>
+    <p>Invite Status</p>
+    <p>RSVP Status</p>
+    </ol>
+      <% @guests.each do |guest| %>
+        <p>Guest <%= guest.first_name + " " + guest.last_name%></p>
+        <p>Invited? <%= guest.invite_status %></p>
+        <p>RSVP: <%= guest.rsvp_status %></p>
+      <% end %>
+    </div>
+
+  <h1>Add New Guest to Guests</h1>
+    <div>
+      <%= simple_form_for [@event, @guest] do |f| %>
+      <%= f.input :first_name, label: "First Name" %>
+      <%= f.input :last_name, label: "Last Name" %>
+      <%= f.input :email_address, label: "Email" %>
+      <%= f.input :phone_number, label: "Phone number" %>
+      <%= f.input :invite_status, label: "Invite Sent?" %>
+      <%= f.input :rsvp_status, label: "RSVP'ed" %>
+      <%= f.button :submit, class:"btn btn-secondary" %>
+      <% end %>
+    </div>
+
+</div>
