@@ -4,10 +4,14 @@
 
   <div>
     <h2>List of tasks</h2>
-    <ul> <% @tasks.each do |task| %>
-      <li> <%= task.name %> </li>
+    <% @tasks.each do |task| %>
+      <div class="card">
+        <h5><strong><%= task.name %></strong></h5>
+        <p><%= task.description %></p>
+        <p><%= task.due_date %></p>
+        <p><%= task.status %></p>
       <% end %>
-    </ul>
+      </div>
   </div>
 
   <div>
@@ -23,3 +27,4 @@
   </div>
 
 </div>
+
