@@ -8,7 +8,7 @@
       </li>
     <% end %>
   </ul>
-  <%= pie_chart Expense.group(:name ).count, donut: true %>
+  <%= pie_chart @expenses.group(:name ).count, donut: true %>
 
 
 </div>
