@@ -119,7 +119,7 @@ collab02 = Collaboration.create!(
 
 )
 
-puts "Event03 =This is #{user01.first_name}'s #{event03.name} (event_id#{event03.id}), taking place on #{event03.start_date}, at #{event03.venue_name}"
+puts "Event03 =This is #{user01.first_name}'s '#{event03.name} ' (with event_id#{event03.id}), taking place on #{event03.start_date}, at #{event03.venue_name}"
 
 task04 = Task.create!(
   event_id: event03.id,
@@ -507,3 +507,16 @@ guest26 = Guest.create!(
   invite_status: false,
   rsvp_status: false
 )
+
+boolean = ["true", "false", ""]
+
+# 30.times do
+#   guest = Guest.create(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::last_name,
+#     email_address: first_name@test.com, #test this works with action mailer - using a legit email address. 
+#     phone_number: Faker::PhoneNumber.phone_number,
+#     invite_status: false
+#     rsvp_status: false #if rsvp status = true -display the value (attending or not)
+#   )
+# end
