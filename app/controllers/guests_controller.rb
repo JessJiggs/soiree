@@ -1,9 +1,10 @@
 class GuestsController < ApplicationController
 
-  
+  def index
+    @event = Event.find(params[:event_id])
+    @guests = @event.guests
 
-  def new
-
+    @guest = Guest.new
   end
 
   def create
