@@ -132,7 +132,7 @@ first_name: "Sandy",
 last_name: "Hamburg",
 email_address: "sandy@test.com",
 phone_number: "1234567890",
-invitation_status: :attending
+invitation_status: :accepted
 )
 guest08 = Guest.create!(
   event_id: event03.id,
@@ -140,7 +140,7 @@ guest08 = Guest.create!(
   last_name: "Flutoni",
   email_address: "marcus@test.com",
   phone_number: "1236540890",
-  invitation_status: :not_attending
+  invitation_status: :declined
 )
 guest09 = Guest.create!(
   event_id: event03.id,
@@ -274,7 +274,7 @@ guest18 = Guest.create!(
   last_name: "Dumpty",
   email_address: "humpty@test.com",
   phone_number: "1234567890",
-  invitation_status: :attending
+  invitation_status: :accepted
 )
 
 guest19 = Guest.create!(
@@ -426,7 +426,7 @@ guest29 = Guest.create!(
   last_name: "Ducket",
   email_address: "daffy@test.com",
   phone_number: "1234567890",
-  invitation_status: :attending
+  invitation_status: :accepted
 )
 guest26 = Guest.create!(
   event_id: event23.id,
@@ -434,7 +434,7 @@ guest26 = Guest.create!(
   last_name: "Floot",
   email_address: "Auzo@test.com",
   phone_number: "1234567890",
-  invitation_status: :attending
+  invitation_status: :accepted
 )
 
 
