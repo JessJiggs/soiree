@@ -9,6 +9,5 @@ Rails.application.routes.draw do
     resources :expenses, only: %i[new create index]
     resources :guests, only: %i[new create update index]
   end
-
   resources :tasks, only: [:update]
 end
