@@ -14,4 +14,7 @@
   <p><%= @event.venue_address %></p>
   <p><%= @event.est_guests %></p>
   <p><%= @event.total_budget %></p>
+
+<%= link_to "View tasks & create a new task", event_tasks_path(@event)%>
+
 </div>
