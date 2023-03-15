@@ -5,7 +5,8 @@ class ExpensesController < ApplicationController
   end
 
   def show
-    set_expense
+    @event = Event.find(params[:event_id])
+    @expenses = @event.set_expense
   end
 
   def new
