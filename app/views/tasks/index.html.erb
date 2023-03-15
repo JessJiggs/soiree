@@ -7,15 +7,15 @@
   <div class="task-stats d-flex">
     <div class="card-task-stat">
       <h4>Completed Tasks</h4>
-      <%= @done_tasks %>
+      <%= @done_tasks.count %>
     </div>
     <div class="card-task-stat">
       <h4>Incomplete Tasks</h4>
-      <%= @incomplete_tasks %>
+      <%= @incomplete_tasks.count %>
     </div>
     <div class="card-task-stat">
       <h4>Overdue Tasks</h4>
-      <%= @overdue_tasks %>
+      <%= @overdue_tasks.count %>
     </div>
     <div class="card-task-stat">
       <h4>Total Tasks</h4>

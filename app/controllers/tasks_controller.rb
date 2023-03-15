@@ -16,12 +16,12 @@ class TasksController < ApplicationController
     @task.event = @event
     @tasks = @event.tasks
 
-    @todo_tasks = @tasks.where(status: 0)
-    @doing_tasks = @tasks.where(status: 1)
-    @done_tasks = @tasks.where(status: 2)
+    @todo_tasks = @tasks.where(status: :to_do)
+    @doing_tasks = @tasks.where(status: :doing)
+    @done_tasks = @tasks.where(status: :done)
 
-    @overdue_tasks = @tasks.where(status: [0, 1]).where("due_date < ?", Date.today)
-    @incomplete_tasks = @tasks.where(status: [0, 1])
+    @overdue_tasks = @tasks.where(status: [:to_do, :doing]).where("due_date < ?", Date.today)
+    @incomplete_tasks = @tasks.where(status: [:to_do, :doing])
   end
 
   private
