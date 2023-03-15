@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'guests/first_name:'
+  get 'guests/last_name:'
+  get 'guests/email_address:'
+  get 'guests/phone_number:'
+  get 'guests/invite_status:boolean'
+  get 'guests/rsvp_status:boolean'
   devise_for :users
   root to: "pages#home"
   # events # index show on dash
