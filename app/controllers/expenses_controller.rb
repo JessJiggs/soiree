@@ -1,6 +1,7 @@
 class ExpensesController < ApplicationController
   def index
-    @expenses = Expense.all
+    @event = Event.find(params[:event_id])
+    @expenses = @event.expenses
   end
 
   def show
