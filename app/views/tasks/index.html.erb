@@ -1,0 +1,25 @@
+<div class="container">
+
+  <h1>Tasks Index Page</h1>
+
+  <div>
+    <h2>List of tasks</h2>
+    <ul> <% @tasks.each do |task| %>
+      <li> <%= task.name %> </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <h2>Add a task</h2>
+      <%= simple_form_for [@event, @task] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :due_date %>
+        <%= f.input :status, collection: ["To-Do", "Doing", "Done"]%>
+        <%= f.button :button, "Create Task", class:"btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
