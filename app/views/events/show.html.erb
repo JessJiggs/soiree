@@ -1,4 +1,5 @@
 <div class="container">
+  <%= link_to "back to home", root_path %>
   <h1><%= @event.name %></h1>
 
   <% if @event.photo.attached? %>
@@ -8,18 +9,13 @@
   <% end %>
   <p>Name: <i class="fa-solid fa-calendar-days"></i> <%= @event.name %></p>
   <p>About Event: <i class="fa-solid fa-circle-info"></i> <%= @event.description %></p>
-  <p>Start Date: <i class="fa-regular fa-clock"></i> <%= @event.start_date %></p>
-  <p>End Date: <i class="fa-solid fa-clock"></i> <%= @event.end_date %></p>
+  <p>Start Date: <i class="fa-regular fa-clock"></i> <%= @event.start_date.strftime("%d %B %Y %-l%P") %></p>
+  <p>End Date: <i class="fa-solid fa-clock"></i> <%= @event.end_date.strftime("%d %B %Y %-l%P") %></p>
   <div class="">
     <p>Venue: <i class="fa-solid fa-location-dot"></i> <%= @event.venue_name %>,
     <%= @event.venue_address %></p>
   </div>
   <p>Guests: <i class="fa-solid fa-users"></i> <%= @event.est_guests %></p>
-  <p>Total Budget: R<%= @event.total_budget %></p>
-
-
-<%= link_to "View tasks & create a new task", event_tasks_path(@event)%>
-<%= link_to "Add expenses", new_event_expense_path(@event) %>
-<%= link_to "Guests", event_guests_path(@event)%>
-
+  <p>Total Budget: R<%= @event.total_budget.round(2) %></p>
+  <%= link_to "Add expenses", new_event_expense_path(@event) %>
 </div>
