@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400&family=Noto+Serif&display=swap');
 // This is where you override default Bootstrap variables
 // 1. Find all Bootstrap variables that you can override at the end of each component's documentation under the `Sass variables` anchor
 // e.g. here are the ones you can override for the navbar https://getbootstrap.com/docs/5.2/components/navbar/#sass-variables
@@ -5,8 +6,8 @@
 // 3. You can override them below!
 
 // General style
-$font-family-sans-serif: $body-font;
-$headings-font-family:   $headers-font;
+$font-family-sans-serif: 'Noto Serif', serif;;
+$headings-font-family:   'Noto Sans Lao', sans-serif;
 $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
@@ -19,8 +20,20 @@ $danger:     $red;
 $warning:    $orange;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
+$border-radius: 2.25rem !default;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+
+
+// $heading-font-family:'Noto Serif', serif;
+// $font-family: 'Noto Sans Lao', sans-serif;
+
+$base-font-size: 16px;
+$base-font-weight: 400;
+
+h1{
+  font-family: $headings-font-family;
+  text-align: center;
+}
