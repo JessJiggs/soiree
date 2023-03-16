@@ -1,30 +1,53 @@
 
 <div class="container">
   <h1>Guests</h1>
-  <br>
-    <%= link_to "back to this.event", event_path(@event), class: "btn btn btn-secondary"%>
 
+<br>
+  <div>
+    <ul>
+      <li class="btn btn-secondary"><%= link_to "Add a Guest", new_event_guest_path(@event), class: "btn btn-secondary"%></li>
+      <li class="btn btn-secondary">download/email template</li>
+      <li class="btn btn-secondary">import guests</li>
+      <li class="btn btn-tertiary"><%= link_to "back to this.event", event_path(@event), class: "btn btn-secondary"%> </li>
+    </ul>
     <div>
-      <ol>
-        <p>Name Surname </p>
-        <p>Invitation Status</p>
-      </ol>
+        <h4 class="btn btn-secondary">placeholder for "search"</h4>
+    </div>
+  </div>
+<br>
+  <div>
+    <table>
+      <tr>
+        <th class="text-table-std"> Name</th>
+        <th class="text-table-std"> Surname</th>
+        <th class="text-table-std"> email</th>
+        <th class="text-table-std"> phone</th>
+        <th class="text-table-status"> Invitation Status</th>
+        <th class="text-table-status"> Action </th>
+      </tr>
+
         <% @guests.each do |guest| %>
-          <li>Guest <%= guest.first_name + " " + guest.last_name%></li>
-          <p>Invitation Status <strong><%= guest.invitation_status.humanize %></strong></p>
+      <tr>
+        <td class="text-table-std"><%= guest.first_name %></td>
+        <td class="text-table-std"><%= guest.last_name%></td>
+        <td class="text-table-std"><%= guest.email_address%></td>
+        <td class="text-table-std"><%= guest.phone_number%></td>
+        <td class="text-table-status"><strong><%= guest.invitation_status.humanize %></strong></td>
+        <td class="text-table-status"> * </td>
+      </tr>
         <% end %>
-    </div>
-
-  <h1>Add New Guest to Guests</h1>
-    <div>
+    </table>
+  </div>
+<br>
+  <div>
+    <h1>Add a Guest</h1>
       <%= simple_form_for [@event, @guest] do |f| %>
-      <%= f.input :first_name, label: "First Name" %>
-      <%= f.input :last_name, label: "Last Name" %>
-      <%= f.input :email_address, label: "Email" %>
-      <%= f.input :phone_number, label: "Phone number" %>
-      <%= f.button :submit, class:"btn btn-secondary" %>
-      <%# Im not 100% sure this button is working % %>
+        <%= f.input :first_name, label: "First Name" %>
+        <%= f.input :last_name, label: "Last Name" %>
+        <%= f.input :email_address, label: "Email" %>
+        <%= f.input :phone_number, label: "Phone number" %>
+        <%= f.button :submit, class:"btn btn-secondary" %>
       <% end %>
-    </div>
-
+  </div>
+<br>
 </div>
