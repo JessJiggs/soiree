@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to root_path, notice: "Event was successfully created." # please could we redicrect to @event page if an event is successfully created?
+      redirect_to event_path @event, notice: "Event was successfully created." # please could we redicrect to @event page if an event is successfully created?
     else
       render :new, status: :unprocessable_entity, notice: "Event was not successfully created."
     end
@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    
+
   end
 
   private
