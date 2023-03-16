@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @events = Event.all
+    @events = current_user.events
   end
 end
