@@ -1,6 +1,7 @@
 <div class="container">
-  <h1>Components</h1>
+
   <div class="container">
+    <h1>Components</h1>
     <div class="buttons">
       <div class="">
         <p><%= link_to "button", root_path, class: "btn btn-action" %></p>
@@ -15,14 +16,74 @@
   </div>
 
   <div class="container">
-  <h1>Icons</h1>
+    <h1>Icons</h1>
     <div class="icons">
       <div class="">
         <p><i class="fa-solid fa-circle-plus"></i></p>
         <p><i class="fa-solid fa-circle-plus"></i></p>
         <p><i class="fa-solid fa-circle-plus"></i></p>
       </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Input</h1>
+    <div class="icons">
       <div class="">
+        <p>
+          <%= form_with url: "/search", method: :get do |form| %>
+            <%= form.text_field :query, class: "input" %>
+          <% end %>
+        </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Default Wrapper</h2>
+    <div class="cards">
+      <div class="card">
+        <h2>Events</h2>
+        <div class="event-card">
+          <i class="fa-solid fa-circle-plus"></i>
+                    <%= form_with url: "/search", method: :get do |form| %>
+            <%= form.text_field :query, class: "input" %>
+          <% end %>
+          <div class="card-content">
+            <div class="img-element">
+            </div>
+            <div class="event-content">
+              <h4>Event name</h4>
+              <p>event date</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>To Do</h2>
+        <div class="todo-card">
+          <i class="fa-solid fa-circle-plus"></i>
+          <div class="todo-content">
+            <h4>Day of the Week</h4>
+            <%= check_box_tag 'rock', 'rock', false, class: 'email' %>
+            <%= check_box_tag 'rock', "rock", true, class: 'email' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="container">
+    <h1>Typography</h1>
+    <div class="icons">
+      <div class="">
+        <h1>h1: Heading 1</h1>
+        <h2>h2: Heading 2</h2>
+        <h3>h3: Heading 3</h3>
+        <h4>h4: Heading 4</h4>
+        <p>P: paragraph</p>
       </div>
     </div>
   </div>

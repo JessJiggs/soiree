@@ -33,7 +33,12 @@ $border-radius-sm: 2px;
 $base-font-size: 16px;
 $base-font-weight: 400;
 
-h1{
+h1, h2, h3, h4{
   font-family: $headings-font-family;
   text-align: center;
+}
+
+p{
+  text-align: center;
+  font-family: $font-family-sans-serif;
 }

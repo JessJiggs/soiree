@@ -19,3 +19,65 @@
   width: 200px;
   height: 100px;
 }
+
+.card{
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #CCCCCC;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  .events-card, .todo-card{
+    width: 100%;
+    position: relative;
+    .i{
+      position: absolute;
+      top: 5px;
+      left: 10px;
+    }
+  }
+
+  .event-card{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    .card-content {
+      display: flex;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.877);
+      color: $primary-color;
+
+      .img-element{
+        background-color: #BA937C;
+        height: 150px;
+        width: 150px;
+      }
+
+      .event-content{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: start;
+        padding: 10px;
+        background-color: white;
+      }
+    }
+  }
+
+  .todo-card{
+    background-color: white;
+    padding: 5px;
+    flex: 1;
+  }
+  .todo-content{
+  }
+}
+
+
+.cards{
+  display: flex;
+  justify-content: space-around;
+}
