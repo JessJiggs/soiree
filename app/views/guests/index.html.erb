@@ -5,8 +5,8 @@
 <br>
   <div>
     <ul>
-      <li class="btn btn-secondary">add guest</li>
-      <li class="btn btn-secondary">download template</li>
+      <li class="btn btn-secondary"><%= link_to "Add a Guest", new_event_guest_path(@event), class: "btn btn-secondary"%></li>
+      <li class="btn btn-secondary">download/email template</li>
       <li class="btn btn-secondary">import guests</li>
       <li class="btn btn-tertiary"><%= link_to "back to this.event", event_path(@event), class: "btn btn-secondary"%> </li>
     </ul>
@@ -40,7 +40,7 @@
   </div>
 <br>
   <div>
-    <h1>Add New Guest to Guests</h1>
+    <h1>Add a Guest</h1>
       <%= simple_form_for [@event, @guest] do |f| %>
         <%= f.input :first_name, label: "First Name" %>
         <%= f.input :last_name, label: "Last Name" %>
