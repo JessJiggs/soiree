@@ -1,17 +1,18 @@
 
 <div class="container">
   <h1>Guests</h1>
+  <br>
+    <%= link_to "back to this.event", event_path(@event), class: "btn btn btn-secondary"%>
 
     <div>
-    <ol>
-    <p>Name Surname </p>
-    <p>Invitation Status</p>
-    </ol>
-      <% @guests.each do |guest| %>
-        <p>Guest <%= guest.first_name + " " + guest.last_name%></p>
-        <p>Invitation Status <%= guest.invitation_status.humanize %></p></p>
-     <% end %>
-    </ol>
+      <ol>
+        <p>Name Surname </p>
+        <p>Invitation Status</p>
+      </ol>
+        <% @guests.each do |guest| %>
+          <li>Guest <%= guest.first_name + " " + guest.last_name%></li>
+          <p>Invitation Status <strong><%= guest.invitation_status.humanize %></strong></p>
+        <% end %>
     </div>
 
   <h1>Add New Guest to Guests</h1>
