@@ -16,4 +16,5 @@
   </div>
   <p>Guests: <i class="fa-solid fa-users"></i> <%= @event.est_guests %></p>
   <p>Total Budget: R<%= @event.total_budget %></p>
+  <%= link_to "Add expenses", new_event_expense_path(@event) %>
 </div>
