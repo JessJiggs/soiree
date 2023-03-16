@@ -1,5 +1,8 @@
 <div class="container mt-10">
   <h1>My expenses</h1>
+
+  <%= link_to "Go back to events", event_path(@event) %>
+
   <ul id="expenses">
     <% @expenses.each do |e| %>
       <li>
