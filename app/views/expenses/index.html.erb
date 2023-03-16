@@ -3,15 +3,35 @@
 
   <%= link_to "Go back to events", event_path(@event) %>
 
-  <ul id="expenses">
+
+<% total_expenses = @expenses.sum(:amount_spent) %>
+
+<table>
+  <thead>
+    <tr>
+
+      <th>Name</th>
+      <th>Amount Spent</th>
+        <th>Status</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @expenses.each do |e| %>
-      <li>
-        <%=  e.name %>
-        <%=  e.amount_spent %>
-      </li>
+      <tr>
+        <td><%= e.name %></td>
+        <td><%= e.amount_spent %></td>
+      </tr>
     <% end %>
-  </ul>
-  <%= pie_chart @expenses.group(:name ).count, donut: true %>
+    <tr>
+      <td>Total Budget:</td>
+      <td><%= total_expenses %></td>
+    </tr>
+  </tbody>
+</table>
+<%= pie_chart @expenses.group(:name ).sum(:amount_spent), donut: true %>
+
+
 
   <%= link_to "New expense", new_event_expense_path(@event) %>
 </div>
