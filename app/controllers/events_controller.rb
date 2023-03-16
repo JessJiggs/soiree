@@ -10,9 +10,13 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+<<<<<<< HEAD
     @collaboration = Collaboration.new(event: @event, user: current_user)
 
     if @event.save && @collaboration.save
+=======
+    if @event.save
+>>>>>>> e6971369fb2d79cf3716f112b9db36693b593713
       redirect_to event_path @event, notice: "Event was successfully created." # please could we redicrect to @event page if an event is successfully created?
     else
       render :new, status: :unprocessable_entity, notice: "Event was not successfully created."
