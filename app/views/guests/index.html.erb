@@ -9,8 +9,9 @@
     </ol>
       <% @guests.each do |guest| %>
         <p>Guest <%= guest.first_name + " " + guest.last_name%></p>
-        <p>Invitation Status <%= guest.invitation_status %></p>
-      <% end %>
+        <p>Invitation Status <%= guest.invitation_status.humanize %></p></p>
+     <% end %>
+    </ol>
     </div>
 
   <h1>Add New Guest to Guests</h1>
