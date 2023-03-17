@@ -19,7 +19,6 @@
             <%= cl_image_tag event.photo.key, height: 200, width: 200, crop: :fill %>
             <div class="event-content">
               <p><i class="fa-solid fa-calendar-days"></i> <%= link_to event.name, event_path(event) %></p>
-              <p><i class="fa-solid fa-circle-info"></i> <%= event.description %></p>
               <p><i class="fa-regular fa-clock"></i> <%= event.start_date.strftime("%d %B %Y %-l%P") %></p>
               <p><i class="fa-solid fa-clock"></i> <%= event.end_date.strftime("%d %B %Y %-l%P") %></p>
               <div class="">
