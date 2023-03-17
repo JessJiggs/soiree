@@ -1,17 +1,18 @@
 <div class="container">
-    <h1>Create New Event</h1>
+  <div class="input-container">
+    <h4>Create New Event</h4>
+    <%= simple_form_for(@event, :defaults => { :input_html => { :class => "input" } }) do |f| %>
+      <%= f.input :photo, as: :file, label: false %>
+      <%= f.input :name, placeholder: "Name", label: false %>
+      <%= f.input :description, placeholder: "About Event", label: false %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.input :venue_name, placeholder: "Venue", label: false %>
+      <%= f.input :venue_address, placeholder: "Address..", label: false %>
+      <%= f.input :est_guests, placeholder: "Estimated Guests", label: false %>
+      <%= f.input :total_budget, placeholder: "Budget", label: false %>
+      <%= f.button :button, "Create Event", class: "btn btn-secondary", label: false  %>
+    <% end %>
+  </div>
 
-  <%= simple_form_for(@event) do |f| %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :venue_name %>
-    <%= f.input :venue_address %>
-    <%= f.input :est_guests %>
-    <%= f.input :total_budget %>
-    <%= f.button :button, "Create Event" %>
-
-  <% end %>
 </div>
