@@ -3,22 +3,40 @@
 
   <h1><%= @event.name %></h1>
 
-  <div class="card summary">
-      <h4>Summary</h4>
-      <div class="event-card">
-        <div class="card-content">
-          <div class="event-content">
-            <p><i class="fa-solid fa-circle-info"></i> <%= @event.description %></p>
-            <p><i class="fa-regular fa-clock"></i> <%= @event.start_date.strftime("%d %B %Y %-l%P") %> - <%= @event.end_date.strftime("%d %B %Y %-l%P") %></p>
-            <p><i class="fa-solid fa-location-dot"></i> <%= @event.venue_name %>, <%= @event.venue_address %></p>
-            <p><i class="fa-solid fa-users"></i> <%= @event.est_guests %></p>
-            <p>R<%= @event.total_budget.round(2) %></p>
+  <div class="cards-flex-container">
+    <div class="card summary">
+        <h4>Summary</h4>
+        <div class="event-card">
+          <div class="card-content">
+            <div class="event-content">
+              <p><i class="fa-solid fa-circle-info"></i> <%= @event.description %></p>
+              <p><i class="fa-regular fa-clock"></i> <%= @event.start_date.strftime("%d %B %Y %-l%P") %> - <%= @event.end_date.strftime("%d %B %Y %-l%P") %></p>
+              <p><i class="fa-solid fa-location-dot"></i> <%= @event.venue_name %>, <%= @event.venue_address %></p>
+              <p><i class="fa-solid fa-users"></i> <%= @event.est_guests %></p>
+              <p>R<%= @event.total_budget %></p>
+            </div>
           </div>
-        <i class="fa-solid fa-circle-plus"></i>
         </div>
-      </div>
+    </div>
+    <div class="card summary">
+        <h4>Tasks</h4>
+        <div class="event-card">
+              <%= link_to event_tasks_path(@event) do %>
+                  <i class="fa-solid fa-circle-plus"></i>
+              <% end %>
+        <% @tasks.each do |task| %>
+          <div class="card-content">
+            <div class="event-content">
+              <p><%= task.name%>, <%= task.status %></p>
+              <p><%= task.description %></p>
+              <p>Due Date: <%= task.due_date.strftime("%d %B %Y %-l%P") %></p>
+            </div>
+          </div>
+          <% end %>
+        </div>
+    </div>
   </div>
-            <p><%= link_to "View tasks & create a new task", event_tasks_path(@event)%></p>
-            <p><%= link_to "View expenses", event_expenses_path(@event) %></P>
-            <p><%= link_to "Guests", event_guests_path(@event)%></p>
+    <p><%= link_to "View expenses", event_expenses_path(@event) %></P>
+    <p><%= link_to "Guests", event_guests_path(@event)%></p>
 </div>
+sz

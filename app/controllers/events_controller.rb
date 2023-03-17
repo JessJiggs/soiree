@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @tasks = @event.tasks
   end
 
   def update
