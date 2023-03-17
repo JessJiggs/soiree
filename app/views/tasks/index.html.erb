@@ -36,7 +36,7 @@
       <div class="card-task">
           <h5><strong><%= task.name %></strong></h5>
           <p><em><%= task.description %></em></p>
-          <p><%= task.due_date %></p>
+          <p><%= task.due_date.strftime("%d %B %Y") %></p>
           <% if task.status == "to_do" %>
             <p class="text-primary"> To do </p>
           <% elsif task.status == "doing" %>
