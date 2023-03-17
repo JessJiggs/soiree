@@ -1,6 +1,6 @@
 .cards-flex-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 .cards-task {
@@ -78,9 +78,7 @@
       display: flex;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
       color: $primary-color;
-<<<<<<< HEAD
       min-width: 500px;
-=======
     h5{
         color: $primary-color;
         font-family: $font-family-sans-serif;
@@ -88,8 +86,6 @@
         font-weight: bolder;
         text-align: left;
     }
->>>>>>> 82b2b2046a149fa3b322033e3c3f81fe769a1a55
-
       .img-element{
         background-color: #BA937C;
         height: 150px;
