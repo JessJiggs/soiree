@@ -1,0 +1,15 @@
+.input{
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
+}
+
+.input::placeholder{
+  color: $primary-color;
+}
+
+.input:focus{
+  border: 1px solid $secondary-color;
+  outline: none;
+}
