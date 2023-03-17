@@ -12,7 +12,7 @@ $body-bg:                $white;
 $font-size-base:         1rem;
 
 // Colors
-$body-color: $gray;
+$body-color: $primary-color;
 $primary:    $blue;
 $success:    $green;
 $info:       $yellow;
@@ -36,12 +36,15 @@ $base-font-size: 16px;
 $base-font-weight: 400;
 
 h1{
+  color: $primary-color;
   font-family: $headings-font-family;
   font-size: 48px;
   text-align: left;
+  border-bottom: $primary, solid;
 }
 
 h2{
+  color: $primary-color;
   font-family: $headings-font-family;
   font-weight: lighter;
   font-size: 36px;
@@ -63,6 +66,7 @@ h4{
 }
 
 h5{
+  color: $primary-color;
   font-family: $font-family-sans-serif;
   font-size: 16px;
   font-weight: bolder;
@@ -70,12 +74,9 @@ h5{
 }
 
 p{
+  color: $primary-color;
   text-align: left;
   font-family: $font-family-sans-serif;
 }
 
-p2{
-  text-align: left;
-  font-family: $font-family-sans-serif;
-  font-size: 12px;
-}
+$text-large: 36px;

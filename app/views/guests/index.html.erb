@@ -1,18 +1,26 @@
 
 <div class="container">
-  <h1>Guests</h1>
-
-  <div class="action-bar-guests">
-      <%= link_to "Add a Guest", "#form-add-guest", class: "btn btn-secondary"%>
-      <p class="btn btn-secondary">download/email template</p>
-      <p class="btn btn-secondary">import guests</p>
       <p class="btn btn-tertiary"><%= link_to "back to this.event", event_path(@event), class: "btn btn-secondary"%> </p>
-  </div>
-  <div class="search-bar">
-      <h4 class="btn btn-secondary">placeholder for "search"</h4>
+ <%# can take this ^^^  out as needed %>
+
+  <div class="page-header d-flex mt-4">
+    <h1>Guests ~ </h1><h2><%= @event.name %> </h2>
+    <%# the h2 ^ ^ ^ ^ needs to be h2 light 32px %>
   </div>
 
-  <div class="table-guests">
+  <div class="search-actions d-flex mt-4">
+    <div class="search">
+      <p class="search-input">placeholder for "search"</h4>
+    </div>
+
+    <div class="actions">
+      <%= link_to "Add a Guest", "#form-add-guest", class: "btn btn-secondary"%>
+      <p class="btn btn-secondary">download template</p>
+      <p class="btn btn-secondary">import guests</p>
+    </div>
+  </div>
+
+  <div class="table">
     <table>
       <tr>
         <th class="text-table-std"> Name</th>
@@ -36,8 +44,9 @@
     </table>
   </div>
 
-  <div class="form-guests">
-    <h1 id="form-add-guest" >Add a Guest</h1>
+  <div class="form-outer">
+    <h2 id="form-add-guest" >Add a Guest</h1>
+    <div class="form-inner">
       <%= simple_form_for [@event, @guest] do |f| %>
         <%= f.input :first_name, label: "First Name" %>
         <%= f.input :last_name, label: "Last Name" %>
@@ -45,6 +54,7 @@
         <%= f.input :phone_number, label: "Phone number" %>
         <%= f.button :submit, class:"btn btn-secondary" %>
       <% end %>
+    </div>
   </div>
 <br>
 </div>

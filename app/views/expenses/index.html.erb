@@ -1,11 +1,21 @@
 <div class="container mt-10">
+<div class="row">
+ <div class="col-md-6">
   <h1>My expenses</h1>
+  </div>
+  <div class="col-md-3">
+    <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary" %>
+     </div>
+    <div class="col-md-3">
+    <%= link_to "Add expense", new_event_expense_path(@event), class: "btn btn-secondary" %>
+  </div>
 
-  <%= link_to "Go back to events", event_path(@event) %>
+</div>
 
 
 <% total_expenses = @expenses.sum(:amount_spent) %>
-
+<div class="row">
+<div class="col-md-6">
 <table>
   <thead>
     <tr>
@@ -31,14 +41,14 @@
       </tr>
     <% end %>
     <tr>
-      <td>Total Budget:</td>
+      <td>Total Expenses:</td>
       <td><%= total_expenses %></td>
     </tr>
   </tbody>
 </table>
+</div>
+<div class="col-md-6">
 <%= pie_chart @expenses.group(:name ).sum(:amount_spent), donut: true %>
+</div>
 
-
-
-  <%= link_to "New expense", new_event_expense_path(@event) %>
 </div>
