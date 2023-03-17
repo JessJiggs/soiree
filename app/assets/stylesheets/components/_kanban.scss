@@ -1,0 +1,17 @@
+.kanban{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-grow:inherit;
+  background-color: $light-gray;
+  width: 800;
+  height: 645;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.kanban-column{
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+}
