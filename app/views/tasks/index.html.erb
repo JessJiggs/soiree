@@ -1,53 +1,50 @@
 <div class="container">
 
-<div class="page-header">
+  <div class="page-header mt-5">
+    <h1>Tasks</h1>
+  </div>
 
-  <h1>Tasks</h1>
+  <div class="search-actions d-flex mt-4">
+    <%= link_to "+ Add task", event_path(@event), class: "btn btn-secondary mr-4"%>
+  </div>
 
-  <div>
-      <li class="btn btn-secondary"><%= link_to "plc_hldr 4 'add task'", event_path(@event), class: "btn btn-secondary"%> </li>
-      <li class="btn btn-tertiary"><%= link_to "back to this.event", event_path(@event), class: "btn btn-secondary"%> </li>
-  <div>
-
-
-  <h2>Task stats</h2>
-  <div class="task-stats d-flex">
-    <div class="card-task-stat">
-      <h4>Completed Tasks</h4>
-      <%= @done_tasks.count %>
-    </div>
-    <div class="card-task-stat">
-      <h4>Incomplete Tasks</h4>
-      <%= @incomplete_tasks.count %>
-    </div>
-    <div class="card-task-stat">
-      <h4>Overdue Tasks</h4>
-      <%= @overdue_tasks.count %>
-    </div>
-    <div class="card-task-stat">
-      <h4>Total Tasks</h4>
-      <%= @tasks.count %>
-    </div>
-
-</div>
-
-
-  <h2>List of tasks</h2>
-  <div class="cards-task">
-      <% @tasks.each do |task| %>
-      <div class="card-task">
-          <h5><strong><%= task.name %></strong></h5>
-          <p><em><%= task.description %></em></p>
-          <p><%= task.due_date.strftime("%d %B %Y") %></p>
-          <% if task.status == "to_do" %>
-            <p class="text-primary"> To do </p>
-          <% elsif task.status == "doing" %>
-            <p class="text-warning"> Doing </p>
-          <% else task.status == "done" %>
-            <p class="text-success"> Done </p>
-          <% end %>
+  <div class="task-stats d-flex mt-4">
+      <div class="card-task-stat">
+        <p class="text-white text-center mb-0">Completed Tasks</p>
+        <p class="text-white text-center text-large"><%= @done_tasks.count %></p>
       </div>
-      <% end %>
+      <div class="card-task-stat">
+        <p class="text-white text-center mb-0">Incomplete Tasks</p>
+        <p class="text-white text-center text-large"><%= @incomplete_tasks.count %></p>
+      </div>
+      <div class="card-task-stat">
+        <p class="text-white text-center mb-0">Overdue Tasks</p>
+        <p class="text-white text-center text-large"><%= @overdue_tasks.count %></p>
+      </div>
+      <div class="card-task-stat">
+        <p class="text-white text-center mb-0">Total Tasks</p>
+        <p class="text-white text-center text-large"><%= @tasks.count %></p>
+      </div>
+  </div>
+
+
+  <div class="task-stats d-flex mt-4">
+    <h2>List of tasks</h2>
+    <div class="cards-task">
+        <% @tasks.each do |task| %>
+        <div class="card-task">
+            <h5><strong><%= task.name %></strong></h5>
+            <p><em><%= task.description %></em></p>
+            <p><%= task.due_date.strftime("%d %B %Y") %></p>
+            <% if task.status == "to_do" %>
+              <p class="text-primary"> To do </p>
+            <% elsif task.status == "doing" %>
+              <p class="text-warning"> Doing </p>
+            <% else task.status == "done" %>
+              <p class="text-success"> Done </p>
+            <% end %>
+        </div>
+        <% end %>
     </div>
   </div>
 
