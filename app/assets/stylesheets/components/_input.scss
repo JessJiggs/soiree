@@ -8,6 +8,8 @@
 
 .input::placeholder{
   color: $primary-color;
+  padding: 10px;
+  font-size: 14px;
 }
 
 .input:focus{
@@ -18,4 +20,23 @@
 .input-container{
   width: 500px;
   margin: auto auto;
+  border: $border;
+  padding: $container-padding;
+  border-radius: $border-radius;
+}
+
+.flex-inputs {
+  display: flex;
+  gap: 20px;
+}
+
+.image-input{
+  font-size: 22px;
+  opacity: .5;
+  transition: .2s ease;
+  cursor:pointer;
+}
+
+.image-input:hover{
+  opacity: 1;
 }

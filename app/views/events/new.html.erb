@@ -1,19 +1,43 @@
 <div class="container">
-    <h1>event details</h1>
-
-    <div class="input-container">
-      <h4>Create New Event</h4>
-        <%= simple_form_for(@event, :defaults => { :input_html => { :class => "input" } }) do |f| %>
-          <%= f.input :name, placeholder: "Name", label: "Event name" %>
-          <%= f.input :description, placeholder: "About Event", label: false %>
-          <%= f.input :start_date %>
-          <%= f.input :end_date %>
-          <%= f.input :venue_name, placeholder: "Venue", label: false %>
-          <%= f.input :venue_address, placeholder: "Address..", label: false %>
-          <%= f.input :est_guests, placeholder: "Estimated Guests", label: "Estimated no. guests" %>
-          <%= f.input :total_budget, placeholder: "Budget", label: false %>
-          <%= f.input :photo, as: :file, label: "Upload photo" %>
-          <%= f.button :button, "Create Event", class: "btn btn-secondary", label: false  %>
-        <% end %>
-    </div>
+  <div class="input-container">
+    <h4>Create New Event</h4>
+    <%= simple_form_for(@event) do |f| %>
+      <div class="flex-inputs">
+          <%= f.input :name, placeholder: "Name", label: false %>
+          <%= f.input :photo, as: :file, input_html: { class: 'd-none', data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: { class: 'image-input'}, label: '📷'%>
+      </div>
+      <%= f.input :description, placeholder: "About Event", label: false %>
+      <div class="flex-inputs">
+          <div class="row">
+            <div class="col">
+              <%= f.input :start_date, as: :string,
+                label: false,
+                placeholder: "Start Date",
+                wrapper_html: { class: "mb-4" },
+                label_html: { class: "form-label text-secondary fw-bold" },
+                input_html: { data: { controller: "flatpickr" } } %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= f.input :end_date, as: :string,
+                  label: false,
+                  placeholder: "End Date",
+                  wrapper_html: { class: "mb-4" },
+                  label_html: { class: "form-label text-secondary fw-bold" },
+                  input_html: { data: { controller: "flatpickr" } } %>
+            </div>
+          </div>
+      </div>
+      <div class="flex-inputs">
+        <%= f.input :venue_name, placeholder: "Venue", label: false %>
+        <%= f.input :venue_address, placeholder: "Address..", label: false %>
+      </div>
+      <div class="flex-inputs">
+        <%= f.input :est_guests, placeholder: "Estimated Guests", label: false %>
+        <%= f.input :total_budget, placeholder: "Budget", label: false %>
+      </div>
+      <%= f.button :button, "Create Event", class: "btn btn-secondary", label: false  %>
+    <% end %>
+  </div>
 </div>
