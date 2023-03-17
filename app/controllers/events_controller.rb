@@ -2,6 +2,12 @@ class EventsController < ApplicationController
   before_action :event_params, only: [:create]
   def index
     @events = current_user.events
+    @markers = @events.geocoded.map do |e|
+      {
+        lat: e.latitude,
+        lng: e.longitude
+      }
+    end
   end
 
   def new

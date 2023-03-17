@@ -4,11 +4,17 @@
 
 import { application } from "./application"
 
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
 
 import PhotoPreviewController from "./photo_preview_controller"
 application.register("photo-preview", PhotoPreviewController)

@@ -31,7 +31,12 @@
       </div>
       <div class="flex-inputs">
         <%= f.input :venue_name, placeholder: "Venue", label: false %>
-        <%= f.input :venue_address, placeholder: "Address..", label: false %>
+        <%= f.input :venue_address, placeholder: "Address..",label: 'Practice Address',
+            input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                             wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+
+          %>
+
       </div>
       <div class="flex-inputs">
         <%= f.input :est_guests, placeholder: "Estimated Guests", label: false %>
