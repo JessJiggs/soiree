@@ -266,7 +266,7 @@ assign18 = Assignment.create!(
 
 exp17 = Expense.create!(
   event_id: event13.id,
-  name: "welcome drinks",
+  name: "welcome snacks",
   amount_spent: 1500
 )
 exp18 = Expense.create!(
@@ -305,9 +305,10 @@ guest16 = Guest.create!(
   phone_number: "1234567890",
   invitation_status: :invited
 )
-
 puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
 puts "Event13 = This is #{user011.first_name}'s #{event13.name} (event_id#{event13.id}), taking place on #{event13.start_date}, at #{event13.venue_name}"
+file = File.open(File.join(__dir__, 'img/safari-wedding.png'))
+event13.photo.attach(io: file, filename: 'safari-wedding.png', content_type: 'image/png')
 puts "************************--------************************"
 ###################################################################################
 # EVE - second event
@@ -448,6 +449,8 @@ guest27 = Guest.create!(
 )
 puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
 puts "This is #{user011.first_name}'s '#{event23.name}' (event_id#{event23.id}), taking place on #{event23.start_date}, at #{event23.venue_name}"
+file = File.open(File.join(__dir__, 'img/fox-wedding.png'))
+event23.photo.attach(io: file, filename: 'fox-wedding.png', content_type: 'image/png')
 puts "************************--------************************"
 ##################################################################################
 # EVE - third event
@@ -534,6 +537,17 @@ assign38 = Assignment.create!(
   collaboration_id: collab32.id,
   task_id: task37.id
 )
+task38 = Task.create!(
+  event_id: event33.id,
+  name: "Find cowboy boots",
+  description: "Mr James is going all out - he wants genuine leather cowboy boots for his boys",
+  due_date: DateTime.new(2023, 3, 16, 15, 30, 0),
+  status: :doing
+)
+assign38 = Assignment.create!(
+  collaboration_id: collab32.id,
+  task_id: task38.id
+)
 
 exp37 = Expense.create!(
   event_id: event33.id,
@@ -542,12 +556,12 @@ exp37 = Expense.create!(
 )
 exp38 = Expense.create!(
   event_id: event33.id,
-  name: "@Rietta - 'decor_flwr'",
+  name: "Decor - flowers'",
   amount_spent: 4005.67
 )
 exp39 = Expense.create!(
   event_id: event33.id,
-  name: "buble machine",
+  name: "Bubble machine",
   amount_spent: 1250
 )
 
@@ -587,6 +601,8 @@ guest37 = Guest.create!(
 
 puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
 puts "This is #{user011.first_name}'s '#{event33.name}' (event_id#{event33.id}), taking place on #{event33.start_date}, at #{event33.venue_name}"
+file = File.open(File.join(__dir__, 'img/James-wedding.png'))
+event33.photo.attach(io: file, filename: 'James-wedding.png', content_type: 'image/png')
 puts "************************--------************************"
 ###########################################################################################################################
 # Faker data for guests
