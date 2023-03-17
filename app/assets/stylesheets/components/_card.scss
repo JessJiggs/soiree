@@ -67,8 +67,15 @@
     gap: 25px;
     .card-content {
       display: flex;
-      box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.658);
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
       color: $primary-color;
+    h5{
+        color: $primary-color;
+        font-family: $font-family-sans-serif;
+        font-size: 16px;
+        font-weight: bolder;
+        text-align: left;
+    }
 
       .img-element{
         background-color: #BA937C;

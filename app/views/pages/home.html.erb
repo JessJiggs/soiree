@@ -1,6 +1,6 @@
 <div class="container">
 
-<h1>Dashboard</h1>
+<h1>My dashboard</h1>
 <%= link_to "Sass Components", sass_home_path %>
 <%= link_to "Create New Event", new_event_path %>
 
@@ -28,12 +28,29 @@
                 <p><i class="fa-solid fa-location-dot"></i> <%= event.venue_name %>,
                 <%= event.venue_address %></p>
               </div>
-              <p><i class="fa-solid fa-users"></i> <%= event.est_guests %></p>
-              <p>R<%= event.total_budget %></p>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+      </div>
   </div>
+
+    <div class="dashboard-card">
+      <div class="card">
+          <h2>tasks</h4>
+          <p><%= link_to new_event_path do%></p>
+              <p><i class="fa-solid fa-circle-plus"></i></p>
+          <% end %>
+          <%= form_with url: "/search", method: :get do |form| %>
+            <%= form.text_field :query, class: "input" %>
+          <% end %>
+          <div class="todo-card">
+            <div class="card-content">
+              <div class="event-content">
+                <h5>Monday</h5>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
 </div>
