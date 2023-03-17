@@ -42,10 +42,10 @@
     <h2>Default Wrapper</h2>
     <div class="cards">
       <div class="card">
-        <h2>Events</h2>
+        <h4>Events</h4>
         <div class="event-card">
           <i class="fa-solid fa-circle-plus"></i>
-                    <%= form_with url: "/search", method: :get do |form| %>
+          <%= form_with url: "/search", method: :get do |form| %>
             <%= form.text_field :query, class: "input" %>
           <% end %>
           <div class="card-content">
@@ -59,7 +59,7 @@
         </div>
       </div>
       <div class="card">
-        <h2>To Do</h2>
+        <h4>To Do</h4>
         <div class="todo-card">
           <i class="fa-solid fa-circle-plus"></i>
           <div class="todo-content">
@@ -71,9 +71,6 @@
       </div>
     </div>
   </div>
-
-
-
 
   <div class="container">
     <h1>Typography</h1>

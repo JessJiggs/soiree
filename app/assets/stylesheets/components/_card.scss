@@ -22,6 +22,7 @@
 
 .card{
   min-width: 350px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,6 +31,8 @@
   border: none;
   border-radius: 5px;
   padding: 15px;
+  height: max-content;
+  gap: 30px;
   .events-card, .todo-card{
     width: 100%;
     position: relative;
@@ -46,7 +49,7 @@
     gap: 25px;
     .card-content {
       display: flex;
-        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.877);
+      box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.658);
       color: $primary-color;
 
       .img-element{
@@ -63,6 +66,18 @@
         text-align: start;
         padding: 10px;
         background-color: white;
+        p{
+          margin: 0;
+          padding: 0;
+          align-self: flex-start;
+          justify-self: flex-start;
+          text-align: start;
+          i{
+            font-size: 16px;
+            margin: 8px 0;
+            margin-right: 6px;
+          }
+        }
       }
     }
   }
@@ -76,6 +91,21 @@
   }
 }
 
+.summary {
+  background-color: #ffffff;
+  padding: 0;
+  .event-card{
+    .card-content {
+      background-color: #CCCCCC;
+      border-radius: $border-radius;
+      box-shadow: none;
+      padding: 10px;
+      .event-content{
+        background-color: transparent;
+      }
+    }
+  }
+}
 
 .cards{
   display: flex;
