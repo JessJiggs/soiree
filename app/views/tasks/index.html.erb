@@ -27,28 +27,50 @@
       </div>
   </div>
 
+  <div class="kanban-actions">
+  </div>
 
-  <div class="task-stats d-flex mt-4">
-    <h2>List of tasks</h2>
-    <div class="cards-task">
-        <% @tasks.each do |task| %>
+  <div class="kanban d-flex mt-4">
+    <div class="kanban-column">
+      <h3>To Do</h3>
+      <div class="cards-task">
+        <% @todo_tasks.each do |task| %>
         <div class="card-task">
-            <h5><strong><%= task.name %></strong></h5>
+            <h5><%= task.name.capitalize %></h5>
             <p><em><%= task.description %></em></p>
             <p><%= task.due_date.strftime("%d %B %Y") %></p>
-            <% if task.status == "to_do" %>
-              <p class="text-primary"> To do </p>
-            <% elsif task.status == "doing" %>
-              <p class="text-warning"> Doing </p>
-            <% else task.status == "done" %>
-              <p class="text-success"> Done </p>
-            <% end %>
         </div>
         <% end %>
+      </div>
+    </div>
+    <div class="kanban-column">
+      <h3>Doing</h3>
+      <div class="cards-task">
+        <% @doing_tasks.each do |task| %>
+          <div class="card-task">
+            <h5><strong><%= task.name.capitalize %></strong></h5>
+            <p><em><%= task.description %></em></p>
+            <p><%= task.due_date.strftime("%d %B %Y") %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="kanban-column">
+      <h3>Done</h3>
+      <div class="cards-task">
+        <% @doing_tasks.each do |task| %>
+          <div class="card-task">
+            <h5><strong><%= task.name.capitalize %></strong></h5>
+            <p><em><%= task.description %></em></p>
+            <p><%= task.due_date.strftime("%d %B %Y") %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 
-  <div class="container">
+
+  <div class="add-task mt-4">
     <h2>Add a task</h2>
       <%= simple_form_for [@event, @task] do |f| %>
         <%= f.input :name %>
