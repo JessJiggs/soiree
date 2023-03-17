@@ -1,21 +1,24 @@
 // Define variables for your color scheme
 
 // For example:
-$red: #FD1015;
+$red: #D59E9E;
 $blue: #0D6EFD;
 $yellow: #FFC65A;
 $orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
+$green: #ABCB98;
+$gray: #CCCCCC;
+$white: white;
+$purple: #C6A4D7;
 
-$light-gray: #F4F4F4;
+$light-gray: rgba(204,204,204,0.40);
 
-$text-color: #2c2d3f;
-$accent-color: #988C97;
+$text-color: #4B4E67;
 $primary-color: #4B4E67;
-$secondary-color: #ba937cd7;
+$secondary-color: #ba937c;
+$accent-color: #988C97;
 
-$accent-color-alt: #988C97;
-$primary-color-alt: #4B4E67;
-$secondary-color-alt: #ba937cd7;
+$primary-color-hover: rgba(75,78,103,0.6);
+$secondary-color-hover: rgba(186,147,124,0.4);
+$accent-color-hover: rgba(152,140,151,0.6);
 
+$secondary-color-alt: rgba(186,147,124,0.8);

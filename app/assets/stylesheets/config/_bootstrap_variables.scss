@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400&family=Noto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+Display:wght@300;400;500&display=swap');
 // This is where you override default Bootstrap variables
 // 1. Find all Bootstrap variables that you can override at the end of each component's documentation under the `Sass variables` anchor
 // e.g. here are the ones you can override for the navbar https://getbootstrap.com/docs/5.2/components/navbar/#sass-variables
@@ -6,9 +6,9 @@
 // 3. You can override them below!
 
 // General style
-$font-family-sans-serif: 'Noto Serif', serif;;
-$headings-font-family:   'Noto Sans Lao', sans-serif;
-$body-bg:                $light-gray;
+$font-family-sans-serif: $body-font;
+$headings-font-family:   $headers-font;
+$body-bg:                $white;
 $font-size-base:         1rem;
 
 // Colors
@@ -19,8 +19,9 @@ $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
 
+
 // Buttons & inputs' radius
-$border-radius: 1.25rem !default;
+$border-radius: 15px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 $border: 1px solid $accent-color;
@@ -34,12 +35,47 @@ $container-padding: 50px;
 $base-font-size: 16px;
 $base-font-weight: 400;
 
-h1, h2, h3, h4{
+h1{
   font-family: $headings-font-family;
+  font-size: 48px;
+  text-align: left;
+}
+
+h2{
+  font-family: $headings-font-family;
+  font-weight: lighter;
+  font-size: 36px;
   text-align: center;
 }
 
-p{
+h3{
+  font-family: $headings-font-family;
+  font-size: 24px;
+  color: $secondary-color-alt;
   text-align: center;
+}
+
+h4{
+  font-family: $headings-font-family;
+  font-size: 20px;
+  color: $secondary-color-alt;
+  text-align: center;
+}
+
+h5{
   font-family: $font-family-sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  text-align: left;
+}
+
+p{
+  text-align: left;
+  font-family: $font-family-sans-serif;
+}
+
+p2{
+  text-align: left;
+  font-family: $font-family-sans-serif;
+  font-size: 12px;
 }

@@ -2,15 +2,10 @@
   <div class="input-container">
     <h4>Create New Event</h4>
     <%= simple_form_for(@event) do |f| %>
-
-
       <div class="flex-inputs">
           <%= f.input :name, placeholder: "Name", label: false %>
           <%= f.input :photo, as: :file, input_html: { class: 'd-none', data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: { class: 'image-input'}, label: '📷'%>
-
       </div>
-
-
       <%= f.input :description, placeholder: "About Event", label: false %>
       <div class="flex-inputs">
           <div class="row">
@@ -34,7 +29,6 @@
             </div>
           </div>
       </div>
-
       <div class="flex-inputs">
         <%= f.input :venue_name, placeholder: "Venue", label: false %>
         <%= f.input :venue_address, placeholder: "Address..", label: false %>
@@ -46,5 +40,4 @@
       <%= f.button :button, "Create Event", class: "btn btn-secondary", label: false  %>
     <% end %>
   </div>
-
 </div>
