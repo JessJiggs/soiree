@@ -17,7 +17,7 @@
         <% @events.each do |event| %>
         <div class="event-card">
           <div class="card-content">
-          <% if event.photo %>
+          <% if event.photo.attached?  %>
             <%= cl_image_tag event.photo.key, height: 200, width: 200, crop: :fill %>
             <% end %>
             <div class="event-content">
