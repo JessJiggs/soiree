@@ -17,7 +17,9 @@
         <% @events.each do |event| %>
         <div class="event-card">
           <div class="card-content">
-           
+          <% if event.photo %>
+            <%= cl_image_tag event.photo.key, height: 200, width: 200, crop: :fill %>
+            <% end %>
             <div class="event-content">
               <p><i class="fa-solid fa-calendar-days"></i> <%= link_to event.name, event_path(event) %></p>
               <p><i class="fa-regular fa-clock"></i> <%= event.start_date.strftime("%d %B %Y %-l%P") %></p>
