@@ -1,0 +1,21 @@
+.input{
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
+  background-color: $light-gray;
+}
+
+.input::placeholder{
+  color: $primary-color;
+}
+
+.input:focus{
+  border: 1px solid $secondary-color;
+  outline: none;
+}
+
+.input-container{
+  width: 500px;
+  margin: auto auto;
+}

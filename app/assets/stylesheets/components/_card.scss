@@ -5,7 +5,7 @@
 }
 
 .card-task {
-  background: #FFFFFF;
+  background: $light-gray;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin: 10px;
   width: 400px;
@@ -18,4 +18,96 @@
   margin: 10px;
   width: 200px;
   height: 100px;
+}
+
+.card{
+  min-width: 350px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $light-gray;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  height: max-content;
+  gap: 30px;
+  .events-card, .todo-card{
+    width: 100%;
+    position: relative;
+    .i{
+      position: absolute;
+      top: 5px;
+      left: 10px;
+    }
+  }
+
+  .event-card{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    .card-content {
+      display: flex;
+      box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.658);
+      color: $primary-color;
+
+      .img-element{
+        background-color: #BA937C;
+        height: 150px;
+        width: 150px;
+      }
+
+      .event-content{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: start;
+        padding: 10px;
+        background-color: white;
+        p{
+          margin: 0;
+          padding: 0;
+          align-self: flex-start;
+          justify-self: flex-start;
+          text-align: start;
+          i{
+            font-size: 16px;
+            margin: 8px 0;
+            margin-right: 6px;
+          }
+        }
+      }
+    }
+  }
+
+  .todo-card{
+    background-color: white;
+    padding: 5px;
+    flex: 1;
+  }
+  .todo-content{
+  }
+}
+
+.summary {
+  background-color: #ffffff;
+  padding: 0;
+  .event-card{
+    .card-content {
+      background-color: #CCCCCC;
+      border-radius: $border-radius;
+      box-shadow: none;
+      padding: 10px;
+      .event-content{
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.cards{
+  display: flex;
+  justify-content: space-around;
 }

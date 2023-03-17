@@ -1,15 +1,37 @@
-.btn-gradient {
+.btn{
+  font-family: $font-family-sans-serif;
+  padding: 10px 15px;
+  width: 200px;
+  outline: none;
+  border: none;
+  border-radius: $border-radius;
   color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  font-weight: bold;
-  background: linear-gradient(#167FFB, #0F60C4);
-  transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
+  cursor: pointer;
 }
 
-.btn-gradient:hover {
-  background: linear-gradient(#147EFF, #0F67DA);
-  color: white;
+.btn-action {
+  background-color: $accent-color;
+  &:hover {
+    background-color: $accent-color-hover;
+  }
 }
 
+.btn-primary{
+  background-color: $primary-color;
+  &:hover {
+    background-color: $primary-color-hover;
+    }
+  }
+
+.btn-secondary{
+  background-color: $secondary-color;
+  &:hover {
+    background-color: $secondary-color-hover;
+  }
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

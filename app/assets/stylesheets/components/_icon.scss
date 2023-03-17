@@ -1,0 +1,16 @@
+i{
+  font-size: 35px;
+  color: $accent-color;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+i:hover{
+  color: $primary-color;
+}
+
+.icons{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
