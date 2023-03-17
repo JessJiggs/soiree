@@ -6,8 +6,8 @@
 // 3. You can override them below!
 
 // General style
-$font-family-sans-serif: 'Noto Sans', sans-serif;
-$headings-font-family:   'Noto Serif Display', serif;
+$font-family-sans-serif: $body-font;
+$headings-font-family:   $headers-font;
 $body-bg:                $white;
 $font-size-base:         1rem;
 
@@ -34,12 +34,47 @@ $border-radius-sm: 2px;
 $base-font-size: 16px;
 $base-font-weight: 400;
 
-h1, h2, h3, h4{
+h1{
   font-family: $headings-font-family;
+  font-size: 48px;
+  text-align: left;
+}
+
+h2{
+  font-family: $headings-font-family;
+  font-weight: lighter;
+  font-size: 36px;
   text-align: center;
 }
 
-p{
+h3{
+  font-family: $headings-font-family;
+  font-size: 24px;
+  color: $secondary-color-alt;
   text-align: center;
+}
+
+h4{
+  font-family: $headings-font-family;
+  font-size: 20px;
+  color: $secondary-color-alt;
+  text-align: center;
+}
+
+h5{
   font-family: $font-family-sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  text-align: left;
+}
+
+p{
+  text-align: left;
+  font-family: $font-family-sans-serif;
+}
+
+p2{
+  text-align: left;
+  font-family: $font-family-sans-serif;
+  font-size: 12px;
 }
