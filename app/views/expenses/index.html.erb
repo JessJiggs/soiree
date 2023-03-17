@@ -21,6 +21,13 @@
       <tr>
         <td><%= e.name %></td>
         <td><%= e.amount_spent %></td>
+        <td>
+        <% if e.status == "paid" %>
+            <p class="text-primary"> Paid </p>
+          <% else e.status == "unpaid" %>
+            <p class="text-warning"> Unpaid </p>
+          <% end %>
+          </td>
       </tr>
     <% end %>
     <tr>
