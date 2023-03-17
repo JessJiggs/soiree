@@ -6,4 +6,6 @@ class PagesController < ApplicationController
       redirect_to user_session_path
     end
   end
+
+  
 end
