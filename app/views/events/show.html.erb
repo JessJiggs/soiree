@@ -1,14 +1,15 @@
 <div class="container">
   <%= link_to "back to home", root_path %>
+
+  <h1><%= @event.name %></h1>
+
   <div class="card summary">
       <h4>Summary</h4>
       <div class="event-card">
         <div class="card-content">
           <div class="event-content">
-            <p><i class="fa-solid fa-calendar-days"></i> <%= @event.name %></p>
             <p><i class="fa-solid fa-circle-info"></i> <%= @event.description %></p>
-            <p><i class="fa-regular fa-clock"></i> <%= @event.start_date.strftime("%d %B %Y %-l%P") %></p>
-            <p><i class="fa-solid fa-clock"></i> <%= @event.end_date.strftime("%d %B %Y %-l%P") %></p>
+            <p><i class="fa-regular fa-clock"></i> <%= @event.start_date.strftime("%d %B %Y %-l%P") %> - <%= @event.end_date.strftime("%d %B %Y %-l%P") %></p>
             <p><i class="fa-solid fa-location-dot"></i> <%= @event.venue_name %>, <%= @event.venue_address %></p>
             <p><i class="fa-solid fa-users"></i> <%= @event.est_guests %></p>
             <p>R<%= @event.total_budget.round(2) %></p>

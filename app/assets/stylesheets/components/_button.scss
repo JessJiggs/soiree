@@ -5,23 +5,29 @@
   outline: none;
   border: none;
   border-radius: $border-radius;
-  color: $text-color;
+  color: white;
   cursor: pointer;
 }
 
-.btn:hover{
-
-}
 .btn-action {
   background-color: $accent-color;
+  &:hover {
+    background-color: $accent-color-hover;
+  }
 }
 
 .btn-primary{
   background-color: $primary-color;
-}
+  &:hover {
+    background-color: $primary-color-hover;
+    }
+  }
 
 .btn-secondary{
   background-color: $secondary-color;
+  &:hover {
+    background-color: $secondary-color-hover;
+  }
 }
 
 .buttons{
