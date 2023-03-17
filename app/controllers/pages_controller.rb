@@ -6,5 +6,4 @@ class PagesController < ApplicationController
       render "pages/landing_page"
     end
   end
-
 end
