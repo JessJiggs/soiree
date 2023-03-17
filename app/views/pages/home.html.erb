@@ -1,16 +1,53 @@
 <div class="container">
-<h1>Dashboard</h1>
-<p></p>
 
-<%= link_to "Create New Event", new_event_path %>
 
-<h1>All events</h1>
-
-<div class="dflex">
-  <div class="container">
-    <% @events.each do |event| %>
-      <p><%= link_to event.name, event_path(event) %></p>
-    <% end %>
+  <div>
+  <h1>Dashboard</h1>
   </div>
-</div>
+<br>
+
+
+<br>
+
+  <div>
+    <div class="div-bg-header">
+      <h3>events</h3>
+        <div class="div-events-index-inner">
+          <div class="div-index-search-action">
+            <p>button placeholder <%= link_to "Create New Event", new_event_path %></p>
+            <p>search input placeholder </p>
+          </div>
+        </div>
+          <div class="div-index">
+              <% @events.each do |event| %>
+                <div>
+                  <p><%= link_to event.name, event_path(event) %></p>
+                </div>
+                  <% end %>
+
+          </div>
+
+      <div class="div-bg-header">
+        <h3> to do</h3>
+          <div class="div-events-index-inner">
+            <div class="div-index-search-action">
+              <p> "plc_hldr 4 'add task'", event_path(@event), class: "btn btn-secondary" </p>
+            </div>
+              <div class="div-index">
+                <% @tasks.each do |task| %>
+                  <ul>
+                    <li><%= task.name %></li>
+                  </ul>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <div>
+          <h3> calendar</h3>
+          <h3> notes </h3>
+        </div>
+      </div>
+      
+  </div>
+
 </div>
