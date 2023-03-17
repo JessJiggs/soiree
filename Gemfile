@@ -83,3 +83,4 @@ gem "dotenv-rails", groups: %i[development test]
 gem "cloudinary"
 
 gem "groupdate", "~> 6.2"
+gem "faker"
