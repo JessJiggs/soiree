@@ -19,15 +19,12 @@
             <%= cl_image_tag event.photo.key, height: 200, width: 200, crop: :fill %>
             <div class="event-content">
               <p><i class="fa-solid fa-calendar-days"></i> <%= link_to event.name, event_path(event) %></p>
-              <p><i class="fa-solid fa-circle-info"></i> <%= event.description %></p>
               <p><i class="fa-regular fa-clock"></i> <%= event.start_date.strftime("%d %B %Y %-l%P") %></p>
               <p><i class="fa-solid fa-clock"></i> <%= event.end_date.strftime("%d %B %Y %-l%P") %></p>
               <div class="">
                 <p><i class="fa-solid fa-location-dot"></i> <%= event.venue_name %>,
                 <%= event.venue_address %></p>
               </div>
-              <p><i class="fa-solid fa-users"></i> <%= event.est_guests %></p>
-              <p>R<%= event.total_budget.round(2) %></p>
             </div>
           </div>
         </div>
