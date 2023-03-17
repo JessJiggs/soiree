@@ -4,10 +4,10 @@
   <h1>My expenses</h1>
   </div>
   <div class="col-md-3">
-    <%= link_to "My events", event_path(@event) %>
+    <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary" %>
      </div>
     <div class="col-md-3">
-    <%= link_to "Add expense", new_event_expense_path(@event) %>
+    <%= link_to "Add expense", new_event_expense_path(@event), class: "btn btn-secondary" %>
   </div>
 
 </div>
@@ -41,7 +41,7 @@
       </tr>
     <% end %>
     <tr>
-      <td>Total Budget:</td>
+      <td>Total Expenses:</td>
       <td><%= total_expenses %></td>
     </tr>
   </tbody>
