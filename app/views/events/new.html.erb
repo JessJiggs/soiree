@@ -1,17 +1,18 @@
 <div class="container">
-    <h1>Create New Event</h1>
+    <h1>event details</h1>
 
   <%= simple_form_for(@event) do |f| %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :name %>
-    <%= f.input :description %>
+
+    <%= f.input :name, label: "Event name" %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
+    <%= f.input :description %>
     <%= f.input :venue_name %>
     <%= f.input :venue_address %>
-    <%= f.input :est_guests %>
+    <%= f.input :est_guests, label: "Estimated no. guests" %>
     <%= f.input :total_budget %>
-    <%= f.button :button, "Create Event" %>
+    <%= f.input :photo, as: :file, label: "Upload photo" %>
+    <%= f.button :button, "Add Event" %>
 
   <% end %>
 </div>
