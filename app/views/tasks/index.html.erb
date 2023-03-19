@@ -5,8 +5,28 @@
   </div>
 
   <div class="search-actions d-flex mt-4">
-    <%= link_to "+ Add task", event_tasks_path(@event), class: "btn btn-secondary mr-4"%>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> + Add task </button>
     <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary mr-4"%>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">New task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for [@event, @task] do |f| %>
+            <%= f.input :name %>
+            <%= f.input :description %>
+            <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
+            <%= f.button :button, "Add Task", class:"btn-action" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="task-stats d-flex mt-4">
@@ -69,17 +89,4 @@
       </div>
     </div>
   </div>
-
-
-  <div class="add-task mt-4">
-    <h2>Add a task</h2>
-      <%= simple_form_for [@event, @task] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :due_date %>
-        <%= f.button :button, "Add Task", class:"btn-secondary" %>
-      <% end %>
-    </div>
-  </div>
-
 </div>
