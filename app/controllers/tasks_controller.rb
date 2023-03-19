@@ -24,6 +24,18 @@ class TasksController < ApplicationController
     @incomplete_tasks = @tasks.where(status: [:to_do, :doing])
   end
 
+  def update
+    @task = Task.find(params[:id])
+    @event = Event.find(params[:event_id])
+    @task.event = @event
+    @task.update(task_params)
+
+    respond_to do |format|
+      format.html { redirect_to event_tasks_path(@event) }
+      format.text { render partial: 'tasks/task_infos', locals: { task: @task }, formats: [:html] }
+    end
+  end
+
   private
 
   def task_params
