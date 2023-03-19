@@ -1,0 +1,26 @@
+<div data-controller="edit-task" data-edit-task-target="card-task">
+  <div class="card-task" data-edit-task-target="infos">
+    <h5><%= task.name.capitalize %></h5>
+    <p><em><%= task.description %></em></p>
+    <p><%= task.due_date.strftime("%d %B %Y") %></p>
+    <button aria-label="Edit Task">
+      <i class="fa-solid fa-pen fa-xs ml-2" data-action="click->edit-task#displayForm"></i>
+    </button>
+  </div>
+
+  <%= simple_form_for task,
+    html: {
+      class: 'd-none',
+      data: {
+        edit_task_target: 'form',
+        action: 'submit->edit_task#update'
+      }
+    } do |f|
+  %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
+    <%= f.input :status %>
+    <%= f.submit "Update task", class:"btn-action" %>
+  <% end %>
+</div>
