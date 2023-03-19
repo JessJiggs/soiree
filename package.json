@@ -10,6 +10,7 @@
     "chartkick": "^5.0.1",
     "flatpickr": "^4.6.13",
     "moment": "^2.29.4",
+    "sortablejs": "^1.15.0",
     "webpack": "^5.76.1",
     "webpack-cli": "^5.0.1"
   },
