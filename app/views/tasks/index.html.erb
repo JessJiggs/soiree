@@ -5,16 +5,16 @@
   </div>
 
   <div class="search-actions d-flex mt-4">
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> + Add task </button>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addTask"> + Add task </button>
     <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary mr-4"%>
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade" id="addTask" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">New task</h5>
+          <h5 class="modal-title" id="addTaskLabel">New task</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -22,7 +22,7 @@
             <%= f.input :name %>
             <%= f.input :description %>
             <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
-            <%= f.button :button, "Add Task", class:"btn-action" %>
+            <%= f.button :button, "Add task", class:"btn-action" %>
           <% end %>
         </div>
       </div>
