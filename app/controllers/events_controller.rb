@@ -21,6 +21,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @tasks = @event.tasks
+    @expenses = @event.expenses
+    @guests = @event.guests
   end
 
   def update

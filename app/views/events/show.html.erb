@@ -2,24 +2,82 @@
   <br>
   <h1><%= @event.name %></h1>
 
-  <div class="card summary">
-      <h4>Summary</h4>
-      <div class="event-card">
-        <div class="card-content">
-          <div class="event-content">
-            <p><i class="fa-solid fa-circle-info"></i> <%= @event.description %></p>
-            <p><i class="fa-regular fa-clock"></i> <%= @event.start_date.strftime("%d %B %Y %-l%P") %> - <%= @event.end_date.strftime("%d %B %Y %-l%P") %></p>
-            <p><i class="fa-solid fa-location-dot"></i> <%= @event.venue_name %>, <%= @event.venue_address %></p>
-            <p><i class="fa-solid fa-users"></i> <%= @event.est_guests %></p>
-            <p>R<%= @event.total_budget.round(2) %></p>
+    <div class="cards-flex-container">
+      <div class="card summary">
+          <h4>Summary</h4>
+          <div class="event-card">
+            <div class="card-content">
+              <div class="event-content">
+                <p><i class="fa-solid fa-circle-info"></i> <%= @event.description %></p>
+                <p><i class="fa-regular fa-clock"></i> <%= @event.start_date.strftime("%d %B %Y %-l%P") %> - <%= @event.end_date.strftime("%d %B %Y %-l%P") %></p>
+                <p><i class="fa-solid fa-location-dot"></i> <%= @event.venue_name %>, <%= @event.venue_address %></p>
+                <p><i class="fa-solid fa-users"></i> <%= @event.est_guests %></p>
+                <p>R<%= @event.total_budget %></p>
+              </div>
+            </div>
           </div>
-        <i class="fa-solid fa-circle-plus"></i>
-        </div>
       </div>
+      <div class="card summary">
+          <h4>Tasks</h4>
+          <div class="event-card">
+                <%= link_to event_tasks_path(@event) do %>
+                    <i class="fa-solid fa-circle-plus"></i>
+                <% end %>
+          <% @tasks.each do |task| %>
+            <div class="card-content">
+              <div class="event-content">
+                <p><%= task.name%>, <%= task.status %></p>
+                <p><%= task.description %></p>
+                <p>Due Date: <%= task.due_date.strftime("%d %B %Y %-l%P") %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
+    <div class="cards-flex-container">
+      <div class="card summary">
+          <h4>Expenses</h4>
+          <div class="event-card">
+                <%= link_to event_expenses_path(@event) do %>
+                    <i class="fa-solid fa-circle-plus"></i>
+                <% end %>
+          <% @expenses.each do |expense| %>
+            <div class="card-content">
+              <div class="event-content">
+                <p>Name: <%= expense.name%>, <%= expense.status %></p>
+                <p>Amount Spent: <%= expense.amount_spent %></p>
+                <p>Status: <%= expense.status %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+      </div>
+      <div class="card summary">
+          <h4>Guests</h4>
+          <div class="event-card">
+                <%= link_to event_guests_path(@event) do %>
+                    <i class="fa-solid fa-circle-plus"></i>
+                <% end %>
+            <p><%= @guests.count %></p>
+          <% @guests.each do |guest| %>
+            <div class="card-content">
+              <div class="event-content">
+                <p>Name: <%= guest.first_name%>, <%= guest.invitation_status%></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
   </div>
-            <br>
-            <p><%= link_to "View tasks", event_tasks_path(@event), class: "btn btn-secondary"%></p>
-            <p><%= link_to "View expenses", event_expenses_path(@event), class: "btn btn-secondary" %></P>
-            <p><%= link_to "View guests", event_guests_path(@event), class: "btn btn-secondary"%></p>
-            <%= link_to "back to home", root_path, class: "btn btn-secondary" %>
+  <br/>
+  <br/>
+  <div class="container cards-flex-container">
+    <br>
+    <p><%= link_to "View tasks", event_tasks_path(@event), class: "btn btn-secondary"%></p>
+    <p><%= link_to "View expenses", event_expenses_path(@event), class: "btn btn-secondary" %></P>
+    <p><%= link_to "View guests", event_guests_path(@event), class: "btn btn-secondary"%></p>
+    <%= link_to "back to home", root_path, class: "btn btn-secondary" %>
+  </div>
 </div>
