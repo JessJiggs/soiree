@@ -47,15 +47,33 @@
       </tr>
       <% @guests.each do |guest| %>
         <%= simple_form_for [@event, guest] do |f| %>
+          <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editGuestLabel">Edit guest</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= f.input :first_name, label: "First Name" %>
+                  <%= f.input :last_name, label: "Last Name" %>
+                  <%= f.input :email_address, label: "Email" %>
+                  <%= f.input :phone_number, label: "Phone number" %>
+                  <%= f.button :submit, "edit guest", class:"btn-action" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
         <tr>
           <td class="text-table-std"><%= guest.first_name %></td>
           <td class="text-table-std"><%= guest.last_name%></td>
           <td class="text-table-std"><%= guest.email_address%></td>
           <td class="text-table-std"><%= guest.phone_number%></td>
           <td class="text-table-status"><strong><%= guest.invitation_status.humanize %></strong></td>
-          <td class="text-table-action"> <button class="btn btn-secondary" <%= guest.id %>> edit guest </button> mail </td>
+          <td class="text-table-status"> <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>"> edit guest </button> mail </td>
+          <td class="text-table-status"> * </td>
         </tr>
-        <% end %>
       <% end %>
     </table>
   </div>
