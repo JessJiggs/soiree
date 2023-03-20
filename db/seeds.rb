@@ -113,17 +113,20 @@ assign08 = Assignment.create!(
 exp06 = Expense.create!(
   event_id: event03.id,
   name: "drink - welcome drinks",
-  amount_spent: 58.99
+  amount_spent: 58.99,
+  category_list: "Bar"
 )
 exp07 = Expense.create!(
   event_id: event03.id,
   name: "venue - deposit",
-  amount_spent: 58.99
+  amount_spent: 58.99,
+  category_list: "Venue"
 )
 exp08 = Expense.create!(
   event_id: event03.id,
   name: "entertainment,dj, - billingsly", #use tagable not concat/interpolation
-  amount_spent: 58.99 #decimal ? double precision? currency class?
+  amount_spent: 58.99, #decimal ? double precision? currency class?
+  category_list: "Entertainment"
 )
 
 guest07 = Guest.create!(
@@ -216,7 +219,8 @@ assign15 = Assignment.create!(
 exp16 = Expense.create!(
   event_id: event13.id,
   name: "welcome drinks",
-  amount_spent: 5800.99
+  amount_spent: 5800.99,
+  category_list: "Bar"
 )
 
 guest17 = Guest.create!(
@@ -267,17 +271,20 @@ assign18 = Assignment.create!(
 exp17 = Expense.create!(
   event_id: event13.id,
   name: "welcome snacks",
-  amount_spent: 1500
+  amount_spent: 1500,
+  category_list: "Catering"
 )
 exp18 = Expense.create!(
   event_id: event13.id,
   name: "@Floraelle - 'decor_flwr'",# category and or tagable ? @suppliers ?
-  amount_spent: 5876.55
+  amount_spent: 5876.55,
+  category_list: "Decor"
 )
 exp19 = Expense.create!(
   event_id: event13.id,
   name: "DJ BJWG",
-  amount_spent: 7050
+  amount_spent: 7050,
+  category_list: "Entertainment"
 )
 
 guest18 = Guest.create!(
@@ -350,7 +357,8 @@ assign25 = Assignment.create!(
 exp26 = Expense.create!(
   event_id: event23.id,
   name: "welcome drinks",
-  amount_spent: 5800.99
+  amount_spent: 5800.99,
+  category_list: "Bar"
 )
 
 guest27 = Guest.create!(
@@ -401,17 +409,20 @@ assign28 = Assignment.create!(
 exp27 = Expense.create!(
   event_id: event23.id,
   name: "welcome drinks",
-  amount_spent: 1800
+  amount_spent: 1800,
+  category_list: "Bar"
 )
 exp28 = Expense.create!(
   event_id: event23.id,
   name: "@Rietta - 'decor_flwr'",
-  amount_spent: 5876.55
+  amount_spent: 5876.55,
+  category_list: "Decor"
 )
 exp29 = Expense.create!(
   event_id: event23.id,
   name: "band ChampanJey",
-  amount_spent: 1200
+  amount_spent: 1200,
+  category_list: "Entertainment"
 )
 
 guest28 = Guest.create!(
@@ -490,7 +501,8 @@ assign35 = Assignment.create!(
 exp36 = Expense.create!(
   event_id: event33.id,
   name: "All bar drinks",
-  amount_spent: 9800.50
+  amount_spent: 9800.50,
+  category_list: "Bar"
 )
 
 guest37 = Guest.create!(
@@ -552,17 +564,20 @@ assign38 = Assignment.create!(
 exp37 = Expense.create!(
   event_id: event33.id,
   name: "Mobile bar service",
-  amount_spent: 6700
+  amount_spent: 6700,
+  category_list: "Bar"
 )
 exp38 = Expense.create!(
   event_id: event33.id,
   name: "Decor - flowers'",
-  amount_spent: 4005.67
+  amount_spent: 4005.67,
+  category_list: "Decor"
 )
 exp39 = Expense.create!(
   event_id: event33.id,
   name: "Bubble machine",
-  amount_spent: 1250
+  amount_spent: 1250,
+  category_list: "Entertainment"
 )
 
 guest38 = Guest.create!(

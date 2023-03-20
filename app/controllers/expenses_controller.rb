@@ -4,6 +4,13 @@ class ExpensesController < ApplicationController
     @event = Event.find(params[:event_id])
     @expense.event = @event
     @expenses = @event.expenses
+
+    categories = ["Catering", "Bar", "Entertainment", "Decor", "Venue", "Services", "Transport", "Other"]
+
+    @pie_chart_expenses = []
+    categories.each do |category|
+      @pie_chart_expenses << [ category, @expenses.tagged_with(category).sum(:amount_spent) ] if @expenses.tagged_with(category).sum(:amount_spent).positive?
+    end
   end
 
   def show
