@@ -1,18 +1,18 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [ :update, :destroy ]
+  before_action :set_event, only: [ :create, :index, :update ]
   def create
     @task = Task.new(task_params)
-    @event = Event.find(params[:event_id])
     @task.event = @event
     if @task.save
       redirect_to event_tasks_path(@event), notice: "Task was successfully created."
     else
-      redirect_to event_tasks_path(@event), status: :unprocessable_entity, notice: "Event was not successfully created."
+      redirect_to event_tasks_path(@event), status: :unprocessable_entity, notice: "Task was not successfully created."
     end
   end
 
   def index
     @task = Task.new
-    @event = Event.find(params[:event_id])
     @task.event = @event
     @tasks = @event.tasks
 
@@ -25,8 +25,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params[:id])
-    @event = Event.find(params[:event_id])
     @task.event = @event
     @task.update(task_params)
     respond_to do |format|
@@ -35,9 +33,22 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task.destroy
+    redirect_to event_tasks_path(@event), status: :see_other, notice: "Task was successfully deleted"
+  end
+
   private
 
   def task_params
     params.require(:task).permit(:name, :description, :due_date, :status)
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
+  def set_event
+    @event = Event.find(params[:event_id])
   end
 end
