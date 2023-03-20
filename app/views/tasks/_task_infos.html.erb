@@ -1,4 +1,4 @@
-<div data-controller="edit-task" data-edit-task-target="card-task">
+<div data-controller="edit-task" data-edit-task-target="task">
   <div class="card-task" data-edit-task-target="infos">
     <h5><%= task.name.capitalize %></h5>
     <p><em><%= task.description %></em></p>
@@ -8,19 +8,19 @@
     </button>
   </div>
 
-  <%= simple_form_for task,
+  <%= simple_form_for [@event, task],
     html: {
       class: 'd-none',
       data: {
         edit_task_target: 'form',
-        action: 'submit->edit_task#update'
-      }
+        # action: 'submit->edit-task#update'
+      },
+      method: :patch
     } do |f|
   %>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
-    <%= f.input :status %>
     <%= f.submit "Update task", class:"btn-action" %>
   <% end %>
 </div>

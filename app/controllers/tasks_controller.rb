@@ -29,7 +29,6 @@ class TasksController < ApplicationController
     @event = Event.find(params[:event_id])
     @task.event = @event
     @task.update(task_params)
-
     respond_to do |format|
       format.html { redirect_to event_tasks_path(@event) }
       format.text { render partial: 'tasks/task_infos', locals: { task: @task }, formats: [:html] }

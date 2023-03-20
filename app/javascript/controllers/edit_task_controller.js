@@ -2,12 +2,12 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="edit-task"
 export default class extends Controller {
-  static targets = ["infos", "form", "card-task"]
+  static targets = ["infos", "form", "task"]
 
   connect() {
     console.log(this.infosTarget);
     console.log(this.formTarget);
-    console.log(this.card_taskTarget);
+    console.log(this.taskTarget);
   }
 
   displayForm() {
@@ -15,17 +15,18 @@ export default class extends Controller {
     this.formTarget.classList.remove('d-none');
   }
 
-  update(event) {
-    event.preventDefault();
-    const url = this.formTarget.action
-    fetch(url, {
-      method: 'PATCH',
-      headers: { 'Accept': 'text/html' },
-      body: new FormData(this.formTarget)
-    })
-      .then(response => response.text())
-      .then((data) => {
-        this.card_taskTarget.outerHTML = data;
-      })
-  }
+  // update(event) {
+  //   event.preventDefault();
+  //   const url = this.formTarget.action
+
+  //   fetch(url, {
+  //     method: 'PATCH',
+  //     headers: { 'Accept': 'text/html' },
+  //     body: new FormData(this.formTarget)
+  //   })
+  //     .then(response => response.text())
+  //     .then((data) => {
+  //       this.taskTarget.outerHTML = data;
+  //     })
+  // }
 }
