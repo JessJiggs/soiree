@@ -7,11 +7,28 @@
     <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary" %>
      </div>
     <div class="col-md-3">
-    <%= link_to "Add expense", new_event_expense_path(@event), class: "btn btn-secondary" %>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExpense"> + Add expense </button>
   </div>
 
 </div>
 
+  <div class="modal fade" id="addExpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addExpenseLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addExpenseLabel">New expense</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for [ @event, @expense] do |f| %>
+            <%= f.input :name %>
+            <%= f.input :amount_spent %>
+            <%= f.button :button, "Add expense", class:"btn-action" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <% total_expenses = @expenses.sum(:amount_spent) %>
 <div class="row">

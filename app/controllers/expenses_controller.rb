@@ -1,17 +1,14 @@
 class ExpensesController < ApplicationController
   def index
+    @expense = Expense.new
     @event = Event.find(params[:event_id])
+    @expense.event = @event
     @expenses = @event.expenses
   end
 
   def show
     @event = Event.find(params[:event_id])
     @expenses = @event.set_expense
-  end
-
-  def new
-    @expense = Expense.new
-    @event = Event.find(params[:event_id])
   end
 
   def create
