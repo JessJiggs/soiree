@@ -20,6 +20,7 @@
           <%= simple_form_for [@event, @task] do |f| %>
             <%= f.input :name %>
             <%= f.input :description %>
+            <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
             <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
             <%= f.button :button, "Add task", class:"btn-action" %>
           <% end %>

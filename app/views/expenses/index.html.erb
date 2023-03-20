@@ -23,6 +23,7 @@
           <%= simple_form_for [ @event, @expense] do |f| %>
             <%= f.input :name %>
             <%= f.input :amount_spent %>
+            <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
             <%= f.button :button, "Add expense", class:"btn-action" %>
           <% end %>
         </div>
@@ -39,6 +40,7 @@
 
       <th>Name</th>
       <th>Amount Spent</th>
+      <th>Category</th>
         <th>Status</th>
       <th>Date</th>
     </tr>
@@ -48,6 +50,7 @@
       <tr>
         <td><%= e.name %></td>
         <td><%= e.amount_spent %></td>
+        <td><%= e.category_list %></td>
         <td>
         <% if e.status == "paid" %>
             <p class="text-primary"> Paid </p>
