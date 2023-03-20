@@ -6,7 +6,9 @@
       <p><%= task.category_list %></p>
       <p><%= task.due_date.strftime("%d %B %Y") %></p>
       <i class="fa-solid fa-pen fa-xs ml-2" data-action="click->edit-task#displayForm"></i>
-      <%= link_to "Delete", event_task_path(@event, task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+      <%= link_to(event_task_path(@event, task), class: "task", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
+        <i class="fa-solid fa-trash fa-xs ml-2"></i>
+      <% end %>
     </div>
     <%= simple_form_for [@event, task],
     html: {
