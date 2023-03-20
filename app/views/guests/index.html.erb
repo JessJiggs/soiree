@@ -29,7 +29,7 @@
             <%= f.input :last_name, label: "Last Name" %>
             <%= f.input :email_address, label: "Email" %>
             <%= f.input :phone_number, label: "Phone number" %>
-            <%= f.button :button, "Add guest", class:"btn-action" %>
+            <%= f.button :submit, "Add guest", class:"btn-action" %>
           <% end %>
         </div>
       </div>
@@ -46,25 +46,25 @@
         <th class="text-table-status"> Action </th>
       </tr>
       <% @guests.each do |guest| %>
-        <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="editGuestLabel">Edit guest</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <%= simple_form_for [@event, guest] do |f| %>
+        <%= simple_form_for [@event, guest] do |f| %>
+          <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editGuestLabel">Edit guest</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                   <%= f.input :first_name, label: "First Name" %>
                   <%= f.input :last_name, label: "Last Name" %>
                   <%= f.input :email_address, label: "Email" %>
                   <%= f.input :phone_number, label: "Phone number" %>
-                  <%= f.button :button, "submit", class:"btn-action" %>
-                <% end %>
+                  <%= f.button :submit, "edit guest", class:"btn-action" %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
         <tr>
           <td class="text-table-std"><%= guest.first_name %></td>
           <td class="text-table-std"><%= guest.last_name%></td>

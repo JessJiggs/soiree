@@ -18,10 +18,10 @@ class GuestsController < ApplicationController
 
   def update
     @event = Event.find(params[:event_id])
-    guest = Guest.find(guest_params)
+    guest = Guest.find(params[:id])
     guest.update!(guest_params)
-    if @guest.save
-      redirect_to event_guests_path(@event), notice: "Guest was successfully updated"
+    if guest.save
+      redirect_to event_guests_path(@event)
     else
       redirect_to event_guests_path(@event), status: :unprocessable_entity, notice: "Guest was not successfully updated."
     end
