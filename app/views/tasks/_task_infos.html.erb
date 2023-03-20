@@ -1,0 +1,27 @@
+<div data-controller="edit-task" data-edit-task-target="task">
+  <div class="card-task" data-edit-task-target="infos">
+    <h5><%= task.name.capitalize %></h5>
+    <p><em><%= task.description %></em></p>
+    <p><%= task.due_date.strftime("%d %B %Y") %></p>
+    <button aria-label="Edit Task">
+      <i class="fa-solid fa-pen fa-xs ml-2" data-action="click->edit-task#displayForm"></i>
+    </button>
+    <%= link_to "Delete", event_tasks_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+  </div>
+
+  <%= simple_form_for [@event, task],
+    html: {
+      class: 'd-none',
+      data: {
+        edit_task_target: 'form',
+        # action: 'submit->edit-task#update'
+      },
+      method: :patch
+    } do |f|
+    %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
+      <%= f.submit "Update task", class:"btn-action" %>
+  <% end %>
+</div>
