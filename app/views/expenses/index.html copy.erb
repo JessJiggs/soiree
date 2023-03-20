@@ -58,7 +58,14 @@
                     <%= f.input :name, label: "Name" %>
                     <%= f.input :amount_spent, label: "Amount Spent" %>
                     <%= f.input :category_list, label: "Category" %>
-                    
+                    <td>
+                    <% if f.status == "paid" %>
+                      <p class="text-primary"> Paid </p>
+                    <% else f.status == "unpaid" %>
+                      <p class="text-warning"> Unpaid </p>
+                    <% end %>
+                    </td>
+
                     <%= f.button :submit, "edit expense", class:"btn-action" %>
                   </div>
                 </div>
@@ -69,21 +76,24 @@
           <td class="text-table-std"><%= expense.amount_spent%></td>
           <td class="text-table-category"><%= expense.category_list%></td>
           <td class="text-table-status"><%= expense.status%></td>
-          <td class="text-table-std"><%= expense.status%></td>
-          <%# ^^^ date %>
+
           <td class="text-table-action">
             <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editExpense<%= expense.id %>"> </i>
+            <i class="fa-solid fa-paper-plane fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editExpense<%= expense.id %>" > </i>
             <%= link_to(event_expense_path(@event, expense), class: "expense", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
               <i class="fa-solid fa-trash fa-xs ml-2"></i>
             <% end %>
           </td>
         </tr>
-
-      <% end %>
+        <tr>
           <td><strong> Total Spent:</strong></td>
           <% total_expenses = @expenses.sum(:amount_spent) %>
           <td><%= total_expenses %></td>
+        </tr>
+      <% end %>
     </table>
   </div>
-
+  <div class="graph">
+    <%= pie_chart @expenses.group(:name ).sum(:amount_spent), donut: true %>
+  </div>
 </div>

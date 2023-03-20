@@ -1,39 +1,45 @@
 class ExpensesController < ApplicationController
   def index
-    @expense = Expense.new
     @event = Event.find(params[:event_id])
-    @expense.event = @event
-    @expenses = @event.expenses
+    @expenses = @event.expenses.order(updated_at: :desc)
+    @expense = Expense.new
   end
 
-  def show
-    @event = Event.find(params[:event_id])
-    @expenses = @event.set_expense
-  end
+  # def show
+  #   @event = Event.find(params[:event_id])
+  #   @expense = Expense.find(params[:id])
+  #   # @expenses = @event.set_expense
+  # end
+  # # do we need this  ^ ^ ^
 
   def create
-    @expense = Expense.new(expense_params)
-    # an expense belongs to an event
     @event = Event.find(params[:event_id])
+    @expense = Expense.new(expense_params)
     @expense.event = @event
     if @expense.save
-      redirect_to event_expenses_path(@event)
+      redirect_to event_expenses_path(@event), notice: "Expense was successfully added."
     else
-      render :new
+      # render :new
+      redirect_to event_expenses_path(@event), status: :unprocessable_entity, notice: "Expense was not successfully added."
     end
-  end
-
-  def edit
-    set_expense
   end
 
   def update
-    set_expense
-    if @expense.update(expense_params)
-      redirect_to @expense
+    @event = Event.find(params[:event_id])
+    expense = Expense.find(params[:id])
+    expense.update!(expense_params)
+    if expense.save
+      redirect_to event_expenses_path(@event), notice: "Expense was successfully updated."
     else
-      render :edit
+      redirect_to event_expenses_path(@event), status: :unprocessable_entity, notice: "Expense was not successfully updated."
     end
+  end
+
+  def destroy
+    @event = Event.find(params[:event_id])
+    expense = Expense.find(params[:id])
+    expense.destroy
+    redirect_to event_expenses_path(@event), notice: "expense was successfully removed"
   end
 
   private
