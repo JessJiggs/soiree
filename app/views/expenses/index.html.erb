@@ -37,11 +37,10 @@
 <table>
   <thead>
     <tr>
-
       <th>Name</th>
       <th>Amount Spent</th>
       <th>Category</th>
-        <th>Status</th>
+      <th>Status</th>
       <th>Date</th>
     </tr>
   </thead>
@@ -61,14 +60,25 @@
       </tr>
     <% end %>
     <tr>
-      <td>Total Expenses:</td>
-      <td><%= total_expenses %></td>
+      <td><strong>Total Expenses:</strong></td>
+      <td><strong><%= total_expenses %></strong></td>
     </tr>
   </tbody>
 </table>
+
+<h5>Total Budget:</h5>
+<%= @event.total_budget %>
+
 </div>
 <div class="col-md-6">
-<%= pie_chart @expenses.group(:name ).sum(:amount_spent), donut: true %>
+<%= pie_chart(@pie_chart_expenses, donut: true) %>
+</div>
+
+<div>
+<%= bar_chart [
+  {name: "Total Expenses", data: [["R",@expenses.sum(:amount_spent)]]},
+  {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
+  stacked: true %>
 </div>
 
 </div>
