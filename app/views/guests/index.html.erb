@@ -46,7 +46,7 @@
         <th class="text-table-status"> Action </th>
       </tr>
       <% @guests.each do |guest| %>
-        <%= simple_form_for [@event, guest] do |f| %>
+        <%= simple_form_for [@event, guest], data: {turbo: false} do |f| %>
           <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
