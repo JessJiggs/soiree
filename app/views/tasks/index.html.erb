@@ -70,7 +70,7 @@
     <div class="kanban-column">
       <h3>Done</h3>
       <div class="cards-task">
-        <% @doing_tasks.each do |task| %>
+        <% @done_tasks.each do |task| %>
           <%= render "task_infos", task: task %>
         <% end %>
       </div>
