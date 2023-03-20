@@ -36,22 +36,16 @@
     <div class="card summary">
       <h4>Colllaborators</h4>
       <div class="event-card">
-        <% simple_form_for(@collaborator) do |f| %>
-          <% f.input :name, placeholder: "Search Name", label: false %>
-          <% f.button :button, "Search Collaborator", class: "btn btn-secondary", label: false  %>
-        <% end %>
-        <%# <i class="fa-solid fa-circle-plus"></i> %>
-        <% @tasks.each do |task| %>
-          <div class="card-content">
-            <div class="event-content">
-              <p><%= task.name%>, <%= task.status %></p>
-              <p><%= task.description %></p>
-              <p>Due Date: <%= task.due_date.strftime("%d %B %Y %-l%P") %></p>
-            </div>
-          </div>
+        <%= form_with url: event_collaborations_path(@event), method: :post, class: "d-flex" do  |f|  %>
+          <%= f.collection_select :user_id, User.order(:first_name), :id, :first_name %>
+          <%= f.submit "add" %>
         <% end %>
       </div>
+      <% @collaborators.each do |collaborator| %>
+          <p><%= collaborator.user.first_name  %> <%= collaborator.user.last_name %></p>
+      <% end %>
     </div>
+
   </div>
   <div class="cards-flex-container">
     <div class="card summary">
