@@ -85,3 +85,4 @@ gem "cloudinary"
 gem "groupdate", "~> 6.2"
 gem "faker"
 
+gem 'acts-as-taggable-on', '~> 9.0'
