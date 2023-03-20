@@ -1,25 +1,21 @@
-
 <div class="container">
-      <p class="btn btn-tertiary"><%= link_to "back to this.event", event_path(@event), class: "btn btn-secondary"%> </p>
- <%# can take this ^^^  out as needed %>
-
+  <p class="btn btn-tertiary"><%= link_to "back to this.event", event_path(@event), class: "btn btn-secondary"%> </p>
+  <%# can take this ^^^  out as needed %>
   <div class="page-header d-flex mt-4">
-    <h1>Guests ~ </h1><h2><%= @event.name %> </h2>
+    <h1>Guests ~ </h1>
+    <h2><%= @event.name %> </h2>
     <%# the h2 ^ ^ ^ ^ needs to be h2 light 32px %>
   </div>
-
   <div class="search-actions d-flex mt-4">
     <div class="search">
       <p class="search-input">placeholder for "search"</h4>
     </div>
-
     <div class="actions">
       <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addGuest"> + Add guest </button>
       <p class="btn btn-secondary">download template</p>
       <p class="btn btn-secondary">import guests</p>
     </div>
   </div>
-
   <div class="modal fade" id="addGuest" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addGuestLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -33,13 +29,12 @@
             <%= f.input :last_name, label: "Last Name" %>
             <%= f.input :email_address, label: "Email" %>
             <%= f.input :phone_number, label: "Phone number" %>
-            <%= f.button :button, "Add guest", class:"btn-action" %>
+            <%= f.button :submit, "Add guest", class:"btn-action" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-
   <div class="table">
     <table>
       <tr>
@@ -50,18 +45,37 @@
         <th class="text-table-status"> Invitation Status</th>
         <th class="text-table-status"> Action </th>
       </tr>
-
-        <% @guests.each do |guest| %>
-      <tr>
-        <td class="text-table-std"><%= guest.first_name %></td>
-        <td class="text-table-std"><%= guest.last_name%></td>
-        <td class="text-table-std"><%= guest.email_address%></td>
-        <td class="text-table-std"><%= guest.phone_number%></td>
-        <td class="text-table-status"><strong><%= guest.invitation_status.humanize %></strong></td>
-        <td class="text-table-status"> * </td>
-      </tr>
+      <% @guests.each do |guest| %>
+        <%= simple_form_for [@event, guest], data: {turbo: false} do |f| %>
+          <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editGuestLabel">Edit guest</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= f.input :first_name, label: "First Name" %>
+                  <%= f.input :last_name, label: "Last Name" %>
+                  <%= f.input :email_address, label: "Email" %>
+                  <%= f.input :phone_number, label: "Phone number" %>
+                  <%= f.button :submit, "edit guest", class:"btn-action" %>
+                </div>
+              </div>
+            </div>
+          </div>
         <% end %>
+        <tr>
+          <td class="text-table-std"><%= guest.first_name %></td>
+          <td class="text-table-std"><%= guest.last_name%></td>
+          <td class="text-table-std"><%= guest.email_address%></td>
+          <td class="text-table-std"><%= guest.phone_number%></td>
+          <td class="text-table-status"><strong><%= guest.invitation_status.humanize %></strong></td>
+          <td class="text-table-status"> <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>"> edit guest </button> mail </td>
+          <td class="text-table-status"> * </td>
+        </tr>
+      <% end %>
     </table>
   </div>
-<br>
+  <br>
 </div>
