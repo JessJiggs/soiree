@@ -43,7 +43,7 @@
         <th class="text-table-std"> email</th>
         <th class="text-table-std"> phone</th>
         <th class="text-table-status"> Invitation Status</th>
-        <th class="text-table-status"> Action </th>
+        <th class="text-table-action"> Action </th>
       </tr>
       <% @guests.each do |guest| %>
         <tr>
@@ -71,7 +71,7 @@
           <td class="text-table-std"><%= guest.email_address%></td>
           <td class="text-table-std"><%= guest.phone_number%></td>
           <td class="text-table-status"><strong><%= guest.invitation_status.humanize %></strong></td>
-          <td class="text-table-status">
+          <td class="text-table-action">
             <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>"> </i>
             <i class="fa-solid fa-paper-plane fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>" > </i>
               <%= link_to(event_guest_path(@event, guest), class: "guest", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>

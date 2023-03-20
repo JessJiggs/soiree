@@ -1,17 +1,20 @@
-<div class="container mt-10">
-<div class="row">
- <div class="col-md-6">
-  <h1>My expenses</h1>
+<div class="container">
+  <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary" %>
+  <div class="page-header d-flex mt-4">
+    <h1>My expenses</h1>
+    <h2><%= @event.name %> </h2>
+    <%# the h2 ^ ^ ^ ^ needs to be h2 light 32px %>
   </div>
-  <div class="col-md-3">
-    <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary" %>
-     </div>
-    <div class="col-md-3">
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExpense"> + Add expense </button>
+  <div class="search-actions d-flex mt-4">
+    <div class="search">
+      <p class="search-input">placeholder for "search"</h4>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExpense"> + Add expense </button>
+      <button type="button"  class="btn btn-secondary">upload quote</button>
+      <button type="button"  class="btn btn-secondary">upload invoice</button>
+    </div>
   </div>
-
-</div>
-
   <div class="modal fade" id="addExpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addExpenseLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -24,51 +27,75 @@
             <%= f.input :name %>
             <%= f.input :amount_spent %>
             <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
+            <%= f.input :status, label: "status" %>
+            <%= f.input :date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
             <%= f.button :button, "Add expense", class:"btn-action" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-
-<% total_expenses = @expenses.sum(:amount_spent) %>
-<div class="row">
-<div class="col-md-6">
-<table>
-  <thead>
-    <tr>
-
-      <th>Name</th>
-      <th>Amount Spent</th>
-      <th>Category</th>
-        <th>Status</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @expenses.each do |e| %>
+  <div class="table">
+    <table>
       <tr>
-        <td><%= e.name %></td>
-        <td><%= e.amount_spent %></td>
-        <td><%= e.category_list %></td>
-        <td>
-        <% if e.status == "paid" %>
-            <p class="text-primary"> Paid </p>
-          <% else e.status == "unpaid" %>
-            <p class="text-warning"> Unpaid </p>
-          <% end %>
-          </td>
+        <th class="text-table-std"> Name</th>
+        <th class="text-table-std"> Amount Spent</th>
+        <th class="text-table-category"> Category</th>
+        <th class="text-table-status"> Status</th>
+        <th class="text-table-std"> Date</th>
+        <th class="text-table-action"> Actions</th>
       </tr>
-    <% end %>
-    <tr>
-      <td>Total Expenses:</td>
-      <td><%= total_expenses %></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<div class="col-md-6">
-<%= pie_chart @expenses.group(:name ).sum(:amount_spent), donut: true %>
-</div>
+      <% @expenses.each do |f| %>
+        <tr>
+          <%= simple_form_for [@event, expense], data: {turbo: false} do |f| %>
+            <div class="modal fade" id="editExpemse<%= expense.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editExpenseLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="editExpenseLabel">Edit expense</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <%= f.input :name, label: "Name" %>
+                    <%= f.input :amount_spent, label: "Amount Spent" %>
+                    <%= f.input :category_list, label: "Category" %>
 
+                      <% if f.status == "paid" %>
+                        <p class="text-primary"> Paid </p>
+                      <% else f.status == "unpaid" %>
+                        <p class="text-warning"> Unpaid </p>
+                      <% end %>
+
+                    <%= f.input :date, label: "date-date-date" %>
+                    <%= f.button :submit, "edit expense", class:"btn-action" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <td class="text-table-std"><%= expense.name %></td>
+          <td class="text-table-std"><%= expense.amount_spent%></td>
+          <td class="text-table-category"><%= expense.category_list%></td>
+          <td class="text-table-status"><%= expense.status%></td>
+          <td class="text-table-std"><%= expense.date %></td>
+          <td class="text-table-action">
+            <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editExpense<%= expense.id %>"> </i>
+            <i class="fa-solid fa-paper-plane fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editExpense<%= expense.id %>" > </i>
+            <%= link_to(event_expense_path(@event, expense), class: "expense", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
+              <i class="fa-solid fa-trash fa-xs ml-2"></i>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong> Total Spent:</strong></td>
+          <% total_expenses = @expenses.sum(:amount_spent) %>
+          <td><%= total_expenses %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div class="graph">
+  <%= pie_chart @expenses.group(:name ).sum(:amount_spent), donut: true %>
+</div>
 </div>
