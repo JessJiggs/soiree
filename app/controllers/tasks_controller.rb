@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [ :update, :destroy ]
-  before_action :set_event, only: [ :create, :index, :update ]
+  before_action :set_event, only: [ :create, :index, :update, :destroy ]
   def create
     @task = Task.new(task_params)
     @task.event = @event
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to event_tasks_path(@event), status: :see_other, notice: "Task was successfully deleted"
+    redirect_to event_tasks_path(@event), notice: "Task was successfully deleted"
   end
 
   private
