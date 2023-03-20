@@ -1,7 +1,7 @@
 class GuestsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
-    @guests = @event.guests
+    @guests = @event.guests.order(updated_at: :desc)
     @guest = Guest.new
   end
 
@@ -13,6 +13,17 @@ class GuestsController < ApplicationController
       redirect_to event_guests_path(@event), notice: "Guest was successfully added to the list."
     else
       redirect_to event_guests_path(@event), status: :unprocessable_entity, notice: "Guest was not successfully added."
+    end
+  end
+
+  def update
+    @event = Event.find(params[:event_id])
+    guest = Guest.find(params[:id])
+    guest.update!(guest_params)
+    if guest.save
+      redirect_to event_guests_path(@event), notice: "Guest was successfully edited."
+    else
+      redirect_to event_guests_path(@event), status: :unprocessable_entity, notice: "Guest was not successfully updated."
     end
   end
 
