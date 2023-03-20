@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_action :event_params, only: [:create]
+  before_action :collaborator_params, only: [:show]
+
   def index
     @events = current_user.events
   end
@@ -24,10 +26,13 @@ class EventsController < ApplicationController
     @tasks = @event.tasks
     @expenses = @event.expenses
     @guests = @event.guests
+
+    return unless params[:query].present?
+
+    @collaborators = Event.user.where(user_name: params[:query])
   end
 
   def update
-
   end
 
   private
