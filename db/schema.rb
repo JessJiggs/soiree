@@ -78,9 +78,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_125639) do
     t.bigint "event_id", null: false
     t.string "name"
     t.float "amount_spent"
+    # need to add column for 'date' as datetime
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    # t.integer "status", 0 we need to update this to int and default to 0. if we cant change default can we delete and re-add this column. 
     t.index ["event_id"], name: "index_expenses_on_event_id"
   end
 

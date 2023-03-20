@@ -10,7 +10,7 @@ class ExpensesController < ApplicationController
   #   @expense = Expense.find(params[:id])
   #   # @expenses = @event.set_expense
   # end
-  # # do we need this  ^ ^ ^
+  # # do we need this  ^ ^ ^ also i dont think you use set_expense anywhere and you would need a before_action: at the top of this file for it to work.
 
   def create
     @event = Event.find(params[:event_id])
@@ -49,6 +49,7 @@ class ExpensesController < ApplicationController
   end
 
   def expense_params
-    params.require(:expense).permit(:name, :amount_spent, :status, :category_list)
+    params.require(:expense).permit(:name, :amount_spent, :category_list)
+    # params.require(:expense).permit(:name, :amount_spent, :category_list, :status, :date)
   end
 end
