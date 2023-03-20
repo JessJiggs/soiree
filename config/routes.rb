@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :events, only: %i[new create show update] do
     resources :tasks, only: %i[create index update destroy]
     resources :expenses, only: %i[new create index]
-    resources :guests, only: %i[new create update index]
+    resources :guests, only: %i[new create index update destroy]
   end
 end
