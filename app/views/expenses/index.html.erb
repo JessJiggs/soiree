@@ -27,7 +27,7 @@
             <%= f.input :name %>
             <%= f.input :amount_spent %>
             <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
-            <%= f.input :status, label: "status" %>
+            
             <%= f.button :button, "Add expense", class:"btn-action" %>
           <% end %>
         </div>
@@ -58,7 +58,7 @@
                     <%= f.input :name, label: "Name" %>
                     <%= f.input :amount_spent, label: "Amount Spent" %>
                     <%= f.input :category_list, label: "Category" %>
-                    
+
                     <%= f.button :submit, "edit expense", class:"btn-action" %>
                   </div>
                 </div>
