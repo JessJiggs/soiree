@@ -18,7 +18,7 @@ class GuestsController < ApplicationController
 
   def update
     @event = Event.find(params[:event_id])
-    guest = Guest.find(guest[:id])
+    guest = Guest.find(guest_params)
     guest.update!(guest_params)
     if @guest.save
       redirect_to event_guests_path(@event), notice: "Guest was successfully updated"
