@@ -4,6 +4,13 @@ class ExpensesController < ApplicationController
     @event = Event.find(params[:event_id])
     @expense.event = @event
     @expenses = @event.expenses
+
+    categories = ["Catering", "Bar", "Entertainment", "Decor", "Venue", "Services", "Transport", "Other"]
+
+    @pie_chart_expenses = []
+    categories.each do |category|
+      @pie_chart_expenses << [ category, @expenses.tagged_with(category).sum(:amount_spent) ] if @expenses.tagged_with(category).sum(:amount_spent).positive?
+    end
   end
 
   def show
@@ -43,6 +50,6 @@ class ExpensesController < ApplicationController
   end
 
   def expense_params
-    params.require(:expense).permit(:name, :amount_spent)
+    params.require(:expense).permit(:name, :amount_spent, :status, :category_list)
   end
 end

@@ -9,7 +9,6 @@
     <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary mr-4"%>
   </div>
 
-  <!-- Modal -->
   <div class="modal fade" id="addTask" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -21,6 +20,7 @@
           <%= simple_form_for [@event, @task] do |f| %>
             <%= f.input :name %>
             <%= f.input :description %>
+            <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
             <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
             <%= f.button :button, "Add task", class:"btn-action" %>
           <% end %>
@@ -30,22 +30,22 @@
   </div>
 
   <div class="task-stats d-flex mt-4">
-      <div class="card-task-stat">
-        <p class="text-white text-center mb-0">Completed Tasks</p>
-        <p class="text-white text-center text-large"><%= @done_tasks.count %></p>
-      </div>
-      <div class="card-task-stat">
-        <p class="text-white text-center mb-0">Incomplete Tasks</p>
-        <p class="text-white text-center text-large"><%= @incomplete_tasks.count %></p>
-      </div>
-      <div class="card-task-stat">
-        <p class="text-white text-center mb-0">Overdue Tasks</p>
-        <p class="text-white text-center text-large"><%= @overdue_tasks.count %></p>
-      </div>
-      <div class="card-task-stat">
-        <p class="text-white text-center mb-0">Total Tasks</p>
-        <p class="text-white text-center text-large"><%= @tasks.count %></p>
-      </div>
+    <div class="card-task-stat">
+      <p class="text-white text-center mb-0">Completed Tasks</p>
+      <p class="text-white text-center text-large"><%= @done_tasks.count %></p>
+    </div>
+    <div class="card-task-stat">
+      <p class="text-white text-center mb-0">Incomplete Tasks</p>
+      <p class="text-white text-center text-large"><%= @incomplete_tasks.count %></p>
+    </div>
+    <div class="card-task-stat">
+      <p class="text-white text-center mb-0">Overdue Tasks</p>
+      <p class="text-white text-center text-large"><%= @overdue_tasks.count %></p>
+    </div>
+    <div class="card-task-stat">
+      <p class="text-white text-center mb-0">Total Tasks</p>
+      <p class="text-white text-center text-large"><%= @tasks.count %></p>
+    </div>
   </div>
 
   <div class="kanban-actions">
@@ -56,11 +56,7 @@
       <h3>To Do</h3>
       <div class="cards-task">
         <% @todo_tasks.each do |task| %>
-        <div class="card-task">
-            <h5><%= task.name.capitalize %></h5>
-            <p><em><%= task.description %></em></p>
-            <p><%= task.due_date.strftime("%d %B %Y") %></p>
-        </div>
+          <%= render "task_infos", task: task %>
         <% end %>
       </div>
     </div>
@@ -68,23 +64,15 @@
       <h3>Doing</h3>
       <div class="cards-task">
         <% @doing_tasks.each do |task| %>
-          <div class="card-task">
-            <h5><strong><%= task.name.capitalize %></strong></h5>
-            <p><em><%= task.description %></em></p>
-            <p><%= task.due_date.strftime("%d %B %Y") %></p>
-          </div>
+          <%= render "task_infos", task: task %>
         <% end %>
       </div>
     </div>
     <div class="kanban-column">
       <h3>Done</h3>
       <div class="cards-task">
-        <% @doing_tasks.each do |task| %>
-          <div class="card-task">
-            <h5><strong><%= task.name.capitalize %></strong></h5>
-            <p><em><%= task.description %></em></p>
-            <p><%= task.due_date.strftime("%d %B %Y") %></p>
-          </div>
+        <% @done_tasks.each do |task| %>
+          <%= render "task_infos", task: task %>
         <% end %>
       </div>
     </div>
