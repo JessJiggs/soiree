@@ -5,14 +5,22 @@ class ExpensesController < ApplicationController
     @expense.event = @event
     @expenses = @event.expenses.order(updated_at: :desc)
 
+    if params[:query].present?
+      @expenses = @event.expenses.search_by_name_and_amount_spent_and_status(params[:query]).order(updated_at: :desc)
+    else
+      @expenses = @event.expenses.order(updated_at: :desc)
+    end
     categories = ["Catering", "Bar", "Entertainment", "Decor", "Venue", "Services", "Transport", "Other"]
+
     @status = [unpaid: "Unpaid", paid: "Paid"]
+
     @pie_chart_expenses = []
     categories.each do |category|
       @pie_chart_expenses << [ category, @expenses.tagged_with(category).sum(:amount_spent) ] if @expenses.tagged_with(category).sum(:amount_spent).positive?
     end
 
     @total_expenses = @expenses.sum(:amount_spent)
+
   end
 
 
@@ -48,6 +56,6 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:name, :amount_spent, :status, :category_list)
+    params.require(:expense).permit(:name, :amount_spent, :category_list, :status, :due_date)
   end
 end
