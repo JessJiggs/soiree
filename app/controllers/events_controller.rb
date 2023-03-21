@@ -26,6 +26,7 @@ class EventsController < ApplicationController
     @expenses = @event.expenses
     @guests = @event.guests
     @collaborators = Collaboration.where(event: @event)
+    @message = Message.new
   end
 
   def update
