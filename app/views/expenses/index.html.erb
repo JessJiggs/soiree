@@ -53,7 +53,7 @@
           <th class="text-table-std"> Amount Spent</th>
           <th class="text-table-category"> Category</th>
           <th class="text-table-status"> Status</th>
-          <th class="text-table-std"> Date</th>
+          <th class="text-table-std"> Due Date</th>
           <th class="text-table-action"> Actions</th>
         </tr>
         <% @expenses.each do |expense| %>
@@ -70,6 +70,8 @@
                       <%= f.input :name, label: "Name" %>
                       <%= f.input :amount_spent, label: "Amount Spent" %>
                       <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
+                      <%= f.input :status, label: "Status" %>
+                      <%= f.input :due_date, label: "Due Date" %>
                       <%= f.button :submit, "edit expense", class:"btn-action" %>
                     </div>
                   </div>
@@ -79,17 +81,20 @@
             <td class="text-table-std"><%= expense.name %></td>
             <td class="text-table-std"><%= expense.amount_spent%></td>
             <td class="text-table-category"><%= expense.category_list%></td>
+            <td class="text-table-status"> <%= expense.status%></th>
+            <td class="text-table-std"> <%= expense.due_date%></th>
+
             <td class="text-table-action">
               <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editExpense<%= expense.id %>"> </i>
               <%= link_to(event_expense_path(@event, expense), class: "expense", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
                 <i class="fa-solid fa-trash fa-xs ml-2"></i>
               <% end %>
             </td>
-            <td><strong> Total Spent:</strong></td>
-            <% total_expenses = @expenses.sum(:amount_spent) %>
-            <td><strong><%= total_expenses %></strong> </td>
           </tr>
         <% end %>
+
+            <td><strong> Total Spent:</strong></td>
+            <td><strong><%= total_expenses = @expenses.sum(:amount_spent) %></strong> </td>
       </table>
     </div>
     <div class="event-graph d-flex mt-4 columns: 35%">
