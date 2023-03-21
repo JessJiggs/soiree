@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     # define route to collaboration
     resources :collaborations, only: %i[create]
     resources :tasks, only: %i[create index update destroy]
-    resources :expenses, only: %i[new create index]
-    resources :guests, only: %i[new create index update destroy]
+    resources :expenses, only: %i[create index update destroy]
+    resources :guests, only: %i[create index update destroy]
   end
 end

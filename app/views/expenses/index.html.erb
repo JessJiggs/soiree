@@ -1,94 +1,124 @@
-<div class="container mt-10">
-<div class="row">
- <div class="col-md-6">
-  <h1 class="page-title">My expenses</h1>
+<div class="container">
+  <%# take out all br's and check comments for changes to styl/scss.  %>
+  <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary" %>
+  <%# take out the back button when ready  %>
+  <div class="page-header d-flex mt-4">
+    <h1>Expenses  </h1>
+    <h2 class="h2-light"><%=  @event.name%></h2>
   </div>
-  <div class="col-md-3">
-    <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary" %>
-     </div>
-    <div class="col-md-3">
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExpense"> + Add expense </button>
+  <br>
+  <br>
+  <div class="card-barchart">
+    <h2>expenses progress</h2>
+    <%= bar_chart [
+      {name: "Total Expenses", data: [["R",@expenses.sum(:amount_spent)]]},
+        {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
+        stacked: true,  height: "100px" %>
   </div>
- <div class="search-actions d-flex mt-4">
-     <div class="search-bar">
+  <br>
+  <div class="search-actions d-flex mt-4">
+    <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
         <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find expenses.."
+        params[:query],
+        class: "form-control",
+        placeholder: "Find expenses.."
         %>
         <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
-</div>
-
-  <div class="modal fade" id="addExpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addExpenseLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addExpenseLabel">New expense</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <%= simple_form_for [ @event, @expense] do |f| %>
-            <%= f.input :name %>
-            <%= f.input :amount_spent %>
-            <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
-            <%= f.button :button, "Add expense", class:"btn-action" %>
-          <% end %>
+  </div>
+  <div class="actions">
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExpense"> + Add expense </button>
+    <button type="button"  class="btn btn-secondary">upload quote</button>
+    <button type="button"  class="btn btn-secondary">upload invoice</button>
+  </div>
+  <br>
+  <br>
+  <div class="d-flex mt-4">
+    <div class="modal fade" id="addExpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addExpenseLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addExpenseLabel"> Add expense</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for [ @event, @expense] do |f| %>
+              <%= f.input :name %>
+              <%= f.input :amount_spent %>
+              <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
+              <%= f.input :status, collection: [:unpaid, :paid,], label: "Status" %>
+              <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } }, label: false %>
+              <%= f.button :button, "Add expense", class:"btn-action" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
+    <div class="table-columns">
+      <%# NB CHANGE THE % of columns ^^^^^% plus space between padding ? margin t&B %>
+      <div>
+        <h2>expenses detailed</h2>
+        <table>
+          <tr>
+            <th class="text-table-std"> Name</th>
+            <th class="text-table-std"> Amount Spent</th>
+            <th class="text-table-category"> Category</th>
+            <th class="text-table-status"> Status</th>
+            <th class="text-table-std"> Due Date</th>
+            <th class="text-table-action"> Actions</th>
+          </tr>
+          <% @expenses.each do |expense| %>
+            <tbody>
+              <tr>
+                <%= simple_form_for [@event, expense], data: {turbo: false} do |f| %>
+                  <div class="modal fade" id="editExpense<%= expense.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editExpenseLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="editExpenseLabel">Edit expense</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <%= f.input :name, label: "Name" %>
+                          <%= f.input :amount_spent, label: "Amount Spent" %>
+                          <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
+                          <%= f.input :status, collection: [:unpaid, :paid], label: "Status" %>
+                          <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } }, label: "Due Date" %>
+                          <%= f.button :submit, "edit expense", class:"btn-action" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <td class="text-table-std"><%= expense.name %></td>
+                <td class="text-table-std"><%= expense.amount_spent%></td>
+                <td class="text-table-category"><%= expense.category_list%></td>
+                <td class="text-table-status"> <%= expense.status.humanize%></td>
+                <td class="text-table-std"> <%= expense.due_date.strftime("%d %B %Y") %></td>
+                <td class="text-table-action">
+                  <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editExpense<%= expense.id %>"> </i>
+                  <%= link_to(event_expense_path(@event, expense), class: "expense", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
+                    <i class="fa-solid fa-trash fa-xs ml-2"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot class="table-foot ta: left">
+            <%# NB text align left ? ? ?  %>
+            <td><strong> Total Spent:</strong></td>
+            <td colspan="5"><strong><%= @total_expenses %></strong> </td>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h2>expenses snapshot</h2>
+      <div class="event-graph d-flex mt-4">
+        <%# NB CHANGE THE % of columns ^^^^^% %>
+        <%= pie_chart(@pie_chart_expenses, donut: true) %>
+      </div>
+    </div>
   </div>
-
-<% total_expenses = @expenses.sum(:amount_spent) %>
-<div class="row">
-<div class="col-md-6">
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Amount Spent</th>
-      <th>Category</th>
-      <th>Status</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @expenses.each do |e| %>
-      <tr>
-        <td><%= e.name %></td>
-        <td><%= e.amount_spent %></td>
-        <td><%= e.category_list %></td>
-        <td>
-        <% if e.status == "paid" %>
-            <p class="text-primary"> Paid </p>
-          <% else e.status == "unpaid" %>
-            <p class="text-warning"> Unpaid </p>
-          <% end %>
-          </td>
-      </tr>
-    <% end %>
-    <tr>
-      <td><strong>Total Expenses:</strong></td>
-      <td><strong><%= total_expenses %></strong></td>
-    </tr>
-  </tbody>
-</table>
-
-<h5>Total Budget:</h5>
-<%= @event.total_budget %>
-
-</div>
-<div class="col-md-6">
-<%= pie_chart(@pie_chart_expenses, donut: true) %>
-</div>
-
-<div>
-<%= bar_chart [
-  {name: "Total Expenses", data: [["R",@expenses.sum(:amount_spent)]]},
-  {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
-  stacked: true %>
-</div>
-
-</div>
