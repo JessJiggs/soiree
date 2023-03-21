@@ -39,6 +39,8 @@
               <%= f.input :name %>
               <%= f.input :amount_spent %>
               <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
+              <%= f.input :status, collection: [:unpaid, :paid,], label: "Status" %>
+              <%= f.input :due_date, label: "Due Date" %>
               <%= f.button :button, "Add expense", class:"btn-action" %>
             <% end %>
           </div>
@@ -46,6 +48,7 @@
       </div>
     </div>
     <div class="table-columns">
+    <h2>expenses detailed</h2>
       <%# NB CHANGE THE % of columns ^^^^^% %>
       <table>
         <tr>
@@ -70,7 +73,7 @@
                       <%= f.input :name, label: "Name" %>
                       <%= f.input :amount_spent, label: "Amount Spent" %>
                       <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
-                      <%= f.input :status, label: "Status" %>
+                      <%= f.input :status, collection: [:unpaid, :paid], label: "Status" %>
                       <%= f.input :due_date, label: "Due Date" %>
                       <%= f.button :submit, "edit expense", class:"btn-action" %>
                     </div>
@@ -81,7 +84,7 @@
             <td class="text-table-std"><%= expense.name %></td>
             <td class="text-table-std"><%= expense.amount_spent%></td>
             <td class="text-table-category"><%= expense.category_list%></td>
-            <td class="text-table-status"> <%= expense.status%></th>
+            <td class="text-table-status"> <%= expense.status.humanize%></th>
             <td class="text-table-std"> <%= expense.due_date%></th>
 
             <td class="text-table-action">
@@ -94,7 +97,7 @@
         <% end %>
 
             <td><strong> Total Spent:</strong></td>
-            <td><strong><%= total_expenses = @expenses.sum(:amount_spent) %></strong> </td>
+            <td><strong><%= @total_expenses %></strong> </td>
       </table>
     </div>
     <div class="event-graph d-flex mt-4 columns: 35%">

@@ -6,11 +6,13 @@ class ExpensesController < ApplicationController
     @expenses = @event.expenses.order(updated_at: :desc)
 
     categories = ["Catering", "Bar", "Entertainment", "Decor", "Venue", "Services", "Transport", "Other"]
-
+    status = [unpaid: "Unpaid", paid: "Paid"]
     @pie_chart_expenses = []
     categories.each do |category|
       @pie_chart_expenses << [ category, @expenses.tagged_with(category).sum(:amount_spent) ] if @expenses.tagged_with(category).sum(:amount_spent).positive?
     end
+
+    @total_expenses = @expenses.sum(:amount_spent)
   end
 
 
