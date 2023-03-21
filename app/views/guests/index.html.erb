@@ -24,7 +24,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <%= simple_form_for [@event, @guest] do |f| %>
+          <%= simple_form_for [@event, @guest], data: {turbo: false} do |f| %>
             <%= f.input :first_name, label: "First Name" %>
             <%= f.input :last_name, label: "Last Name" %>
             <%= f.input :email_address, label: "Email" %>
@@ -75,9 +75,9 @@
             <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>"> </i>
             <i class="fa-solid fa-paper-plane fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>" > </i>
               <%= link_to(event_guest_path(@event, guest), class: "guest", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
-              <i class="fa-solid fa-trash fa-xs ml-2"></i>
+            <i class="fa-solid fa-trash fa-xs ml-2"></i>
               <% end %>
-            </td>
+          </td>
         </tr>
       <% end %>
     </table>

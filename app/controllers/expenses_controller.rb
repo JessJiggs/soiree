@@ -6,7 +6,7 @@ class ExpensesController < ApplicationController
     @expenses = @event.expenses.order(updated_at: :desc)
 
     categories = ["Catering", "Bar", "Entertainment", "Decor", "Venue", "Services", "Transport", "Other"]
-    status = [unpaid: "Unpaid", paid: "Paid"]
+    @status = [unpaid: "Unpaid", paid: "Paid"]
     @pie_chart_expenses = []
     categories.each do |category|
       @pie_chart_expenses << [ category, @expenses.tagged_with(category).sum(:amount_spent) ] if @expenses.tagged_with(category).sum(:amount_spent).positive?
@@ -36,6 +36,13 @@ class ExpensesController < ApplicationController
     else
       redirect_to event_expenses_path(@event), status: :unprocessable_entity, notice: "Expense was not successfully updated."
     end
+  end
+
+  def destroy
+    @event = Event.find(params[:event_id])
+    expense = Expense.find(params[:id])
+    expense.destroy
+    redirect_to event_expenses_path(@event), notice: "Expense was successfully removed"
   end
 
   private
