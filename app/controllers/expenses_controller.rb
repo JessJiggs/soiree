@@ -10,6 +10,7 @@ class ExpensesController < ApplicationController
     else
       @expenses = @event.expenses.order(updated_at: :desc)
     end
+    
     categories = ["Catering", "Bar", "Entertainment", "Decor", "Venue", "Services", "Transport", "Other"]
 
     @status = [unpaid: "Unpaid", paid: "Paid"]
@@ -20,7 +21,6 @@ class ExpensesController < ApplicationController
     end
 
     @total_expenses = @expenses.sum(:amount_spent)
-
   end
 
 
