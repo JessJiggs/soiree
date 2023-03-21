@@ -11,7 +11,7 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Find guests.."
+          placeholder: "Search..."
         %>
         <%= submit_tag "Search", class: "button" %>
       <% end %>
@@ -36,6 +36,7 @@
             <%= f.input :last_name, label: "Last Name" %>
             <%= f.input :email_address, label: "Email" %>
             <%= f.input :phone_number, label: "Phone number" %>
+            <%= f.input :invitation_status, collection: [:invite_not_sent, :invited, :accepted, :declined], label: "Invitation status" %>
             <%= f.button :submit, "Add guest", class:"btn-action" %>
           <% end %>
         </div>
@@ -67,6 +68,7 @@
                     <%= f.input :last_name, label: "Last Name" %>
                     <%= f.input :email_address, label: "Email" %>
                     <%= f.input :phone_number, label: "Phone number" %>
+                    <%= f.input :invitation_status, collection: [:invite_not_sent, :invited, :accepted, :declined], label: "Invitation status" %>
                     <%= f.button :submit, "edit guest", class:"btn-action" %>
                   </div>
                 </div>
