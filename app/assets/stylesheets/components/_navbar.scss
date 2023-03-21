@@ -1,6 +1,6 @@
 
 nav{
-  padding-bottom: 80px;
+  padding-bottom: 0px;
 }
 .navbar{
   display: flex;
@@ -8,9 +8,25 @@ nav{
   align-items: center;
   justify-content: space-between;
   background: #ffffff;
-  border-bottom: #64c0ae 2px solid;
+  border-bottom: $light-gray 1px solid;
   position: fixed;
-  height: 70px;
+  height: 100px;
+  padding: 5px;
+    .nav-link {
+      color: $secondary-color-alt;
+      margin-left: 30px;
+      margin-right: 30px;
+      margin-top: 5px;
+    }
+    .nav-link:hover {
+      color: $secondary-color-hover;
+    }
+    .btn-action {
+      width: 150px;
+      font-family: $headers-font;
+      font-size: 16px;
+      margin-top: 10px;
+    }
   // a.logo{
   //   font-size: 25px;
   //   letter-spacing: 2px;

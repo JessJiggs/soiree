@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Soiree</title>
+    <title>Soirée</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,8 +14,10 @@
     <nav>
       <%= render "shared/navbar" %>
     </nav>
+    <div class="container pt-5">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     <%= yield %>
+    </div>
   </body>
 </html>
