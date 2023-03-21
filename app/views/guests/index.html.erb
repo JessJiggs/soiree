@@ -90,5 +90,12 @@
       <% end %>
     </table>
   </div>
+  <div>
+<%= pie_chart @event.guests.group(:invitation_status).count, donut: true %>
+
+
+
+
+
   <br>
 </div>
