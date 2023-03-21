@@ -1,8 +1,14 @@
 class GuestsController < ApplicationController
   def index
+
+
     @event = Event.find(params[:event_id])
-    @guests = @event.guests.order(updated_at: :desc)
     @guest = Guest.new
+    if params[:query].present?
+      @guests = @event.guests.search_by_first_name_and_last_name_and_email_address_and_phone_number_and_invitation_status(params[:query]).order(updated_at: :desc)
+    else
+      @guests = @event.guests.order(updated_at: :desc)
+    end
   end
 
   def create
