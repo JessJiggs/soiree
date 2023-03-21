@@ -9,7 +9,17 @@
     <div class="col-md-3">
     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExpense"> + Add expense </button>
   </div>
-
+ <div class="search-actions d-flex mt-4">
+     <div class="search-bar">
+      <%= form_with method: :get, class: "search" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find expenses.."
+        %>
+        <%= submit_tag "Search", class: "button" %>
+      <% end %>
+    </div>
 </div>
 
   <div class="modal fade" id="addExpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addExpenseLabel" aria-hidden="true">
