@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # tasks # dont need a whole new page - do from event
 
   resources :events, only: %i[new create show update] do
+    resources :messages, only: %i[create index ]
+
     # define route to collaboration
     resources :collaborations, only: %i[create]
     resources :tasks, only: %i[create index update destroy]

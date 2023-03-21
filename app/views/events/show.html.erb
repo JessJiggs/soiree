@@ -93,6 +93,7 @@
   <p><%= link_to "View tasks", event_tasks_path(@event), class: "btn btn-secondary"%></p>
   <p><%= link_to "View expenses", event_expenses_path(@event), class: "btn btn-secondary" %></P>
   <p><%= link_to "View guests", event_guests_path(@event), class: "btn btn-secondary"%></p>
-  <%= link_to "back to home", root_path, class: "btn btn-secondary" %>
+  <%= link_to "Back to dashboard", root_path, class: "btn btn-secondary" %>
+  <%= link_to "View chat", event_messages_path(@event), class: "btn btn-secondary" %>
 </div>
 </div>

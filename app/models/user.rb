@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :collaborations, dependent: :destroy
   has_many :events, through: :collaborations
+  has_many :messages, dependent: :destroy
 end
