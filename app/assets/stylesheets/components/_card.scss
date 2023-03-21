@@ -47,9 +47,13 @@
   }
 }
 
+.dashboard {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .dashboard-card{
-  min-width: 350px;
-  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,10 +61,14 @@
   justify-content: center;
   border: none;
   border-radius: 15px;
-  padding: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 330px;
   height: max-content;
-  gap: 30px;
-  .events-card, .todo-card{
+  gap: 20px;
+  .event-card, .todo-card{
     width: 100%;
     position: relative;
     .i{
@@ -72,13 +80,15 @@
 
   .event-card{
     display: flex;
-    flex-direction: column;
-    gap: 25px;
-    .card-content {
+    gap: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    .event-card-content {
       display: flex;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      flex-direction: column;
+      justify-content: flex-end;
       color: $primary-color;
-      min-width: 500px;
+    }
     h5{
         color: $primary-color;
         font-family: $font-family-sans-serif;
@@ -86,11 +96,9 @@
         font-weight: bolder;
         text-align: left;
     }
-      .img-element{
-        background-color: #BA937C;
-        height: 150px;
-        width: 150px;
-      }
+    p{
+      font-size: 12px;
+    }
 
       .event-content{
         display: flex;
@@ -121,9 +129,6 @@
     padding: 5px;
     flex: 1;
   }
-  .todo-content{
-  }
-}
 
 .summary {
   background-color: #ffffff;
@@ -136,6 +141,8 @@
       padding: 10px;
       .event-content{
         background-color: transparent;
+        height: 125;
+        width: 145;
       }
     }
   }
