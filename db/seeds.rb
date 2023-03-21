@@ -44,6 +44,9 @@ user01 = User.create!(
   password: '123456'
 )
 
+file = File.open(File.join(__dir__, 'img/avatar_adam.png'))
+user01.photo.attach(io: file, filename: 'avatar_adam.png', content_type: 'image/png')
+
 event03 = Event.create!(
   name: "My Sick 30th Bash",
   description: "Rave Birthday Party for myself because I'm awesome!! Hooray 30!",
@@ -186,6 +189,9 @@ user011 = User.create!(
   email: " eve@test.com",
   password: '123456'
 )
+
+file = File.open(File.join(__dir__, 'img/avatar_eve.png'))
+user011.photo.attach(io: file, filename: 'avatar_eve.png', content_type: 'image/png')
 
 event13 = Event.create!(
   name: "Zepadelle",
