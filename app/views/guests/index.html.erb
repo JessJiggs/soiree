@@ -7,9 +7,17 @@
     <%# the h2 ^ ^ ^ ^ needs to be h2 light 32px %>
   </div>
   <div class="search-actions d-flex mt-4">
-    <div class="search">
-      <p class="search-input">placeholder for "search"</h4>
+     <div class="search-bar">
+      <%= form_with method: :get, class: "search" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find guests.."
+        %>
+        <%= submit_tag "Search", class: "button" %>
+      <% end %>
     </div>
+
     <div class="actions">
       <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addGuest"> + Add guest </button>
       <p class="btn btn-secondary">download template</p>
