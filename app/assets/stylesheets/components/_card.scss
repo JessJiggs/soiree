@@ -47,7 +47,7 @@
   }
 }
 
-.card{
+.dashboard-card{
   min-width: 350px;
   max-width: 500px;
   display: flex;
@@ -56,7 +56,7 @@
   background-color: $light-gray;
   justify-content: center;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 15px;
   height: max-content;
   gap: 30px;
@@ -144,4 +144,9 @@
 .cards{
   display: flex;
   justify-content: space-around;
+}
+
+.card-content {
+  margin-left: 10px;
+  margin-right: 10px;
 }
