@@ -31,16 +31,27 @@
 
     <div class="dashboard-card">
           <h2>tasks</h2>
-          <div class="todo-card">
-            <h5 class="mb-3">Day of the week</h5>
-            <p>Task name (event name) - due date</p>
-            <p>Task name (event name) - due date</p>
-          </div>
+          <% if @grouped_tasks.empty? %>
+            <div class="todo-card">
+            <p> You have no tasks!!! </p>
+            </div>
+          <% else %>
+            <% @grouped_tasks.each do |day, tasks| %>
+            <div class="todo-card">
+              <h5 class="mb-3"><%=day%></h5>
+              <ul>
+                <% tasks.each do |task|%>
+                  <li><%= task.name.capitalize%> - <em><%=(task.event.name)%></em></li>
+                <% end %>
+              </ul>
+            </div>
+            <% end %>
+          <% end %>
     </div>
 
-    <div class="d-flex flex-column justify-content-between">
+    <div class="d-flex flex-column">
 
-      <div class="dashboard-card" style="width: 400px; height:300px">
+      <div class="dashboard-card mb-5" style="width: 400px; height:300px">
             <h2>calendar</h2>
             <div class="todo-card">
               <h5>Monday</h5>
