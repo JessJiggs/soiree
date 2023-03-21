@@ -90,5 +90,7 @@
       <% end %>
     </table>
   </div>
-  <br>
+  <div class="event-graph d-flex mt-4">
+    <%= pie_chart @event.guests.group(:invitation_status).count, donut: true %>
+  </div>
 </div>
