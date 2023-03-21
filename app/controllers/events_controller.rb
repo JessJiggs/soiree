@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :event_params, only: [:create]
+
   def index
     @events = current_user.events
   end
@@ -24,10 +25,10 @@ class EventsController < ApplicationController
     @tasks = @event.tasks
     @expenses = @event.expenses
     @guests = @event.guests
+    @collaborators = Collaboration.where(event: @event)
   end
 
   def update
-
   end
 
   private
