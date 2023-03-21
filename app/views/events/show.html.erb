@@ -42,10 +42,14 @@
         <% end %>
       </div>
       <% @collaborators.each do |collaborator| %>
+        <% if collaborator.user.photo.attached?  %>
+            <%= cl_image_tag collaborator.user.photo.key, crop: :fill, class: "avatar" %>
+            <p><%= collaborator.user.first_name  %> <%= collaborator.user.last_name %></p>
+          <% else %>
           <p><%= collaborator.user.first_name  %> <%= collaborator.user.last_name %></p>
+        <% end %>
       <% end %>
     </div>
-
   </div>
   <div class="cards-flex-container">
     <div class="card summary">

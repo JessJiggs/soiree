@@ -26,10 +26,6 @@ class EventsController < ApplicationController
     @expenses = @event.expenses
     @guests = @event.guests
     @collaborators = Collaboration.where(event: @event)
-
-    if params[:query].present?
-      @users = User.where("first_name ILIKE ?", "%#{params[:query]}")
-    end
   end
 
   def update
