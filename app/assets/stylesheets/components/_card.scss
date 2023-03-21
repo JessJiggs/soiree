@@ -128,11 +128,23 @@
     }
   }
 
-  .todo-card{
-    background-color: white;
-    padding: 5px;
-    flex: 1;
+.todo-card{
+  background-color: white;
+  padding: 15px;
+  flex: 1;
+  border-radius: 5px;
+  h5{
+    color: $primary-color;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    font-weight: bolder;
+    text-align: left;
   }
+  p{
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+}
 
 .summary {
   background-color: #ffffff;
