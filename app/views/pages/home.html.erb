@@ -9,9 +9,17 @@
         <p><%= link_to new_event_path do%></p>
             <p><i class="fa-solid fa-circle-plus"></i></p>
         <% end %>
-        <%= form_with url: "/search", method: :get do |form| %>
-          <%= form.text_field :query, class: "input" %>
-        <% end %>
+
+
+      <%= form_with method: :get, class: "search" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find expenses.."
+        %>
+        <%= submit_tag "Search", class: "button" %>
+      <% end %>
+    </div>
         <% @events.each do |event| %>
         <div class="event-card">
           <div class="card-content">
