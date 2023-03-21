@@ -4,9 +4,14 @@
     <div class="dashboard-card">
       <h2>events</h2>
       <div style="width: 100%">
-        <%= form_with url: "/search", method: :get do |form| %>
-          <%= form.text_field :query, class:"search-bar" %>
-        <% end %>
+      <%= form_with method: :get, class: "search" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Search..."
+        %>
+        <%= submit_tag "Search", class: "button" %>
+      <% end %>
       </div>
       <% @events.each do |event| %>
         <%= link_to event_path(event), style: "width: 100%" do %>
