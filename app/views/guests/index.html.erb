@@ -1,11 +1,16 @@
-<div class="container">
+<div class="container-standard">
   <p class="btn btn-tertiary"><%= link_to "back to this.event", event_path(@event), class: "btn btn-secondary"%> </p>
   <%# can take this ^^^  out as needed %>
-  <div class="page-header d-flex mt-4">
-    <h1>Guests ~ </h1>
+  <div class="page-header">
+    <h1 class="page-title">Guests</h1>
     <h2 class="h2-light"><%= @event.name %> </h2>
   </div>
-  <div class="search-actions d-flex mt-4">
+
+<div class="show-guests">
+  <div class="barchart">
+    <h2>guests RSVP progress</h2>
+  </div>
+  <div class="search-actions">
      <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
         <%= text_field_tag :query,
@@ -16,6 +21,12 @@
         <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
+  </div>
+
+
+
+
+
 
     <div class="actions">
       <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addGuest"> + Add guest </button>
@@ -91,7 +102,7 @@
       <% end %>
     </table>
   </div>
-  <div class="event-graph d-flex mt-4">
+  <div class="pie-chart">
     <%= pie_chart @event.guests.group(:invitation_status).count, donut: true %>
   </div>
 </div>

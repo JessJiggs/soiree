@@ -1,0 +1,42 @@
+
+.page-header {
+  width: 100%;
+  display: flex;
+  margin-top: 4px;
+  align-items: flex-start;
+  justify-content: space-between
+}
+
+.show-guests{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-grow:inherit;
+}
+
+.search-actions{
+  width: 100%;
+  display: flex;
+  width: 100%;
+  margin-top: 4px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-grow:inherit;
+}
+
+.search-bar{
+  display: flex;
+  margin-top: 2px;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-grow:inherit;
+}
+
+.actions{
+  display: flex;
+  margin-top: 2px;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-grow:inherit;
+}

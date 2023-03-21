@@ -10,6 +10,8 @@ class GuestsController < ApplicationController
     else
       @guests = @event.guests.order(updated_at: :desc)
     end
+
+    
   end
 
   def create
