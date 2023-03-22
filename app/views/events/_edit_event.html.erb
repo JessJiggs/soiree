@@ -1,11 +1,7 @@
 <div data-controller="edit-task" data-edit-task-target="task">
   <div class="card-task">
-     <h2>Edit Event</h2>
     <div data-edit-task-target="infos">
-      <i class="fa-solid fa-pen fa-xs ml-2" data-action="click->edit-task#displayForm"></i>
-      <%= link_to(event_path(@event), class: "task", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do %>
-        <i class="fa-solid fa-trash fa-xs ml-2"></i>
-      <% end %>
+        <i class="fa-solid fa-pen fa-xs ml-2" data-action="click->edit-task#displayForm"></i>
     </div>
     <%= simple_form_for (@event),
     html: {
@@ -17,6 +13,7 @@
       method: :patch
     } do |f|
     %>
+      <i class="fa-sharp fa-solid fa-xmark" data-action="click->edit-task#displayForm"></i>
       <%= f.input :name, placeholder: "Event Name", label: "Event Name" %>
       <%= f.input :description, placeholder: "About Event", label: "Event Description" %>
       <div class="flex-inputs">

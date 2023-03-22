@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import ControllerController from "./controller_controller"
+application.register("controller", ControllerController)
+
+import EditTaskController from "./edit_task_controller"
+application.register("edit-task", EditTaskController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
@@ -12,6 +18,3 @@ application.register("hello", HelloController)
 
 import PhotoPreviewController from "./photo_preview_controller"
 application.register("photo-preview", PhotoPreviewController)
-
-import EditTaskController from "./edit_task_controller"
-application.register("edit-task", EditTaskController)
