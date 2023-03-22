@@ -1,15 +1,17 @@
 <div data-controller="edit-task" data-edit-task-target="task">
   <div class="card-task">
     <div data-edit-task-target="infos">
-      <h5 class="mt-2"><%= task.name.capitalize %></h5>
+      <h5 class="mt-2 mb-0"><%= task.name.capitalize %></h5>
       <%= cl_image_tag task.users.map { |user| user.photo.key}, class: "avatar" %>
       <p><em><%= task.description %></em></p>
       <p class="category"><%= task.category_list %></p>
-      <p class="date"><%= task.due_date.strftime("%d %B %Y") %></p>
-      <i class="fa-solid fa-pen fa-sm ml-2" data-action="click->edit-task#displayForm"></i>
-      <%= link_to(event_task_path(@event, task), class: "task", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
-        <i class="fa-solid fa-trash fa-sm ml-2 text-end"></i>
-      <% end %>
+      <p class="date mb-0"><%= task.due_date.strftime("%d %B %Y") %></p>
+        <div class="text-end">
+          <i class="fa-solid fa-pen fa-sm ml-2" data-action="click->edit-task#displayForm"></i>
+          <%= link_to(event_task_path(@event, task), class: "task", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
+            <i class="fa-solid fa-trash fa-sm ml-2 text-end"></i>
+          <% end %>
+        </div>
     </div>
     <%= simple_form_for [@event, task],
     html: {
