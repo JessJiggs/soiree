@@ -1,14 +1,4 @@
 
-.page-header {
-  border: 2px solid #55514e;
-  width: 100%;
-  display: flex;
-  margin-top: 4px;
-  align-items: center;
-  height: 100px;
-  justify-content: space-around;
-  padding: 10px;
-}
 
 .show-guests{
   border: 2px solid #BA937C;
@@ -21,26 +11,14 @@
 .search-actions{
   border: 2px solid #BA937C;
   width: 100%;
-  margin-top: 4px;
+  margin-top: 10px;
+  margin-bottom: 15px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-grow:inherit;
-}
-
-.search-bar{
-  border: 2px solid #BA937C;
-  margin-top: 2px;
-  align-items: left;
-
+  align-items: center;
 }
 
 .actions{
-  border: 2px solid #BA937C;
+  width: 800px;
   display: flex;
-  margin-top: 2px;
-  padding: 6px;
   justify-content: space-between;
-  align-items: left;
-
 }

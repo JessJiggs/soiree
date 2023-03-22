@@ -1,12 +1,18 @@
 <div class="container-standard">
-  <p class="btn btn-tertiary"><%= link_to "back to this.event", event_path(@event), class: "btn btn-secondary"%> </p>
   <%# can take this ^^^  out as needed %>
-  <div class="page-header">
-    <h1 class="page-title">Guests                 - </h1>
-    <h2 class="h2-light"><%= @event.name %> </h2>
+
+  <h1 class="page-title"><%= @event.name %></h1>
+
+
+  <div>
+    <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
+    <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
+    <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link"%>
+    <%= link_to "guests", event_guests_path(@event), class: "sub-nav-link", id: "this-page"%>
   </div>
+
   <div class="barchart">
-    <h2>RSVP progress</h2>
+
     <%= bar_chart [
       {name: "Invite not sent", data: [["#",@guests_not_sent]]},
       {name: "Invite sent", data: [["#",@guests_invited]]},
@@ -20,14 +26,12 @@
       <%= form_with method: :get, class: "search" do %>
         <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
-            placeholder: "Search..."
-          %>
-        <%= submit_tag "Search", class: "button" %>
+            class: "search-bar",
+            placeholder: "Search..."%>
       <% end %>
     </div>
     <div class="actions">
-      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addGuest"> + Add guest </button>
+      <p class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addGuest"> + Add guest </p>
       <p class="btn btn-secondary">download template</p>
       <p class="btn btn-secondary">import guests</p>
     </div>
