@@ -723,6 +723,13 @@ event43 = Event.create!(
 file = File.open(File.join(__dir__, 'img/mermaid_wedding.png'))
 event43.photo.attach(io: file, filename: 'mermaid_wedding.png', content_type: 'image/png')
 
+collab42 = Collaboration.create!(
+  user_id: user011.id,
+  event_id: event43.id,
+  role: :owner
+)
+
+
 event53 = Event.create!(
   name: "Conroy Wedding",
   description: "Farm Wedding",
@@ -735,6 +742,13 @@ event53 = Event.create!(
 )
 file = File.open(File.join(__dir__, 'img/farm_wedding.png'))
 event53.photo.attach(io: file, filename: 'farm_wedding.png', content_type: 'image/png')
+
+collab52 = Collaboration.create!(
+  user_id: user011.id,
+  event_id: event53.id,
+  role: :owner
+)
+
 
 event63 = Event.create!(
   name: "Fox Bachelor Party",
@@ -749,6 +763,13 @@ event63 = Event.create!(
 file = File.open(File.join(__dir__, 'img/fox_bachelors.png'))
 event63.photo.attach(io: file, filename: 'fox_bachelors.png', content_type: 'image/png')
 
+collab62 = Collaboration.create!(
+  user_id: user02.id,
+  event_id: event63.id,
+  role: :owner
+)
+
+
 event73 = Event.create!(
   name: "Riavelet",
   description: "Sas Octopus Wedding",
@@ -761,6 +782,12 @@ event73 = Event.create!(
 )
 file = File.open(File.join(__dir__, 'img/wine_farm_wed.png'))
 event73.photo.attach(io: file, filename: 'wine_farm_wed.png', content_type: 'image/png')
+
+collab72 = Collaboration.create!(
+  user_id: user02.id,
+  event_id: event73.id,
+  role: :owner
+)
 
 ###########################################################################################################################
 # Faker data for guests

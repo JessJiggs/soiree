@@ -1,12 +1,11 @@
 <div class="container">
 
-  <div class="page-header mt-5">
-    <h1>Tasks</h1>
-    <h2 class="h2-light"></h2>
-  </div>
-
-  <div>
-    <h2> Subnavbar placeholder</h2>
+  <h1 class="page-title"><%= @event.name %></h1>
+  <div mb-5>
+    <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
+    <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link", id: "this-page"%>
+    <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link"%>
+    <%= link_to "guests", event_guests_path(@event), class: "sub-nav-link"%>
   </div>
 
   <div class="modal fade" id="addTask" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
@@ -32,7 +31,7 @@
     </div>
   </div>
 
-  <div class="task-stats d-flex justify-content-between mt-4">
+  <div class="task-stats d-flex justify-content-between mt-5">
     <div class="card-task-stat">
       <p class="text-white text-center mb-0">Completed Tasks</p>
       <p class="text-white text-center text-large"><%= @done_tasks.count %></p>

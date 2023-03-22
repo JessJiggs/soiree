@@ -7,6 +7,9 @@ import { application } from "./application"
 import EditTaskController from "./edit_task_controller"
 application.register("edit-task", EditTaskController)
 
+import EventSubscriptionController from "./event_subscription_controller"
+application.register("event-subscription", EventSubscriptionController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 

@@ -1,18 +1,13 @@
 <div class="container-standard">
-  <%# can take this ^^^  out as needed %>
 
   <h1 class="page-title"><%= @event.name %></h1>
-
-
   <div>
     <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
     <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
     <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link"%>
     <%= link_to "guests", event_guests_path(@event), class: "sub-nav-link", id: "this-page"%>
   </div>
-
-  <div class="barchart">
-
+  <div class="barchart mb-5">
     <%= bar_chart [
       {name: "Invite not sent", data: [["#",@guests_not_sent]]},
       {name: "Invite sent", data: [["#",@guests_invited]]},
@@ -20,89 +15,88 @@
       {name: "Declined", data: [["#",@guests_declined]]}],
       stacked: true,  height: "100px" %>
   </div>
-
-  <div class="search-actions">
+  <div class="search-actions d-flex justify-content-between align-items-center">
     <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
         <%= text_field_tag :query,
             params[:query],
-            class: "search-bar",
+            class: "search-bar border-0",
             placeholder: "Search..."%>
       <% end %>
     </div>
     <div class="actions">
-      <p class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addGuest"> + Add guest </p>
-      <p class="btn btn-secondary">download template</p>
-      <p class="btn btn-secondary">import guests</p>
+      <p class="btn btn-secondary mb-0" data-bs-toggle="modal" data-bs-target="#addGuest"> + Add guest </p>
+      <p class="btn btn-secondary mb-0">download template</p>
+      <p class="btn btn-secondary mb-0">import guests</p>
     </div>
   </div>
-<div class="table">
-</div>
-<div class="modal fade" id="addGuest" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addGuestLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addGuestLabel">New guest</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for [@event, @guest], data: {turbo: false} do |f| %>
-          <%= f.input :first_name, label: "First Name" %>
-          <%= f.input :last_name, label: "Last Name" %>
-          <%= f.input :email_address, label: "Email" %>
-          <%= f.input :phone_number, label: "Phone number" %>
-          <%= f.input :invitation_status, collection: [:invite_not_sent, :invited, :accepted, :declined], label: "Invitation status" %>
-          <%= f.button :submit, "Add guest", class:"btn-action" %>
-        <% end %>
+  <div class="table">
+
+  <div class="modal fade" id="addGuest" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addGuestLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addGuestLabel">New guest</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for [@event, @guest], data: {turbo: false} do |f| %>
+            <%= f.input :first_name, label: "First Name" %>
+            <%= f.input :last_name, label: "Last Name" %>
+            <%= f.input :email_address, label: "Email" %>
+            <%= f.input :phone_number, label: "Phone number" %>
+            <%= f.input :invitation_status, collection: [:invite_not_sent, :invited, :accepted, :declined], label: "Invitation status" %>
+            <%= f.button :submit, "Add guest", class:"btn-action" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<table class="table">
-  <tr>
-    <th class="text-table-std"> Name</th>
-    <th class="text-table-std"> Surname</th>
-    <th class="text-table-std"> email</th>
-    <th class="text-table-std"> phone</th>
-    <th class="text-table-status"> Invitation Status</th>
-    <th class="text-table-status"> Action </th>
-  </tr>
-  <% @guests.each do |guest| %>
+  <table class="table">
     <tr>
-      <%= simple_form_for [@event, guest], data: {turbo: false} do |f| %>
-        <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="editGuestLabel">Edit guest</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <%= f.input :first_name, label: "First Name" %>
-                <%= f.input :last_name, label: "Last Name" %>
-                <%= f.input :email_address, label: "Email" %>
-                <%= f.input :phone_number, label: "Phone number" %>
-                <%= f.input :invitation_status, collection: [:invite_not_sent, :invited, :accepted, :declined], label: "Invitation status" %>
-                <%= f.button :submit, "edit guest", class:"btn-action" %>
+      <th class="text-table-std"> Name</th>
+      <th class="text-table-std"> Surname</th>
+      <th class="text-table-std"> email</th>
+      <th class="text-table-std"> phone</th>
+      <th class="text-table-status"> Invitation Status</th>
+      <th class="text-table-status"> Action </th>
+    </tr>
+    <% @guests.each do |guest| %>
+      <tr>
+        <%= simple_form_for [@event, guest], data: {turbo: false} do |f| %>
+          <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editGuestLabel">Edit guest</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= f.input :first_name, label: "First Name" %>
+                  <%= f.input :last_name, label: "Last Name" %>
+                  <%= f.input :email_address, label: "Email" %>
+                  <%= f.input :phone_number, label: "Phone number" %>
+                  <%= f.input :invitation_status, collection: [:invite_not_sent, :invited, :accepted, :declined], label: "Invitation status" %>
+                  <%= f.button :submit, "edit guest", class:"btn-action" %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
-      <td class="text-table-std"><%= guest.first_name %></td>
-      <td class="text-table-std"><%= guest.last_name%></td>
-      <td class="text-table-std"><%= guest.email_address%></td>
-      <td class="text-table-std"><%= guest.phone_number%></td>
-      <td class="text-table-status"><strong><%= guest.invitation_status.humanize %></strong></td>
-      <td class="text-table-status">
-        <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>"> </i>
-        <i class="fa-solid fa-paper-plane fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>" > </i>
-        <%= link_to(event_guest_path(@event, guest), class: "guest", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
-          <i class="fa-solid fa-trash fa-xs ml-2"></i>
         <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+        <td class="text-table-std"><%= guest.first_name %></td>
+        <td class="text-table-std"><%= guest.last_name%></td>
+        <td class="text-table-std"><%= guest.email_address%></td>
+        <td class="text-table-std"><%= guest.phone_number%></td>
+        <td class="text-table-status"><strong><%= guest.invitation_status.humanize %></strong></td>
+        <td class="text-table-status">
+          <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>"> </i>
+          <i class="fa-solid fa-paper-plane fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>" > </i>
+          <%= link_to(event_guest_path(@event, guest), class: "guest", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
+            <i class="fa-solid fa-trash fa-xs ml-2"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 </div>
