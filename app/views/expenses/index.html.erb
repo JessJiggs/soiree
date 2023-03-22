@@ -11,7 +11,7 @@
   <div class="card-barchart">
     <h2>expenses progress</h2>
     <%= bar_chart [
-      {name: "Total Expenses", data: [["R",@expenses.sum(:amount_spent)]]},
+      {name: "Total Spent", data: [["R",@expenses.sum(:amount_spent)]]},
         {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
         stacked: true,  height: "100px" %>
   </div>
@@ -22,9 +22,7 @@
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find expenses.."
-        %>
-        <%= submit_tag "Search", class: "button" %>
+        placeholder: "Find expenses.."%>
       <% end %>
     </div>
   </div>
