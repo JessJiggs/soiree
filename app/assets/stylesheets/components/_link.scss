@@ -1,0 +1,29 @@
+.sub-nav-link{
+  font-family: $headings-font-family;
+  font-size: 24px;
+  font-weight: lighter;
+  color: $secondary-color;
+  text-align: right;
+  margin-top: 15px;
+  margin-left: 60px;
+  width: 150px;
+  outline: none;
+  border: none;
+}
+
+.sub-nav-link:hover {
+  color: $primary-color;
+  font-size: 26px;
+}
+
+#this-page {
+  color: $primary-color;
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+#this-page:hover {
+  color: $primary-color-hover;
+  font-weight: bolder;
+  font-size: 28px;
+}
