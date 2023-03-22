@@ -1,40 +1,40 @@
 <div class="container">
-  <%# take out all br's and check comments for changes to styl/scss.  %>
-  <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary" %>
-  <%# take out the back button when ready  %>
-  <div class="page-header d-flex mt-4">
-    <h1>Expenses  </h1>
-    <h2 class="h2-light"><%=  @event.name%></h2>
+
+  <h1 class="page-title"><%= @event.name %></h1>
+
+  <div class="mb-5">
+    <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
+    <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
+    <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link", id: "this-page"%>
+    <%= link_to "guests     |   ", event_guests_path(@event), class: "sub-nav-link"%>
+    <%= link_to "chat", event_messages_path(@event), class: "sub-nav-link"%>
+
   </div>
-  <br>
-  <br>
-  <div class="card-barchart">
-    <h2>expenses progress</h2>
-    <%= bar_chart [
-      {name: "Total Expenses", data: [["R",@expenses.sum(:amount_spent)]]},
+
+  <div class="card-barchart mb-5">
+
+      <%= bar_chart [
+        {name: "Total Spent", data: [["R",@expenses.sum(:amount_spent)]]},
         {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
         stacked: true,  height: "100px" %>
   </div>
-  <br>
+
   <div class="search-actions d-flex mt-4">
     <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find expenses.."
-        %>
-        <%= submit_tag "Search", class: "button" %>
+        placeholder: "Find expenses.."%>
       <% end %>
     </div>
+    <div class="actions">
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExpense"> + Add expense </button>
+      <button type="button"  class="btn btn-secondary">upload quote</button>
+      <button type="button"  class="btn btn-secondary">upload invoice</button>
+    </div>
   </div>
-  <div class="actions">
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExpense"> + Add expense </button>
-    <button type="button"  class="btn btn-secondary">upload quote</button>
-    <button type="button"  class="btn btn-secondary">upload invoice</button>
-  </div>
-  <br>
-  <br>
+
   <div class="d-flex mt-4">
     <div class="modal fade" id="addExpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addExpenseLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -44,7 +44,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <%= simple_form_for [ @event, @expense] do |f| %>
+            <%= simple_form_for [ @event, @expense], data: {turbo: false} do |f| %>
               <%= f.input :name %>
               <%= f.input :amount_spent %>
               <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
@@ -56,10 +56,10 @@
         </div>
       </div>
     </div>
+
     <div class="table-columns">
-      <%# NB CHANGE THE % of columns ^^^^^% plus space between padding ? margin t&B %>
       <div>
-        <h2>expenses detailed</h2>
+
         <table>
           <tr>
             <th class="text-table-std"> Name</th>
@@ -107,7 +107,6 @@
             <% end %>
           </tbody>
           <tfoot class="table-foot ta: left">
-            <%# NB text align left ? ? ?  %>
             <td><strong> Total Spent:</strong></td>
             <td colspan="5"><strong><%= @total_expenses %></strong> </td>
           </tfoot>
@@ -115,10 +114,10 @@
       </div>
     </div>
     <div>
-      <h2>expenses snapshot</h2>
+
       <div class="event-graph d-flex mt-4">
-        <%# NB CHANGE THE % of columns ^^^^^% %>
         <%= pie_chart(@pie_chart_expenses, donut: true) %>
       </div>
     </div>
   </div>
+</div>

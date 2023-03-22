@@ -2,8 +2,19 @@
   data-controller="event-subscription"
   data-event-subscription-event-id-value="<%= @event.id %>"
 >
-<div class="chath1">
-  <h1>#<%= @event.name %></h1>
+
+<h1 class="page-title"><%= @event.name %></h1>
+<div mb-5>
+    <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
+    <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
+    <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link"%>
+    <%= link_to "guests     |   ", event_guests_path(@event), class: "sub-nav-link"%>
+    <%= link_to "chat", event_messages_path(@event), class: "sub-nav-link", id: "this-page"%>
+</div>
+
+
+<div class="chath1 mt-5">
+  <h3 class="text-start">#<%= @event.name %></h3>
 </div>
   <div class="messages" data-event-subscription-target="messages">
     <% @event.messages.each do |message| %>
@@ -12,15 +23,15 @@
   </div>
 </div>
 
-<%= simple_form_for [@event, @message],
-    html: { data: { action: "turbo:submit-end->event-subscription#resetForm" }, class: "d-flex" } do |f|
+  <%= simple_form_for [@event, @message],
+      html: { data: { action: "turbo:submit-end->event-subscription#resetForm" }, class: "d-flex" } do |f|
 
-%>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message ##{@event.name}",
-    wrapper_html: {class: "flex-grow-1"}
   %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-<% end %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Message ##{@event.name}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
 </div>

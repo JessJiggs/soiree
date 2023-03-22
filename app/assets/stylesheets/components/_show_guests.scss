@@ -1,0 +1,23 @@
+
+
+.show-guests{
+  border: 2px solid #BA937C;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.search-actions{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.actions{
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
+}
