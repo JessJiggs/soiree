@@ -12,11 +12,10 @@
   </div>
 
   <div class="card-barchart mb-5">
-
       <%= bar_chart [
         {name: "Total Spent", data: [["R",@expenses.sum(:amount_spent)]]},
         {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
-        stacked: true,  height: "100px" %>
+        stacked: true,  height: "100px",  colors: ["#FFC65A","#C6A4D7"] %>
   </div>
 
   <div class="search-actions d-flex mt-4">
@@ -116,7 +115,7 @@
     <div>
 
       <div class="event-graph d-flex mt-4">
-        <%= pie_chart(@pie_chart_expenses, donut: true) %>
+        <%= pie_chart(@pie_chart_expenses, donut: true, colors: ["#E67E22", "#FFC65A", "#ABCB98", "#D59E9E", "#0D6EFD", "#CCCCCC", "white", "#C6A4D7"]) %>
       </div>
     </div>
   </div>
