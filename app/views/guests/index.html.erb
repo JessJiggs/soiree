@@ -9,17 +9,16 @@
 
   <div class="barchart">
 
-<h2>expenses progress</h2>
+<h2>RSVP progress</h2>
     <%= bar_chart [
-      {name: "Total Guests", data: [["#",@guests.sum(:amount_spent)]]},
-        {name: "Remaining Budget", data: [["R",@event.est_guest - @expenses.sum(:amount_spent)]]}],
-        stacked: true,  height: "100px" %>
+      {name: "Invite not sent", data: [["#",@guests_not_sent]]},
+      {name: "Invite sent", data: [["#",@guests_invited]]},
+      {name: "Accepted", data: [["#",@guests_accepted]]},
+      {name: "Declined", data: [["#",@guests_declined]]}],
+      stacked: true,  height: "100px" %>
   </div>
 
-    <h2>guests RSVP progress</h2>
-  <div class="pie-chart">
-    <%= pie_chart @event.guests.group(:invitation_status).count, donut: true %>
-  </div>
+
   </div>
   <div class="search-actions">
      <div class="search-bar">
