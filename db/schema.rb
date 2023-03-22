@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_20_125639) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_21_145944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,7 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_125639) do
     t.float "amount_spent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    t.integer "status", default: 0
+    t.datetime "due_date"
     t.index ["event_id"], name: "index_expenses_on_event_id"
   end
 
@@ -94,6 +95,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_125639) do
     t.datetime "updated_at", null: false
     t.integer "invitation_status", default: 0
     t.index ["event_id"], name: "index_guests_on_event_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_messages_on_event_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -160,6 +171,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_125639) do
   add_foreign_key "collaborations", "users"
   add_foreign_key "expenses", "events"
   add_foreign_key "guests", "events"
+  add_foreign_key "messages", "events"
+  add_foreign_key "messages", "users"
   add_foreign_key "taggings", "tags"
   add_foreign_key "tasks", "events"
 end

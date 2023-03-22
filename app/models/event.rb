@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   has_many :expenses, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :guests, dependent: :destroy
+  has_many :messages, dependent: :destroy
+
 
   validates :name, presence: true
   validates :description, presence: true
