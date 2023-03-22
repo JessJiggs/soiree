@@ -1,7 +1,7 @@
 <div class="container-standard">
   <h1 class="page-title">My dashboard</h1>
   <div class="dashboard">
-    <div class="dashboard-card">
+    <div class="dashboard-card" id="dashboard-card-events">
       <h2>events</h2>
       <div style="width: 100%">
         <%= form_with method: :get, class: "search" do %>
@@ -49,16 +49,16 @@
           <% end %>
     </div>
 
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column justify-content-between" style="height: 845px">
 
-      <div class="dashboard-card mb-5" style="width: 400px">
+      <div class="dashboard-card", id="dashboard-card-calendar">
             <h2>calendar</h2>
             <div class="todo-card">
               <%= image_tag("calendar_image.png", width: 330 ) %>
             </div>
       </div>
 
-      <div class="dashboard-card" style="width: 400px; height:300px">
+      <div class="dashboard-card" id="dashboard-card-notes">
             <h2>notes</h2>
             <div class="todo-card">
               <h5>Monday</h5>
