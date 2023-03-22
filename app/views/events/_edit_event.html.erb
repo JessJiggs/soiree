@@ -1,7 +1,22 @@
-<div class="container">
-  <div class="input-container">
-    <h2>Create New Event</h2>
-    <%= simple_form_for(@event) do |f| %>
+<div data-controller="edit-task" data-edit-task-target="task">
+  <div class="card-task">
+     <h2>Edit Event</h2>
+    <div data-edit-task-target="infos">
+      <i class="fa-solid fa-pen fa-xs ml-2" data-action="click->edit-task#displayForm"></i>
+      <%= link_to(event_path(@event), class: "task", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do %>
+        <i class="fa-solid fa-trash fa-xs ml-2"></i>
+      <% end %>
+    </div>
+    <%= simple_form_for (@event),
+    html: {
+      class: 'd-none',
+      data: {
+        edit_task_target: 'form',
+        action: 'submit->event#update'
+      },
+      method: :patch
+    } do |f|
+    %>
       <%= f.input :name, placeholder: "Event Name", label: "Event Name" %>
       <%= f.input :description, placeholder: "About Event", label: "Event Description" %>
       <div class="flex-inputs">
@@ -35,7 +50,7 @@
         <%= f.input :total_budget, placeholder: "Budget", label: "Budget" %>
       </div>
       <%= f.input :photo, as: :file, input_html: {  data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: { class: 'image-input'}, label: 'Upload file'%>
-      <%= f.button :button, "Create Event", class: "btn btn-secondary", label: false  %>
-    <% end %>
+      <%= f.button :button, "Update Event", class: "btn btn-secondary", label: false  %>
+  <% end %>
   </div>
 </div>

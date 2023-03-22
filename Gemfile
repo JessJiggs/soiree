@@ -89,3 +89,5 @@ gem "pg_search"
 gem 'acts-as-taggable-on', '~> 9.0'
 
 gem "pg_search"
+
+gem "icalendar", "~> 2.8"

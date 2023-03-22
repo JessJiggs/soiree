@@ -30,6 +30,13 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(event_params)
+    raise
+    event.update(event_params)
+    respond_to do |format|
+      format.html { redirect_to event_path(event) }
+      format.text { render partial: 'event/edit_event', locals: { event: event }, formats: [:html] }
+    end
   end
 
   private

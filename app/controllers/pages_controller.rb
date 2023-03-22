@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
+  
   def home
+    @event = Event.new
     if current_user
       if params[:query].present?
         @events = current_user.events.search_by_name(params[:query]).order(updated_at: :desc)

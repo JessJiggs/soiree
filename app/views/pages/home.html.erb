@@ -3,6 +3,9 @@
   <div class="dashboard">
     <div class="dashboard-card">
       <h2>events</h2>
+      <div class="search-actions d-flex mt-4">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addTask"> + Add Event </button>
+      </div>
       <div style="width: 100%">
         <%= form_with method: :get, class: "search" do %>
           <%= text_field_tag :query,
@@ -28,7 +31,54 @@
         <% end %>
       <% end %>
     </div>
-
+    <div class="modal fade" id="addTask" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addTaskLabel">Create Event</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for(@event) do |f| %>
+              <%= f.input :name, placeholder: "Event Name", label: "Event Name" %>
+              <%= f.input :description, placeholder: "About Event", label: "Event Description" %>
+              <div class="flex-inputs">
+                <div class="row">
+                  <div class="col">
+                    <%= f.input :start_date, as: :string,
+                      label: "Start Date",
+                      placeholder: "Start Date",
+                      wrapper_html: { class: "mb-4" },
+                      label_html: { class: "form-label text-secondary fw-bold" },
+                      input_html: { data: { controller: "flatpickr" } } %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <%= f.input :end_date, as: :string,
+                        label: "End Date",
+                        placeholder: "End Date",
+                        wrapper_html: { class: "mb-4" },
+                        label_html: { class: "form-label text-secondary fw-bold" },
+                        input_html: { data: { controller: "flatpickr" } } %>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-inputs">
+                <%= f.input :venue_name, placeholder: "Venue", label: "Venue" %>
+                <%= f.input :venue_address, placeholder: "Address..", label: "Address" %>
+              </div>
+                <div class="flex-inputs">
+                  <%= f.input :est_guests, placeholder: "Estimated Guests", label: "Estimated Guests" %>
+                  <%= f.input :total_budget, placeholder: "Budget", label: "Budget" %>
+                </div>
+                <%= f.input :photo, as: :file, input_html: {  data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: { class: 'image-input'}, label: 'Upload file'%>
+                <%= f.button :button, "Create Event", class: "btn btn-secondary", label: false  %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  </div>
     <div class="dashboard-card">
           <h2>tasks</h2>
           <% if @grouped_tasks.empty? %>

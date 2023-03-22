@@ -133,6 +133,9 @@ GEM
       domain_name (~> 0.5)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    icalendar (2.8.0)
+      ice_cube (~> 0.16)
+    ice_cube (0.16.4)
     io-console (0.6.0)
     irb (1.6.3)
       reline (>= 0.3.0)
@@ -299,6 +302,7 @@ DEPENDENCIES
   faker
   font-awesome-sass (~> 6.1)
   groupdate (~> 6.2)
+  icalendar (~> 2.8)
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
