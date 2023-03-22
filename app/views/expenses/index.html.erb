@@ -10,7 +10,7 @@
   </div>
 
   <div class="card-barchart">
-    <h2>expenses progress</h2>
+ 
       <%= bar_chart [
         {name: "Total Spent", data: [["R",@expenses.sum(:amount_spent)]]},
         {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
@@ -57,7 +57,7 @@
 
     <div class="table-columns">
       <div>
-        <h2>expenses detailed</h2>
+
         <table>
           <tr>
             <th class="text-table-std"> Name</th>
@@ -112,7 +112,7 @@
       </div>
     </div>
     <div>
-      <h2>expenses snapshot</h2>
+
       <div class="event-graph d-flex mt-4">
         <%= pie_chart(@pie_chart_expenses, donut: true) %>
       </div>
