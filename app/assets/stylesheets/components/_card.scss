@@ -68,6 +68,7 @@
   width: 330px;
   height: max-content;
   gap: 20px;
+  margin-bottom: 40px;
   .event-card, .todo-card{
     width: 100%;
     position: relative;
@@ -151,7 +152,7 @@
   padding: 0;
   .event-card{
     .card-content {
-      background-color: #CCCCCC;
+      background-color: $light-gray;
       border-radius: $border-radius;
       box-shadow: none;
       padding: 10px;
