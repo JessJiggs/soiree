@@ -33,12 +33,14 @@
       </div>
     </div>
     <div class="card summary">
-      <h4>Colllaborators</h4>
+      <h4>Collaborators</h4>
       <div class="event-card">
+
         <%= form_with url: event_collaborations_path(@event), method: :post, class: "d-flex" do  |f|  %>
           <%= f.collection_select :user_id, User.order(:first_name), :id, :first_name %>
           <%= f.submit "add" %>
         <% end %>
+
       </div>
       <% @collaborators.each do |collaborator| %>
         <% if collaborator.user.photo.attached?  %>
