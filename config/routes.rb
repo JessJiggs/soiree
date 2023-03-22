@@ -13,8 +13,6 @@ Rails.application.routes.draw do
     resources :tasks, only: %i[create index update destroy] do
       resources :assignments, only: %i[create]
     end
-    resources :expenses, only: %i[new create index]
-    resources :guests, only: %i[new create index update destroy]
     resources :expenses, only: %i[create index update destroy]
     resources :guests, only: %i[create index update destroy]
   end
