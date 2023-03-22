@@ -2,15 +2,17 @@
 
   <h1 class="page-title"><%= @event.name %></h1>
 
-  <div>
+  <div class="mb-5">
     <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
     <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
     <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link", id: "this-page"%>
-    <%= link_to "guests", event_guests_path(@event), class: "sub-nav-link"%>
+    <%= link_to "guests     |   ", event_guests_path(@event), class: "sub-nav-link"%>
+    <%= link_to "chat", event_messages_path(@event), class: "sub-nav-link"%>
+
   </div>
 
-  <div class="card-barchart">
- 
+  <div class="card-barchart mb-5">
+
       <%= bar_chart [
         {name: "Total Spent", data: [["R",@expenses.sum(:amount_spent)]]},
         {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
