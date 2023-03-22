@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import ControllerController from "./controller_controller"
-application.register("controller", ControllerController)
-
 import EditTaskController from "./edit_task_controller"
 application.register("edit-task", EditTaskController)
 
