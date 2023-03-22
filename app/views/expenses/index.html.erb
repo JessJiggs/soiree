@@ -1,19 +1,22 @@
 <div class="container">
+
   <h1 class="page-title"><%= @event.name %></h1>
+
   <div>
     <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
     <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
     <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link", id: "this-page"%>
     <%= link_to "guests", event_guests_path(@event), class: "sub-nav-link"%>
   </div>
+
   <div class="card-barchart">
     <h2>expenses progress</h2>
-    <%= bar_chart [
-      {name: "Total Spent", data: [["R",@expenses.sum(:amount_spent)]]},
+      <%= bar_chart [
+        {name: "Total Spent", data: [["R",@expenses.sum(:amount_spent)]]},
         {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
         stacked: true,  height: "100px" %>
   </div>
-  <br>
+
   <div class="search-actions d-flex mt-4">
     <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
@@ -23,14 +26,13 @@
         placeholder: "Find expenses.."%>
       <% end %>
     </div>
+    <div class="actions">
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExpense"> + Add expense </button>
+      <button type="button"  class="btn btn-secondary">upload quote</button>
+      <button type="button"  class="btn btn-secondary">upload invoice</button>
+    </div>
   </div>
-  <div class="actions">
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExpense"> + Add expense </button>
-    <button type="button"  class="btn btn-secondary">upload quote</button>
-    <button type="button"  class="btn btn-secondary">upload invoice</button>
-  </div>
-  <br>
-  <br>
+
   <div class="d-flex mt-4">
     <div class="modal fade" id="addExpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addExpenseLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -40,20 +42,20 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <%= simple_form_for [ @event, @expense] data: {turbo: false} do |f| %>
+            <%= simple_form_for [ @event, @expense], data: {turbo: false} do |f| %>
               <%= f.input :name %>
               <%= f.input :amount_spent %>
               <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
               <%= f.input :status, collection: [:unpaid, :paid,], label: "Status" %>
-              <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } }, label: "Date" %>
+              <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } }, label: false %>
               <%= f.button :button, "Add expense", class:"btn-action" %>
             <% end %>
           </div>
         </div>
       </div>
     </div>
+
     <div class="table-columns">
-      <%# NB CHANGE THE % of columns ^^^^^% plus space between padding ? margin t&B %>
       <div>
         <h2>expenses detailed</h2>
         <table>
@@ -103,7 +105,6 @@
             <% end %>
           </tbody>
           <tfoot class="table-foot ta: left">
-            <%# NB text align left ? ? ?  %>
             <td><strong> Total Spent:</strong></td>
             <td colspan="5"><strong><%= @total_expenses %></strong> </td>
           </tfoot>
@@ -113,8 +114,8 @@
     <div>
       <h2>expenses snapshot</h2>
       <div class="event-graph d-flex mt-4">
-        <%# NB CHANGE THE % of columns ^^^^^% %>
         <%= pie_chart(@pie_chart_expenses, donut: true) %>
       </div>
     </div>
   </div>
+</div>

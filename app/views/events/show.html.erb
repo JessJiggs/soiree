@@ -2,6 +2,13 @@
 
   <h1 class="page-title"><%= @event.name %></h1>
 
+  <div>
+    <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link", id: "this-page"%>
+    <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
+    <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link"%>
+    <%= link_to "guests", event_guests_path(@event), class: "sub-nav-link"%>
+  </div>
+
   <div class="dashboard flex-column">
 
     <div class="d-flex justify-content-between">
