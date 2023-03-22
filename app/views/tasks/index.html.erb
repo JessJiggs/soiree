@@ -63,7 +63,7 @@
 
   <div class="kanban d-flex mt-4">
     <div class="kanban-column">
-      <h3>To Do</h3>
+      <h3 mb-4>To Do</h3>
       <div class="cards-task">
         <% @todo_tasks.each do |task| %>
           <%= render "task_infos", task: task %>
@@ -71,7 +71,7 @@
       </div>
     </div>
     <div class="kanban-column">
-      <h3>Doing</h3>
+      <h3 mb-4>Doing</h3>
       <div class="cards-task">
         <% @doing_tasks.each do |task| %>
           <%= render "task_infos", task: task %>
@@ -79,7 +79,7 @@
       </div>
     </div>
     <div class="kanban-column">
-      <h3>Done</h3>
+      <h3 mb-4>Done</h3>
       <div class="cards-task">
         <% @done_tasks.each do |task| %>
           <%= render "task_infos", task: task %>

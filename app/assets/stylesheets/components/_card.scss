@@ -9,11 +9,13 @@
 }
 
 .card-task {
+  display: flex;
   background: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin: 10px;
   padding: 15px;
   width: 250px;
+  border-radius: 5px;
   h5{
     color: $primary-color;
     font-family: $font-family-sans-serif;
@@ -21,8 +23,17 @@
     font-weight: bolder;
     text-align: left;
   }
-  p{
+  p.date{
     size: 12px;
+    color: $secondary-color;
+  }
+  p.category{
+    size: 12px;
+    color: white;
+    background-color: rgba(186,147,124,0.6);
+    width:fit-content;
+    border-radius: 5px;
+    padding: 5px;
   }
 }
 
