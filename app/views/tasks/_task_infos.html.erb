@@ -2,6 +2,8 @@
   <div class="card-task">
     <div data-edit-task-target="infos">
       <h5><%= task.name.capitalize %></h5>
+      <p><em><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "avatar" %></em></p>
+      <p><em><%= task.users.map(&:first_name).join %></em></p>
       <p><em><%= task.description %></em></p>
       <p><%= task.category_list %></p>
       <p><%= task.due_date.strftime("%d %B %Y") %></p>
@@ -24,6 +26,7 @@
       <%= f.input :description,label: false  %>
       <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
       <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } },label: false  %>
+      <%= select_tag :user_id, options_from_collection_for_select(@collaborators, 'id', 'first_name' ), label: "Assignee" %>
       <%= f.submit "Update task", class:"btn-action" %>
   <% end %>
   </div>

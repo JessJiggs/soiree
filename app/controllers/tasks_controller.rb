@@ -1,10 +1,13 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [ :update, :destroy ]
   before_action :set_event, only: [ :create, :index, :update, :destroy ]
+
   def create
+    collaborations = Collaboration.where(user_id: params[:user_id], event_id: params[:event_id])
     @task = Task.new(task_params)
     @task.event = @event
     if @task.save
+      @assignment = Assignment.create(collaboration_id: collaborations.map(&:id).join.to_i, task: @task)
       redirect_to event_tasks_path(@event), notice: "Task was successfully created."
     else
       redirect_to event_tasks_path(@event), status: :unprocessable_entity, notice: "Task was not successfully created."
@@ -15,13 +18,12 @@ class TasksController < ApplicationController
     @task = Task.new
     @task.event = @event
     @tasks = @event.tasks
-
     @todo_tasks = @tasks.where(status: :to_do)
     @doing_tasks = @tasks.where(status: :doing)
     @done_tasks = @tasks.where(status: :done)
-
     @overdue_tasks = @tasks.where(status: [:to_do, :doing]).where("due_date < ?", Date.today)
     @incomplete_tasks = @tasks.where(status: [:to_do, :doing])
+    @collaborators = @event.collaborations.map(&:user)
   end
 
   def update
@@ -41,7 +43,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :due_date, :status, :category_list)
+    params.require(:task).permit(:name, :description, :due_date, :status, :category_list, :user_id, :event_id)
   end
 
   def set_task
