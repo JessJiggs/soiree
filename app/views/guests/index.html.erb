@@ -8,6 +8,14 @@
 
 
   <div class="barchart">
+
+<h2>expenses progress</h2>
+    <%= bar_chart [
+      {name: "Total Guests", data: [["#",@guests.sum(:amount_spent)]]},
+        {name: "Remaining Budget", data: [["R",@event.est_guest - @expenses.sum(:amount_spent)]]}],
+        stacked: true,  height: "100px" %>
+  </div>
+
     <h2>guests RSVP progress</h2>
   <div class="pie-chart">
     <%= pie_chart @event.guests.group(:invitation_status).count, donut: true %>
