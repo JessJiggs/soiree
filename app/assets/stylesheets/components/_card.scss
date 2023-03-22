@@ -75,12 +75,9 @@
   padding-left: 20px;
   padding-right: 20px;
   width: 330px;
-  height: max-content;
+  height: 845px;
   gap: 20px;
   margin-bottom: 40px;
-  #dashboard-card-events {
-    width: 450px;
-  }
   .event-card, .todo-card{
     width: 100%;
     position: relative;
@@ -140,6 +137,22 @@
       }
     }
   }
+
+#dashboard-card-events {
+    width: 450px;
+}
+
+#dashboard-card-calendar {
+  width: 400px;
+  height: 365px;
+  margin-bottom: 0px;
+}
+
+#dashboard-card-notes {
+  width: 400px;
+  height: 400px;
+  margin-bottom: 0px;
+}
 
 .todo-card{
   background-color: white;
