@@ -1,17 +1,18 @@
 <div class="container">
-  <%# take out all br's and check comments for changes to styl/scss.  %>
-  <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary" %>
-  <%# take out the back button when ready  %>
-  <div class="page-header d-flex mt-4">
-    <h1>Expenses  </h1>
-    <h2 class="h2-light"><%=  @event.name%></h2>
+
+  <h1 class="page-title"><%= @event.name %></h1>
+
+  <div>
+    <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
+    <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
+    <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link", id: "this-page"%>
+    <%= link_to "guests", event_guests_path(@event), class: "sub-nav-link"%>
   </div>
-  <br>
-  <br>
+
   <div class="card-barchart">
     <h2>expenses progress</h2>
     <%= bar_chart [
-      {name: "Total Expenses", data: [["R",@expenses.sum(:amount_spent)]]},
+      {name: "Total Spent", data: [["R",@expenses.sum(:amount_spent)]]},
         {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
         stacked: true,  height: "100px" %>
   </div>
@@ -22,9 +23,7 @@
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find expenses.."
-        %>
-        <%= submit_tag "Search", class: "button" %>
+        placeholder: "Find expenses.."%>
       <% end %>
     </div>
   </div>
