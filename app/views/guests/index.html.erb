@@ -4,7 +4,8 @@
     <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
     <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
     <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link"%>
-    <%= link_to "guests", event_guests_path(@event), class: "sub-nav-link", id: "this-page"%>
+    <%= link_to "guests     |   ", event_guests_path(@event), class: "sub-nav-link", id: "this-page"%>
+    <%= link_to "chat", event_messages_path(@event), class: "sub-nav-link"%>
   </div>
   <div class="barchart mb-5">
     <%= bar_chart [
