@@ -1,42 +1,46 @@
 
 .page-header {
+  border: 2px solid #55514e;
   width: 100%;
   display: flex;
   margin-top: 4px;
-  align-items: flex-start;
-  justify-content: space-between
+  align-items: center;
+  height: 100px;
+  justify-content: space-around;
+  padding: 10px;
 }
 
 .show-guests{
+  border: 2px solid #BA937C;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-grow:inherit;
 }
 
 .search-actions{
-  width: 100%;
-  display: flex;
+  border: 2px solid #BA937C;
   width: 100%;
   margin-top: 4px;
+  display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-grow:inherit;
 }
 
 .search-bar{
-  display: flex;
+  border: 2px solid #BA937C;
   margin-top: 2px;
-  justify-content: space-around;
-  align-items: flex-start;
-  flex-grow:inherit;
+  align-items: left;
+
 }
 
 .actions{
+  border: 2px solid #BA937C;
   display: flex;
   margin-top: 2px;
-  justify-content: space-around;
-  align-items: flex-start;
-  flex-grow:inherit;
+  padding: 6px;
+  justify-content: space-between;
+  align-items: left;
+
 }
