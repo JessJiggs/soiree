@@ -159,6 +159,22 @@
     }
   }
 
+#dashboard-card-events {
+    width: 450px;
+}
+
+#dashboard-card-calendar {
+  width: 400px;
+  height: 365px;
+  margin-bottom: 0px;
+}
+
+#dashboard-card-notes {
+  width: 400px;
+  height: 400px;
+  margin-bottom: 0px;
+}
+
 .todo-card{
   background-color: white;
   padding: 15px;
