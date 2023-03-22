@@ -65,7 +65,7 @@
     <div class="kanban-column">
       <h3>To Do</h3>
       <div class="cards-task">
-        <% @todo_tasks.map do |task| %>
+        <% @todo_tasks.each do |task| %>
           <%= render "task_infos", task: task %>
         <% end %>
       </div>

@@ -4,9 +4,8 @@
   justify-content: space-between;
 }
 .cards-task {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-task {
