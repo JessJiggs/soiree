@@ -1,14 +1,11 @@
 <div class="container">
-
   <h1 class="page-title"><%= @event.name %></h1>
-
   <div>
     <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
     <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
     <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link", id: "this-page"%>
     <%= link_to "guests", event_guests_path(@event), class: "sub-nav-link"%>
   </div>
-
   <div class="card-barchart">
     <h2>expenses progress</h2>
     <%= bar_chart [
@@ -43,12 +40,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <%= simple_form_for [ @event, @expense] do |f| %>
+            <%= simple_form_for [ @event, @expense] data: {turbo: false} do |f| %>
               <%= f.input :name %>
               <%= f.input :amount_spent %>
               <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
               <%= f.input :status, collection: [:unpaid, :paid,], label: "Status" %>
-              <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } }, label: false %>
+              <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } }, label: "Date" %>
               <%= f.button :button, "Add expense", class:"btn-action" %>
             <% end %>
           </div>
