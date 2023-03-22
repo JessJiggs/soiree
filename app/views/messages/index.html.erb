@@ -1,10 +1,10 @@
-<div class="container event"
+<div class="container chatroom"
   data-controller="event-subscription"
   data-event-subscription-event-id-value="<%= @event.id %>"
 >
- <div class="container event">
+<div class="chath1">
   <h1>#<%= @event.name %></h1>
-
+</div>
   <div class="messages" data-event-subscription-target="messages">
     <% @event.messages.each do |message| %>
       <%= render "message", message: message %>
@@ -13,7 +13,7 @@
 </div>
 
 <%= simple_form_for [@event, @message],
-    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+    html: { data: { action: "turbo:submit-end->event-subscription#resetForm" }, class: "d-flex" } do |f|
 
 %>
   <%= f.input :content,
