@@ -30,7 +30,7 @@
                   <% @collaborators.each do |collaborator| %>
                   <% if collaborator.user.photo.attached? %>
                     <div>
-                        <%= cl_image_tag collaborator.user.photo.key, crop: :fill, class: "avatar" %>
+                        <%= cl_image_tag collaborator.user.photo.key, crop: :fill, class: "event-avatar" %>
                     </div>
                     <% else %>
                     <p><%= collaborator.user.first_name  %> <%= collaborator.user.last_name %></p>
@@ -65,7 +65,7 @@
               <div class="card-task event-task">
                   <p><%= task.name %></p>
                   <p class="status"><%= task.status %></p>
-                  <p><em><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "avatar" %></em></p>
+                  <p><em><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "event-avatar" %></em></p>
               </div>
             <% end %>
         </div>
