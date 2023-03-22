@@ -4,14 +4,13 @@
     <div class="dashboard-card">
       <h2>events</h2>
       <div style="width: 100%">
-      <%= form_with method: :get, class: "search" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Search..."
-        %>
-        <%= submit_tag "Search", class: "button" %>
-      <% end %>
+        <%= form_with method: :get, class: "search" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "search-bar",
+            placeholder: "Search..."
+          %>
+        <% end %>
       </div>
       <% @events.each do |event| %>
         <%= link_to event_path(event), style: "width: 100%" do %>
@@ -32,22 +31,30 @@
 
     <div class="dashboard-card">
           <h2>tasks</h2>
-          <div>
-            <%= form_with url: "/search", method: :get do |form| %>
-              <%= form.text_field :query, class: "search-bar" %>
+          <% if @grouped_tasks.empty? %>
+            <div class="todo-card">
+            <p> You have no tasks!!! </p>
+            </div>
+          <% else %>
+            <% @grouped_tasks.each do |day, tasks| %>
+            <div class="todo-card">
+              <h5 class="mb-3"><%=day%></h5>
+              <ul>
+                <% tasks.each do |task|%>
+                  <li><%= task.name.capitalize%> - <em><%=(task.event.name)%></em></li>
+                <% end %>
+              </ul>
+            </div>
             <% end %>
-          </div>
-          <div class="todo-card">
-            <h5>Monday</h5>
-          </div>
+          <% end %>
     </div>
 
-    <div class="d-flex flex-column justify-content-between">
+    <div class="d-flex flex-column">
 
-      <div class="dashboard-card" style="width: 400px; height:300px">
+      <div class="dashboard-card mb-5" style="width: 400px">
             <h2>calendar</h2>
             <div class="todo-card">
-              <h5>Monday</h5>
+              <%= image_tag("calendar_image.png", width: 330 ) %>
             </div>
       </div>
 

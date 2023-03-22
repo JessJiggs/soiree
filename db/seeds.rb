@@ -117,19 +117,26 @@ exp06 = Expense.create!(
   event_id: event03.id,
   name: "drink - welcome drinks",
   amount_spent: 58.99,
-  category_list: "Bar"
+  category_list: "Bar",
+  status: 0,
+  due_date: DateTime.new(2023, 4, 1)
 )
 exp07 = Expense.create!(
   event_id: event03.id,
   name: "venue - deposit",
   amount_spent: 58.99,
-  category_list: "Venue"
+  category_list: "Venue",
+  status: 0,
+  due_date: DateTime.new(2023, 4, 1)
+
 )
 exp08 = Expense.create!(
   event_id: event03.id,
   name: "entertainment,dj, - billingsly", #use tagable not concat/interpolation
   amount_spent: 58.99, #decimal ? double precision? currency class?
-  category_list: "Entertainment"
+  category_list: "Entertainment",
+  status: 0,
+  due_date: DateTime.new(2023, 4, 1)
 )
 
 guest07 = Guest.create!(
@@ -196,8 +203,8 @@ user011.photo.attach(io: file, filename: 'avatar_eve.png', content_type: 'image/
 event13 = Event.create!(
   name: "Zepadelle",
   description: "Safari themed wedding for the Zepelinni's",
-  start_date: DateTime.new(2023, 5, 5, 15, 0, 0), # add date
-  end_date: DateTime.new(2023, 5, 6, 0, 0, 0), #date format
+  start_date: DateTime.new(2023, 3, 26, 15, 0, 0), # add date
+  end_date: DateTime.new(2023, 3, 27, 0, 0, 0), #date format
   venue_name: "Vineyard Hotel",
   venue_address: "Claremont, Cape Town",
   est_guests: 300, #int
@@ -214,7 +221,7 @@ task14 = Task.create!(
   event_id: event13.id,
   name: "Pay Floraelle - church Flowers",
   description: "Pay Floraelle for the church Flowers, update the budget",
-  due_date: DateTime.new(2023, 5, 3, 10, 0, 0),
+  due_date: DateTime.new(2023, 3, 22, 10, 0, 0),
   status: :to_do
 )
 assign15 = Assignment.create!(
@@ -226,7 +233,9 @@ exp16 = Expense.create!(
   event_id: event13.id,
   name: "welcome drinks",
   amount_spent: 5800.99,
-  category_list: "Bar"
+  category_list: "Bar",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 26)
 )
 
 guest17 = Guest.create!(
@@ -242,7 +251,7 @@ task15 = Task.create!(
   event_id: event13.id,
   name: "Call Rob for plumbus",
   description: "he still owes you a favour back for the spares",
-  due_date: DateTime.new(2023, 5, 1, 10, 30, 0),
+  due_date: DateTime.new(2023, 3, 22, 10, 30, 0),
   status: :to_do
 )
 assign16 = Assignment.create!(
@@ -254,7 +263,7 @@ task16 = Task.create!(
   event_id: event13.id,
   name: "book caterer",
   description: "make sure you book the caterer for the canapes. NO FISH! ***Allergy warning!",
-  due_date: DateTime.new(2023, 5, 2),
+  due_date: DateTime.new(2023, 3, 24),
   status: :doing
 )
 assign17 = Assignment.create!(
@@ -266,7 +275,7 @@ task17 = Task.create!(
   event_id: event13.id,
   name: "Book DJ BoogeyWoogey",
   description: "Madmoiselle said she liked BGweegys set the most - lets book her asap so we don't miss out - shes a hoot",
-  due_date: DateTime.new(2023, 5, 3),
+  due_date: DateTime.new(2023, 3, 20),
   status: :done
 )
 assign18 = Assignment.create!(
@@ -278,19 +287,25 @@ exp17 = Expense.create!(
   event_id: event13.id,
   name: "welcome snacks",
   amount_spent: 1500,
-  category_list: "Catering"
+  category_list: "Catering",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 24)
 )
 exp18 = Expense.create!(
   event_id: event13.id,
   name: "@Floraelle - 'decor_flwr'",# category and or tagable ? @suppliers ?
   amount_spent: 5876.55,
-  category_list: "Decor"
+  category_list: "Decor",
+  status: 1,
+  due_date: DateTime.new(2023, 3, 22)
 )
 exp19 = Expense.create!(
   event_id: event13.id,
   name: "DJ BJWG",
   amount_spent: 7050,
-  category_list: "Entertainment"
+  category_list: "Entertainment",
+  status: 1,
+  due_date: DateTime.new(2023, 3, 22)
 )
 
 guest18 = Guest.create!(
@@ -329,13 +344,12 @@ puts "************************--------************************"
 # therefore Eve user011, collab22, event23, task24, assign25, exp26, guest27
 
 
-
 event23 = Event.create!(
   name: "Fox Wedding",
   description: "Mr and Mrs Fox are re-newing their vows and celebrating 10 years together with their besties",
-  start_date: DateTime.new(2023, 4, 17, 19, 0, 0),# add date
-  end_date: DateTime.new(2023, 4, 17, 23, 0, 0), #date format
-  venue_name: "Babylonstorenepia",
+  start_date: DateTime.new(2023, 4, 1, 19, 0, 0),# add date
+  end_date: DateTime.new(2023, 4, 2, 23, 0, 0), #date format
+  venue_name: "Baylonstorenepia",
   venue_address: "Meadowridge, Cape Town",
   est_guests: 20, #int
   total_budget: 20000 #decimal
@@ -351,7 +365,7 @@ task24 = Task.create!(
   event_id: event23.id,
   name: "Pay Floraelle for the Reception Hall Flowers",
   description: "Pay Floraelle for the Reception Hall Flowers, update the budget",
-  due_date: DateTime.new(2023, 4, 10, 16, 0, 0),
+  due_date: DateTime.new(2023, 3, 28, 16, 0, 0),
   status: :to_do
 )
 
@@ -364,7 +378,9 @@ exp26 = Expense.create!(
   event_id: event23.id,
   name: "welcome drinks",
   amount_spent: 5800.99,
-  category_list: "Bar"
+  category_list: "Bar",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 28)
 )
 
 guest27 = Guest.create!(
@@ -380,7 +396,7 @@ task25 = Task.create!(
   event_id: event23.id,
   name: "book cake lady",
   description: "she takes forever",
-  due_date: DateTime.new(2023, 4, 8, 12, 0, 0),
+  due_date: DateTime.new(2023, 3, 29, 12, 0, 0),
   status: :to_do
 )
 assign26 = Assignment.create!(
@@ -392,7 +408,7 @@ task26 = Task.create!(
   event_id: event23.id,
   name: "'Pay' 'Rietta' - 'decor_flwr'",
   description: "Pay Rieatta for the church Flowers, update the budget",
-  due_date: DateTime.new(2023, 4, 1, 14, 0, 0),
+  due_date: DateTime.new(2023, 3, 27, 14, 0, 0),
   status: :doing
 )
 assign27 = Assignment.create!(
@@ -404,7 +420,7 @@ task27 = Task.create!(
   event_id: event23.id,
   name: "Book Band ChampanJey",
   description: "honourable guest said she liked the energy of the team, fits her mood",
-  due_date: DateTime.new(2023, 4, 05, 15, 30, 0),
+  due_date: DateTime.new(2023, 3, 20, 15, 30, 0),
   status: :to_do
 )
 assign28 = Assignment.create!(
@@ -416,19 +432,25 @@ exp27 = Expense.create!(
   event_id: event23.id,
   name: "welcome drinks",
   amount_spent: 1800,
-  category_list: "Bar"
+  category_list: "Bar",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 29)
 )
 exp28 = Expense.create!(
   event_id: event23.id,
-  name: "@Rietta - 'decor_flwr'",
+  name: "Riettas Flowers",
   amount_spent: 5876.55,
-  category_list: "Decor"
+  category_list: "Decor",
+  status: 1,
+  due_date: DateTime.new(2023, 3, 20)
 )
 exp29 = Expense.create!(
   event_id: event23.id,
-  name: "band ChampanJey",
+  name: "band ChampaJeyn",
   amount_spent: 1200,
-  category_list: "Entertainment"
+  category_list: "Entertainment",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 30)
 )
 
 guest28 = Guest.create!(
@@ -478,8 +500,8 @@ puts "************************--------************************"
 event33 = Event.create!(
   name: "James Wedding",
   description: "Bonnie and Clyde are having a small home wedding but oozes class",
-  start_date: DateTime.new(2023, 4, 17, 19, 0, 0),# add date
-  end_date: DateTime.new(2023, 4, 17, 23, 0, 0), #date format
+  start_date: DateTime.new(2023, 4, 11, 19, 0, 0),# add date
+  end_date: DateTime.new(2023, 4, 12, 23, 0, 0), #date format
   venue_name: "Constantia Estate",
   venue_address: "Constantia, Cape Town",
   est_guests: 80, #int
@@ -495,7 +517,7 @@ task34 = Task.create!(
   event_id: event33.id,
   name: "Pay Violet - Flowers",
   description: "Pay violet for flowers and update budget",
-  due_date: DateTime.new(2023, 4, 10, 16, 0, 0),
+  due_date: DateTime.new(2023, 4, 8, 16, 0, 0),
   status: :to_do
 )
 
@@ -508,7 +530,9 @@ exp36 = Expense.create!(
   event_id: event33.id,
   name: "All bar drinks",
   amount_spent: 9800.50,
-  category_list: "Bar"
+  category_list: "Bar",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 29)
 )
 
 guest37 = Guest.create!(
@@ -524,7 +548,7 @@ task35 = Task.create!(
   event_id: event33.id,
   name: "book entertainment - dj and fire dancers",
   description: "none",
-  due_date: DateTime.new(2023, 4, 8, 12, 0, 0),
+  due_date: DateTime.new(2023, 4, 6, 12, 0, 0),
   status: :to_do
 )
 assign36 = Assignment.create!(
@@ -536,7 +560,7 @@ task36 = Task.create!(
   event_id: event33.id,
   name: "bill client for the deposit on crockery",
   description: "we discussed a budget update and they approved - please incl in update",
-  due_date: DateTime.new(2023, 4, 1, 14, 0, 0),
+  due_date: DateTime.new(2023, 4, 2, 14, 0, 0),
   status: :doing
 )
 assign37 = Assignment.create!(
@@ -548,7 +572,7 @@ task37 = Task.create!(
   event_id: event33.id,
   name: "Call Jay for security ",
   description: "Check that they can accomodate us with the event spec - 3xstaff required outside",
-  due_date: DateTime.new(2023, 4, 05, 15, 30, 0),
+  due_date: DateTime.new(2023, 4, 5, 15, 30, 0),
   status: :to_do
 )
 assign38 = Assignment.create!(
@@ -559,7 +583,7 @@ task38 = Task.create!(
   event_id: event33.id,
   name: "Find cowboy boots",
   description: "Mr James is going all out - he wants genuine leather cowboy boots for his boys",
-  due_date: DateTime.new(2023, 3, 16, 15, 30, 0),
+  due_date: DateTime.new(2023, 3, 23, 15, 30, 0),
   status: :doing
 )
 assign38 = Assignment.create!(
@@ -571,19 +595,25 @@ exp37 = Expense.create!(
   event_id: event33.id,
   name: "Mobile bar service",
   amount_spent: 6700,
-  category_list: "Bar"
+  category_list: "Bar",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 23)
 )
 exp38 = Expense.create!(
   event_id: event33.id,
   name: "Decor - flowers'",
   amount_spent: 4005.67,
-  category_list: "Decor"
+  category_list: "Decor",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 22)
 )
 exp39 = Expense.create!(
   event_id: event33.id,
   name: "Bubble machine",
   amount_spent: 1250,
-  category_list: "Entertainment"
+  category_list: "Entertainment",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 31)
 )
 
 guest38 = Guest.create!(
@@ -625,18 +655,127 @@ puts "This is #{user011.first_name}'s '#{event33.name}' (event_id#{event33.id}),
 file = File.open(File.join(__dir__, 'img/James-wedding.png'))
 event33.photo.attach(io: file, filename: 'James-wedding.png', content_type: 'image/png')
 puts "************************--------************************"
+
+
+###########################################################################################################################
+# more users:
+user02 = User.create!(
+  first_name: "Kate",
+  last_name: "Alum",
+  email: "kate@test.com",
+  password: '123456'
+)
+file = File.open(File.join(__dir__, 'img/lady1.png'))
+user02.photo.attach(io: file, filename: 'lady1.png', content_type: 'image/png')
+
+user03 = User.create!(
+  first_name: "Abi",
+  last_name: "Gosch",
+  email: "Abi@test.com",
+  password: '123456'
+)
+file = File.open(File.join(__dir__, 'img/abi_g.png'))
+user03.photo.attach(io: file, filename: 'abi_g.png', content_type: 'image/png')
+
+user04 = User.create!(
+  first_name: "Jiggs",
+  last_name: "Verh",
+  email: "jiggs@test.com",
+  password: '123456'
+)
+file = File.open(File.join(__dir__, 'img/jiggs.png'))
+user04.photo.attach(io: file, filename: 'jiggs.png', content_type: 'image/png')
+
+user05 = User.create!(
+  first_name: "Yonela",
+  last_name: "Joh",
+  email: "Yonela@test.com",
+  password: '123456'
+)
+file = File.open(File.join(__dir__, 'img/yonela.png'))
+user05.photo.attach(io: file, filename: 'yonela.png', content_type: 'image/png')
+
+user06 = User.create!(
+  first_name: "Jafaa",
+  last_name: "Mo",
+  email: "jafaa@test.com",
+  password: '123456'
+)
+file = File.open(File.join(__dir__, 'img/jafaa.png'))
+user06.photo.attach(io: file, filename: 'jafaa.png', content_type: 'image/png')
+
+# shell events
+# venues = ["Rooftop Buiten", "Rusticana", "Welgemeend", "Mountain Manor Guest House", "LukKron", "The Argyle", "The Lookout", "Vineyard Hotel"]
+# addresses = ["Gardens, Cape Town", "Rondebosch, Cape Town", "Constantia, Cape Town", "Greenpoint, Cape Town", "Salt River, Cape Town", "Vredehoek, Cape Town", "Meadowridge, Cape Town"]
+# expense_categories = ["Food", "Drink", "Entertainment", "Decor", "Venue", "Services"]
+
+
+event43 = Event.create!(
+  name: "Escargot",
+  description: "Mermaid themed Beach Wedding",
+  start_date: DateTime.new(2023, 3, 26, 13, 0, 0), # add date
+  end_date: DateTime.new(2023, 3, 27, 19, 0, 0), #date format
+  venue_name: "Welgemeend",
+  venue_address: "Greenpoint, Cape Town",
+  est_guests: 40, #int
+  total_budget: 30000
+)
+file = File.open(File.join(__dir__, 'img/mermaid_wedding.png'))
+event43.photo.attach(io: file, filename: 'mermaid_wedding.png', content_type: 'image/png')
+
+event53 = Event.create!(
+  name: "Conroy Wedding",
+  description: "Farm Wedding",
+  start_date: DateTime.new(2023, 4, 15, 16, 0, 0), # add date
+  end_date: DateTime.new(2023, 3, 16, 2, 0, 0), #date format
+  venue_name: "Conroy Farm",
+  venue_address: "Salt River, Cape Town",
+  est_guests: 35, #int
+  total_budget: 50000
+)
+file = File.open(File.join(__dir__, 'img/farm_wedding.png'))
+event53.photo.attach(io: file, filename: 'farm_wedding.png', content_type: 'image/png')
+
+event63 = Event.create!(
+  name: "Fox Bachelor Party",
+  description: "Includes dads, no paintball please",
+  start_date: DateTime.new(2023, 4, 23, 13, 0, 0), # add date
+  end_date: DateTime.new(2023, 4, 24, 19, 0, 0), #date format
+  venue_name: "LukKron",
+  venue_address: "Rondebosch, Cape Town",
+  est_guests: 15, #int
+  total_budget: 20000
+)
+file = File.open(File.join(__dir__, 'img/fox_bachelors.png'))
+event63.photo.attach(io: file, filename: 'fox_bachelors.png', content_type: 'image/png')
+
+event73 = Event.create!(
+  name: "Riavelet",
+  description: "Sas Octopus Wedding",
+  start_date: DateTime.new(2023, 4, 10, 13, 0, 0), # add date
+  end_date: DateTime.new(2023, 4, 11, 19, 0, 0), #date format
+  venue_name: "Elands",
+  venue_address: "Constantia, Cape Town",
+  est_guests: 10, #int
+  total_budget: 30000
+)
+file = File.open(File.join(__dir__, 'img/wine_farm_wed.png'))
+event73.photo.attach(io: file, filename: 'wine_farm_wed.png', content_type: 'image/png')
+
 ###########################################################################################################################
 # Faker data for guests
 
 puts "************************--------************************"
 puts "generating guestlist"
 30.times do
- guest = Guest.create!(
+first_name = Faker::Name.first_name
+last_name = Faker::Name.last_name
+guest = Guest.create!(
   event_id: event33.id,
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email_address: Faker::Internet.email,
-  phone_number: Faker::PhoneNumber.phone_number,
+  first_name: first_name,
+  last_name: last_name,
+  email_address: Faker::Internet.email(name: first_name, domain: last_name),
+  phone_number: Faker::PhoneNumber.cell_phone,
   invitation_status: :invited
 )
 puts "Event_id,#{event33.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."

@@ -22,6 +22,7 @@
             <%= f.input :name %>
             <%= f.input :description %>
             <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
+            <%= select_tag :user_id, options_from_collection_for_select(@collaborators, 'id', 'first_name' ), label: "Assignee" %>
             <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
             <%= f.button :button, "Add task", class:"btn-action" %>
           <% end %>
@@ -56,7 +57,7 @@
     <div class="kanban-column">
       <h3>To Do</h3>
       <div class="cards-task">
-        <% @todo_tasks.each do |task| %>
+        <% @todo_tasks.map do |task| %>
           <%= render "task_infos", task: task %>
         <% end %>
       </div>
