@@ -1,99 +1,115 @@
 <div class="container-standard">
+
   <h1 class="page-title"><%= @event.name %></h1>
-  <div class="cards-flex-container">
-    <div class="card summary">
-      <h4>Summary</h4>
-      <div class="event-card">
-        <div class="card-content">
-          <div class="event-content">
-            <p><i class="fa-solid fa-circle-info"></i> <%= @event.description %></p>
-            <p><i class="fa-regular fa-clock"></i> <%= @event.start_date.strftime("%d %B %Y %-l%P") %> - <%= @event.end_date.strftime("%d %B %Y %-l%P") %></p>
-            <p><i class="fa-solid fa-location-dot"></i> <%= @event.venue_name %>, <%= @event.venue_address %></p>
-            <p><i class="fa-solid fa-users"></i> <%= @event.est_guests %></p>
-            <p>R<%= @event.total_budget %></p>
+
+  <div class="dashboard flex-column">
+
+    <div class="d-flex justify-content-between">
+      <div class="d-flex flex-column">
+        <div class="dashboard-card">
+          <h2>details</h2>
+          <div class="event-card">
+            <div class="card-content">
+              <div class="event-content">
+                <p><i class="fa-solid fa-circle-info"></i> <%= @event.description %></p>
+                <p><i class="fa-solid fa-clock"></i> <%= @event.start_date.strftime("%d %B %Y %-l%P") %> - <%= @event.end_date.strftime("%d %B %Y %-l%P") %></p>
+                <p><i class="fa-solid fa-location-dot"></i> <%= @event.venue_name %>, <%= @event.venue_address %></p>
+                <p><i class="fa-sharp fa-solid fa-people-group"></i> <%= @event.est_guests %></p>
+                <p><i class="fa-sharp fa-solid fa-dollar-sign"></i>R <%= @event.total_budget %></p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="card summary">
-      <h4>Tasks</h4>
-      <div class="event-card">
-        <%= link_to event_tasks_path(@event) do %>
-          <i class="fa-solid fa-circle-plus"></i>
-        <% end %>
-        <% @tasks.each do |task| %>
-          <div class="card-content">
-            <div class="event-content">
-              <p><%= task.name%>, <%= task.status %></p>
-              <p><%= task.description %></p>
-              <p>Due Date: <%= task.due_date.strftime("%d %B %Y %-l%P") %></p>
-            </div>
+
+        <%= link_to event_messages_path(@event) do %>
+          <div class="dashboard-card">
+            <h2>collaborators</h2>
+              <%= form_with url: event_collaborations_path(@event), method: :post, class: "d-flex" do  |f|  %>
+                <%= f.collection_select :user_id, User.order(:first_name), :id, :first_name %>
+                <%= f.submit "add" %>
+              <% end %>
+            <% @collaborators.each do |collaborator| %>
+              <% if collaborator.user.photo.attached?  %>
+                  <%= cl_image_tag collaborator.user.photo.key, crop: :fill, class: "avatar" %>
+                  <p><%= collaborator.user.first_name  %> <%= collaborator.user.last_name %></p>
+                <% else %>
+                <p><%= collaborator.user.first_name  %> <%= collaborator.user.last_name %></p>
+              <% end %>
+            <% end %>
+            <%= link_to "View chat", event_messages_path(@event), class: "btn btn-secondary" %>
           </div>
         <% end %>
       </div>
-    </div>
-    <div class="card summary">
-      <h4>Colllaborators</h4>
-      <div class="event-card">
-        <%= form_with url: event_collaborations_path(@event), method: :post, class: "d-flex" do  |f|  %>
-          <%= f.collection_select :user_id, User.order(:first_name), :id, :first_name %>
-          <%= f.submit "add" %>
-        <% end %>
-      </div>
-      <% @collaborators.each do |collaborator| %>
-        <% if collaborator.user.photo.attached?  %>
-            <%= cl_image_tag collaborator.user.photo.key, crop: :fill, class: "avatar" %>
-            <p><%= collaborator.user.first_name  %> <%= collaborator.user.last_name %></p>
-          <% else %>
-          <p><%= collaborator.user.first_name  %> <%= collaborator.user.last_name %></p>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-  <div class="cards-flex-container">
-    <div class="card summary">
-      <h4>Expenses</h4>
-      <div class="event-card">
+
+
+      <div class="d-flex flex-column justify-content-between">
         <%= link_to event_expenses_path(@event) do %>
-          <i class="fa-solid fa-circle-plus"></i>
-        <% end %>
-        <% @expenses.each do |expense| %>
-          <div class="card-content">
-            <div class="event-content">
-              <p>Name: <%= expense.name%>, <%= expense.status %></p>
-              <p>Amount Spent: <%= expense.amount_spent %></p>
-              <p>Status: <%= expense.status %></p>
-            </div>
+          <div class="dashboard-card", style="width:450px">
+            <h2>expenses</h2>
+            <%= pie_chart(@pie_chart_expenses, donut: true, legend: "right") %>
           </div>
         <% end %>
+
+        <%= link_to event_guests_path(@event) do %>
+          <div class="dashboard-card", style="width: 450px">
+            <h2>guests</h2>
+            <%= pie_chart @event.guests.group(:invitation_status).count, donut: true, legend: "right" %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= link_to event_tasks_path(@event) do %>
+        <div class="dashboard-card", style="width:450px">
+          <h2>tasks</h2>
+            <% @tasks.each do |task| %>
+              <div class="card-task">
+                  <p><%= task.name%>, <%= task.status %></p>
+                  <p>Due Date: <%= task.due_date.strftime("%d %B %Y %-l%P") %></p>
+              </div>
+            <% end %>
+        </div>
+      <% end %>
+
+
       </div>
     </div>
-    <div class="card summary">
-      <h4>Guests</h4>
-      <div class="event-card">
-        <%= link_to event_guests_path(@event) do %>
-          <i class="fa-solid fa-circle-plus"></i>
-        <% end %>
-        <p><%= @guests.count %></p>
-        <% @guests.each do |guest| %>
-          <div class="card-content">
-            <div class="event-content">
-              <p>Name: <%= guest.first_name%>, <%= guest.invitation_status%></p>
+
+    <div class="d-flex justify-content-between">
+
+      <div class="dashboard-card", style="width: 630px">
+        <h2>mood board</h2>
+          <div class="row justify-content-between">
+            <div class="col-md-auto">
+              <%= image_tag("mood_board_1.jpg", width: 210) %>
             </div>
+            <div class="col-md-auto">
+              <%= image_tag("mood_board_3.jpg", width: 210) %>
+            </div>
+          </div>
+          <div class="row justify-content-centre">
+            <div class="col-md-auto">
+              <%= image_tag("mood_board_4.jpg", width: 420) %>
+            </div>
+          </div>
+      </div>
+
+      <div class="d-flex flex-column justify-content-between">
+        <%= link_to event_expenses_path(@event) do %>
+          <div class="dashboard-card", style="width:450px">
+            <h2>expenses</h2>
+            <%= pie_chart(@pie_chart_expenses, donut: true, legend: "right") %>
+          </div>
+        <% end %>
+
+        <%= link_to event_guests_path(@event) do %>
+          <div class="dashboard-card", style="width: 450px">
+            <h2>guests</h2>
+            <%= pie_chart @event.guests.group(:invitation_status).count, donut: true, legend: "right" %>
           </div>
         <% end %>
       </div>
+
     </div>
   </div>
-</div>
-<br/>
-<br/>
-<div class="container cards-flex-container">
-  <br>
-  <p><%= link_to "View tasks", event_tasks_path(@event), class: "btn btn-secondary"%></p>
-  <p><%= link_to "View expenses", event_expenses_path(@event), class: "btn btn-secondary" %></P>
-  <p><%= link_to "View guests", event_guests_path(@event), class: "btn btn-secondary"%></p>
-  <%= link_to "Back to dashboard", root_path, class: "btn btn-secondary" %>
-  <%= link_to "View chat", event_messages_path(@event), class: "btn btn-secondary" %>
-</div>
+
 </div>

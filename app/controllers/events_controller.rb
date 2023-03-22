@@ -27,6 +27,15 @@ class EventsController < ApplicationController
     @guests = @event.guests
     @collaborators = Collaboration.where(event: @event)
     @message = Message.new
+
+    categories = ["Catering", "Bar", "Entertainment", "Decor", "Venue", "Services", "Transport", "Other"]
+
+    @pie_chart_expenses = []
+    categories.each do |category|
+      @pie_chart_expenses << [ category, @expenses.tagged_with(category).sum(:amount_spent) ] if @expenses.tagged_with(category).sum(:amount_spent).positive?
+    end
+
+
   end
 
   def update
