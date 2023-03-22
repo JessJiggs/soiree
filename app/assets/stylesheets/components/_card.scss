@@ -78,6 +78,9 @@
   height: max-content;
   gap: 20px;
   margin-bottom: 40px;
+  #dashboard-card-events {
+    width: 450px;
+  }
   .event-card, .todo-card{
     width: 100%;
     position: relative;
