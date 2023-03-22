@@ -1,6 +1,7 @@
 <div class="container-standard">
   <h1 class="page-title">My dashboard</h1>
-  <div class="dashboard">
+  <div class="event-dashboard">
+
     <div class="dashboard-card">
       <h2>events</h2>
       <div style="width: 100%">
@@ -49,20 +50,19 @@
           <% end %>
     </div>
 
-    <div class="d-flex flex-column">
-
-      <div class="dashboard-card mb-5" style="width: 400px">
-            <h2>calendar</h2>
-            <div class="todo-card">
-              <%= image_tag("calendar_image.png", width: 330 ) %>
-            </div>
+  <div class="">
+      <div class="dashboard-card">
+        <h2>calendar</h2>
+        <div class="todo-card">
+          <%= image_tag("calendar_image.png", width: 330 ) %>
+        </div>
       </div>
-
-      <div class="dashboard-card" style="width: 400px; height:300px">
-            <h2>notes</h2>
-            <div class="todo-card">
-              <h5>Monday</h5>
-            </div>
+        <div class="dashboard-card" style="height:300px">
+          <h2>notes</h2>
+          <div class="todo-card">
+            <h5>Monday</h5>
+          </div>
+        </div>
       </div>
-    </div>
+  </div>
 </div>

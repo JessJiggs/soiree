@@ -17,4 +17,8 @@
     gap: 8px;
   }
 }
-  
+.event-dashboard{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+}
