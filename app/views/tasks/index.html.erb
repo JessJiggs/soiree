@@ -5,9 +5,8 @@
     <h2 class="h2-light"></h2>
   </div>
 
-  <div class="search-actions d-flex mt-4">
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addTask"> + Add task </button>
-    <%= link_to "Back to event", event_path(@event), class: "btn btn-secondary mr-4"%>
+  <div>
+    <h2> Subnavbar placeholder</h2>
   </div>
 
   <div class="modal fade" id="addTask" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
@@ -22,8 +21,10 @@
             <%= f.input :name %>
             <%= f.input :description %>
             <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
-            <%= select_tag :user_id, options_from_collection_for_select(@collaborators, 'id', 'first_name' ), label: "Assignee" %>
             <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
+            <p class="mb-2">Assignee</p>
+            <%= select_tag :user_id, options_from_collection_for_select(@collaborators, 'id', 'first_name' ), label: "Assignee", class:"form-control" %>
+            <br>
             <%= f.button :button, "Add task", class:"btn-action" %>
           <% end %>
         </div>
@@ -31,7 +32,7 @@
     </div>
   </div>
 
-  <div class="task-stats d-flex mt-4">
+  <div class="task-stats d-flex justify-content-between mt-4">
     <div class="card-task-stat">
       <p class="text-white text-center mb-0">Completed Tasks</p>
       <p class="text-white text-center text-large"><%= @done_tasks.count %></p>
@@ -55,15 +56,16 @@
 
   <div class="kanban d-flex mt-4">
     <div class="kanban-column">
-      <h3>To Do</h3>
+      <h3 mb-4>To Do</h3>
       <div class="cards-task">
-        <% @todo_tasks.map do |task| %>
+        <% @todo_tasks.each do |task| %>
           <%= render "task_infos", task: task %>
         <% end %>
       </div>
+      <button type="button" class="btn btn-secondary align-center mt-4" data-bs-toggle="modal" data-bs-target="#addTask"> + Add task </button>
     </div>
     <div class="kanban-column">
-      <h3>Doing</h3>
+      <h3 mb-4>Doing</h3>
       <div class="cards-task">
         <% @doing_tasks.each do |task| %>
           <%= render "task_infos", task: task %>
@@ -71,7 +73,7 @@
       </div>
     </div>
     <div class="kanban-column">
-      <h3>Done</h3>
+      <h3 mb-4>Done</h3>
       <div class="cards-task">
         <% @done_tasks.each do |task| %>
           <%= render "task_infos", task: task %>

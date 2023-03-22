@@ -8,10 +8,18 @@
   height: 645;
   border-radius: 10px;
   padding: 20px;
+  margin-top: 40px;
 }
 
 .kanban-column{
  display: flex;
  justify-content: center;
+ align-items: center;
  flex-direction: column;
+ h3 {
+  margin-bottom: 20px;
+ }
+ .btn {
+  background-color: $accent-color;
+ }
 }
