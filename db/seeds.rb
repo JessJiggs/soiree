@@ -666,7 +666,7 @@ user02 = User.create!(
   password: '123456'
 )
 file = File.open(File.join(__dir__, 'img/lady1.png'))
-event13.photo.attach(io: file, filename: 'lady1.png', content_type: 'image/png')
+user02.photo.attach(io: file, filename: 'lady1.png', content_type: 'image/png')
 
 user03 = User.create!(
   first_name: "Abi",
@@ -675,7 +675,7 @@ user03 = User.create!(
   password: '123456'
 )
 file = File.open(File.join(__dir__, 'img/abi_g.png'))
-event13.photo.attach(io: file, filename: 'abi_g.png', content_type: 'image/png')
+user03.photo.attach(io: file, filename: 'abi_g.png', content_type: 'image/png')
 
 user04 = User.create!(
   first_name: "Jiggs",
@@ -684,7 +684,7 @@ user04 = User.create!(
   password: '123456'
 )
 file = File.open(File.join(__dir__, 'img/jiggs.png'))
-event13.photo.attach(io: file, filename: 'jiggs.png', content_type: 'image/png')
+user04.photo.attach(io: file, filename: 'jiggs.png', content_type: 'image/png')
 
 user05 = User.create!(
   first_name: "Yonela",
@@ -693,7 +693,7 @@ user05 = User.create!(
   password: '123456'
 )
 file = File.open(File.join(__dir__, 'img/yonela.png'))
-event13.photo.attach(io: file, filename: 'yonela.png', content_type: 'image/png')
+user05.photo.attach(io: file, filename: 'yonela.png', content_type: 'image/png')
 
 user06 = User.create!(
   first_name: "Jafaa",
@@ -702,7 +702,7 @@ user06 = User.create!(
   password: '123456'
 )
 file = File.open(File.join(__dir__, 'img/jafaa.png'))
-event13.photo.attach(io: file, filename: 'jafaa.png', content_type: 'image/png')
+user06.photo.attach(io: file, filename: 'jafaa.png', content_type: 'image/png')
 
 # shell events
 # venues = ["Rooftop Buiten", "Rusticana", "Welgemeend", "Mountain Manor Guest House", "LukKron", "The Argyle", "The Lookout", "Vineyard Hotel"]
@@ -721,7 +721,7 @@ event43 = Event.create!(
   total_budget: 30000
 )
 file = File.open(File.join(__dir__, 'img/mermaid_wedding.png'))
-event13.photo.attach(io: file, filename: 'mermaid_wedding.png', content_type: 'image/png')
+event43.photo.attach(io: file, filename: 'mermaid_wedding.png', content_type: 'image/png')
 
 event53 = Event.create!(
   name: "Conroy Wedding",
@@ -734,7 +734,7 @@ event53 = Event.create!(
   total_budget: 50000
 )
 file = File.open(File.join(__dir__, 'img/farm_wedding.png'))
-event13.photo.attach(io: file, filename: 'farm_wedding.png', content_type: 'image/png')
+event53.photo.attach(io: file, filename: 'farm_wedding.png', content_type: 'image/png')
 
 event63 = Event.create!(
   name: "Fox Bachelor Party",
@@ -747,7 +747,7 @@ event63 = Event.create!(
   total_budget: 20000
 )
 file = File.open(File.join(__dir__, 'img/fox_bachelors.png'))
-event13.photo.attach(io: file, filename: 'fox_bachelors.png', content_type: 'image/png')
+event63.photo.attach(io: file, filename: 'fox_bachelors.png', content_type: 'image/png')
 
 event73 = Event.create!(
   name: "Riavelet",
@@ -760,7 +760,7 @@ event73 = Event.create!(
   total_budget: 30000
 )
 file = File.open(File.join(__dir__, 'img/wine_farm_wed.png'))
-event13.photo.attach(io: file, filename: 'wine_farm_wed.png', content_type: 'image/png')
+event73.photo.attach(io: file, filename: 'wine_farm_wed.png', content_type: 'image/png')
 
 ###########################################################################################################################
 # Faker data for guests
