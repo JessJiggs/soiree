@@ -7,7 +7,7 @@
     <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link"%>
     <%= link_to "guests", event_guests_path(@event), class: "sub-nav-link", id: "this-page"%>
   </div>
-  <div class="barchart">
+  <div class="barchart mb-5">
     <%= bar_chart [
       {name: "Invite not sent", data: [["#",@guests_not_sent]]},
       {name: "Invite sent", data: [["#",@guests_invited]]},
@@ -15,19 +15,19 @@
       {name: "Declined", data: [["#",@guests_declined]]}],
       stacked: true,  height: "100px" %>
   </div>
-  <div class="search-actions">
+  <div class="search-actions d-flex justify-content-between align-items-center">
     <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
         <%= text_field_tag :query,
             params[:query],
-            class: "search-bar",
+            class: "search-bar border-0",
             placeholder: "Search..."%>
       <% end %>
     </div>
     <div class="actions">
-      <p class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addGuest"> + Add guest </p>
-      <p class="btn btn-secondary">download template</p>
-      <p class="btn btn-secondary">import guests</p>
+      <p class="btn btn-secondary mb-0" data-bs-toggle="modal" data-bs-target="#addGuest"> + Add guest </p>
+      <p class="btn btn-secondary mb-0">download template</p>
+      <p class="btn btn-secondary mb-0">import guests</p>
     </div>
   </div>
   <div class="table">

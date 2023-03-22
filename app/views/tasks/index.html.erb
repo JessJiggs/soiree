@@ -1,7 +1,7 @@
 <div class="container">
 
   <h1 class="page-title"><%= @event.name %></h1>
-  <div>
+  <div mb-5>
     <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
     <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link", id: "this-page"%>
     <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link"%>
@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div class="task-stats d-flex justify-content-between mt-4">
+  <div class="task-stats d-flex justify-content-between mt-5">
     <div class="card-task-stat">
       <p class="text-white text-center mb-0">Completed Tasks</p>
       <p class="text-white text-center text-large"><%= @done_tasks.count %></p>
