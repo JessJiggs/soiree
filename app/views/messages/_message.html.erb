@@ -1,9 +1,16 @@
-<div id="message-<%= message.id %>" class="message">
-  <img src="<%= message.user.photo.key %>" class="avatar" alt="<%= message.user.first_name %>">
+<div id="message-<%= message.id %>" class="message
+    <% if message.user_id == current_user.id %>
+      current_user
+      <% else %>
+      others
+    <% end %>
+">
+  <%= cl_image_tag message.user.photo.key,  class: "avatar" %>
+
   <div class="details">
     <div class="meta">
       <span class="name"><%= message.user.first_name %></span>
-      <span class="time"><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></span>
+      <span class="time"><%= time_ago_in_words(message.created_at) %></span>
     </div>
     <div class="content">
       <p><%= message.content %></p>
