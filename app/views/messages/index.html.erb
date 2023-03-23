@@ -3,7 +3,7 @@
   data-event-subscription-event-id-value="<%= @event.id %>"
 >
 
-<h1 class="page-title"><%= @event.name %></h1>
+<h1 class="page-title mb-0"><%= @event.name %></h1>
 <div mb-5>
     <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
     <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
