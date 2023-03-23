@@ -791,7 +791,7 @@ collab72 = Collaboration.create!(
 
 ###########################################################################################################################
 # Faker data for guests
-
+invitations = ["invite_not_sent", "invited", "accepted", "declined"]
 puts "************************--------************************"
 puts "generating guestlist"
 30.times do
@@ -803,7 +803,8 @@ guest = Guest.create!(
   last_name: last_name,
   email_address: Faker::Internet.email(name: first_name, domain: last_name),
   phone_number: Faker::PhoneNumber.cell_phone,
-  invitation_status: :invited
+  # invitation_status: :invited,
+  invitation_status: invitations.sample
 )
 puts "Event_id,#{event33.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."
 end
