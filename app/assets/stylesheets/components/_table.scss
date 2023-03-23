@@ -1,40 +1,39 @@
 .table {
   width: 100%;
-  margin: 4px;
+  // margin: 4px;
   padding: 8px;
+  border: none;
 }
 
 table,th {
-  border: 2px solid $secondary-color;
+  border: 2px solid $secondary-color !important;
   padding: 10px;
-
 }
 
 tr:nth-child(even) {
   background-color: $light-green;
+  border: none;
 }
 
 table, td {
-  border: 2px dotted #CCCCCC;
   padding: 10px;
-
+  border: none;
 }
 
 .text-table-std, th {
   text-align: left;
-
 }
 
 .text-table-std, td {
   text-align: left;
-
+  border: none;
 }
 
 .text-table-status, th {
   text-align: center;
-
 }
 
 .text-table-status, td {
   text-align: center;
+  border: none;
 }

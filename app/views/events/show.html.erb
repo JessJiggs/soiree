@@ -1,13 +1,13 @@
 <div class="container-standard">
   <h1 class="page-title"><%= @event.name %></h1>
-    <div>
+    <div class="mb-5">
     <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link", id: "this-page"%>
     <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
     <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link"%>
     <%= link_to "guests     |   ", event_guests_path(@event), class: "sub-nav-link"%>
     <%= link_to "chat", event_messages_path(@event), class: "sub-nav-link"%>
   </div>
-  <div class="event-dashboard">
+  <div class="event-dashboard d-flex">
       <div class="d-flex flex-column">
         <div class="dashboard-card">
           <h2>details</h2>
@@ -43,54 +43,65 @@
               <%= link_to "Chat", event_messages_path(@event), class: "btn btn-secondary" %>
           </div>
         </div>
-      <div class="d-flex flex-column justify-content-between">
+      <div class="d-flex flex-column">
         <%= link_to event_expenses_path(@event) do %>
           <div class="dashboard-card">
             <h2>expenses</h2>
-            <%= pie_chart(@pie_chart_expenses, donut: true, legend: "right") %>
+            <%= pie_chart(@pie_chart_expenses, donut: true, legend: "right", colors: ["#C6A4D7", "#FFC65A", "#ABCB98", "rgba(230, 126, 34, 0.6)", "#0D6EFD", "#D59E9E", "#CCCCCC", "white", ]) %>
           </div>
         <% end %>
 
         <%= link_to event_guests_path(@event) do %>
           <div class="dashboard-card">
             <h2>guests</h2>
-            <%= pie_chart @event.guests.group(:invitation_status).count, donut: true, legend: "right" %>
+            <%= pie_chart @event.guests.group(:invitation_status).count, donut: true, legend: "right", colors: ["#C6A4D7", "#FFC65A", "#ABCB98", "rgba(230, 126, 34, 0.6)", "#0D6EFD", "#D59E9E", "#CCCCCC", "white", ] %>
           </div>
         <% end %>
       </div>
 
-      <%= link_to event_tasks_path(@event) do %>
-        <div class="dashboard-card", style="width:450px">
-          <h2>today's tasks</h2>
-            <% @todays_tasks.each do |task| %>
-              <div class="card-task event-task">
-                  <div class="head">
-                    <p class="name"><%= task.name %></p>
-                    <p><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "event-avatar" %></p>
+      <div class="d-flex flex-column">
+          <%= link_to event_tasks_path(@event) do %>
+            <div class="dashboard-card", style="width:450px">
+              <h2>
+              <% if @todays_tasks.count > 0 %>
+                  today's
+                <% else %>
+                  upcoming
+              <% end %>
+              tasks
+              </h2>
+              <% if @todays_tasks.count > 0 %>
+                <% @todays_tasks.each do |task| %>
+                  <div class="card-task event-task">
+                      <div class="head">
+                        <p class="name"><%= task.name %></p>
+                        <p><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "event-avatar" %></p>
+                      </div>
+                      <p class="description"><%= task.description %></p>
+                      <p class="status"><%= task.status %></p>
                   </div>
-                  <p class="description"><%= task.description %></p>
-                  <p class="status"><%= task.status %></p>
-              </div>
-            <% end %>
-        </div>
-      <% end %>
-      </div>
+                <% end %>
+                <% else %>
+                  <% @todo_tasks.each do |task| %>
+                    <div class="card-task event-task">
+                        <div class="head">
+                          <p class="name"><%= task.name %></p>
+                          <p><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "event-avatar" %></p>
+                        </div>
+                        <p class="description"><%= task.description %></p>
+                        <p class="status"><%= task.status %></p>
+                    </div>
+                  <% end %>
+              <% end %>
+            </div>
+          <% end %>
 
-      <div class="dashboard-card", style="width: 630px">
-        <h2>mood board</h2>
-          <div class="row justify-content-between">
-            <div class="col-md-auto">
-              <%= image_tag("mood_board_1.jpg", width: 210) %>
-            </div>
-            <div class="col-md-auto">
-              <%= image_tag("mood_board_3.jpg", width: 210) %>
-            </div>
+
+          <div class="dashboard-card", style="width: 450px">
+            <h2>mood board</h2>
+            <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="400" data-pin-scale-width="320" data-turbo="false" href="<%=@event.pinterest_board%>"></a>
           </div>
-          <div class="row justify-content-centre">
-            <div class="col-md-auto">
-              <%= image_tag("mood_board_4.jpg", width: 420) %>
-            </div>
-          </div>
-      </div>
+        </div>
+    </div>
   </div>
 </div>

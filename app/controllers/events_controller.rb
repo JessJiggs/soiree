@@ -24,7 +24,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @tasks = @event.tasks
     today_date = Date.today.strftime('%Y-%m-%d')
-    @todays_tasks = @tasks.filter { |date| date.due_date.strftime('%Y-%m-%d') == today_date && date.status = "to_do" }
+    @todays_tasks = @tasks.filter { |date| date.due_date.strftime('%Y-%m-%d') == today_date && date.status == "to_do" }
+    @todo_tasks = @tasks.filter { |task| task.status == "to_do" }
     @expenses = @event.expenses
     @guests = @event.guests
     @collaborators = Collaboration.where(event: @event)
@@ -52,6 +53,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :description, :start_date, :end_date, :venue_name, :venue_address,
-                                  :est_guests, :total_budget, :photo)
+                                  :est_guests, :total_budget, :photo, :pinterest_board)
   end
 end

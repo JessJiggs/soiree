@@ -19,7 +19,6 @@ class MessagesController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     @message = Message.new
-
     @messages = @event.messages
   end
 
