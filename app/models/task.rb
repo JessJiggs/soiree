@@ -6,4 +6,7 @@ class Task < ApplicationRecord
   acts_as_taggable_on :categories
   enum :status, %i[to_do doing done]
 
+  def done?
+    done
+  end
 end

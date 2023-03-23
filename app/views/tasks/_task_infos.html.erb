@@ -7,9 +7,10 @@
       <p class="category"><%= task.category_list %></p>
       <p class="date mb-0"><%= task.due_date.strftime("%d %B %Y") %></p>
         <div class="text-end">
-          <i class="fa-solid fa-pen fa-sm ml-2" data-action="click->edit-task#displayForm"></i>
+          <i class="fa-sharp fa-regular fa-circle-check fa-lg ml-2" data-toggle="tooltip" data-placement="top" title="Mark as done"></i>
+          <i class="fa-solid fa-pen fa-sm ml-2" data-action="click->edit-task#displayForm" data-toggle="tooltip" data-placement="top" title="Edit task"></i>
           <%= link_to(event_task_path(@event, task), class: "task", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
-            <i class="fa-solid fa-trash fa-sm ml-2 text-end"></i>
+            <i class="fa-solid fa-trash fa-sm ml-2 text-end" data-toggle="tooltip" data-placement="top" title="Delete task"></i>
           <% end %>
         </div>
     </div>
