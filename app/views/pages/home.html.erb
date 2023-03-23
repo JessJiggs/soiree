@@ -53,9 +53,14 @@
       <div class="dashboard-card">
         <h2>calendar</h2>
         <div class="todo-card">
-          <%= image_tag("calendar_image.png", width: 330 ) %>
-        </div>
-      </div>
+x
+          <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
+                <% events.each do |event| %>
+                <div>
+                  <%= event.name %>
+                </div>
+              <% end %>
+          <% end %>
         <div class="dashboard-card" style="height:300px">
           <h2>notes</h2>
           <div class="todo-card">
