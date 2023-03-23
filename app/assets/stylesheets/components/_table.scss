@@ -10,16 +10,6 @@ table.table {
   padding: 10px;
 }
 
-tr:nth-child(even) {
-  background-color: $light-green;
-  border: none;
-}
-
-.alt-bg:nth-child(even) {
-  background-color: $light-green;
-  border: none;
-}
-
 .table, td {
   padding: 10px;
   border: none;
@@ -40,5 +30,16 @@ tr:nth-child(even) {
 
 .text-table-status, td {
   text-align: center;
+  border: none;
+}
+
+
+tr:nth-child(even) {
+  background-color: $light-green;
+  border: none;
+}
+
+.alt-bg:nth-child(even) {
+  background-color: $light-green;
   border: none;
 }
