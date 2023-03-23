@@ -43,7 +43,7 @@
               <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
               <%= f.input :status, collection: [:unpaid, :paid,], label: "Status" %>
               <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } }, label: false %>
-              <%= f.button :button, "Edit", class:"btn-action" %>
+              <%= f.button :button, "Add Expense", class:"btn-action" %>
             <% end %>
           </div>
         </div>
