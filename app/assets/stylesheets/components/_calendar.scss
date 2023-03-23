@@ -1,0 +1,22 @@
+
+.simple-calendar{
+  text-align: center;
+}
+.table {
+  background-color: white;
+}
+.calendar-heading{
+  .calendar-title{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 20px;
+  }
+
+  a{
+    color: $theme-green;
+  }
+}
+
+.day{
+  font-size: 12px;
+}
