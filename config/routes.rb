@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'sass/home'
   devise_for :users
   root to: "pages#home"
+  patch '/events/:event_id/mark_as_done/:id', to: 'tasks#mark_as_done', as: 'mark_as_done'
   resources :notes, only: %i[create]
   resources :events, only: %i[new create show update] do
     resources :messages, only: %i[create index ]
