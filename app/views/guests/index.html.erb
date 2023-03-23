@@ -50,17 +50,19 @@
       </div>
     </div>
   </div>
-
-    <table class="table">
+  <table class="table">
+    <tr>
+      <th class="text-table-std"> # </th>
+      <th class="text-table-std"> Name</th>
+      <th class="text-table-std"> Surname</th>
+      <th class="text-table-std"> email</th>
+      <th class="text-table-std"> phone</th>
+      <th class="text-table-status"> Invitation Status</th>
+      <th class="text-table-status"> Action </th>
+    </tr>
       <tr>
-        <th class="text-table-std"> Name</th>
-        <th class="text-table-std"> Surname</th>
-        <th class="text-table-std"> email</th>
-        <th class="text-table-std"> phone</th>
-        <th class="text-table-status"> Invitation Status</th>
-        <th class="text-table-status"> Action </th>
-      </tr>
-      <% @guests.each do |guest| %>
+    <% @guests.each_with_index do |guest, index| %>
+        <td> <%= index + 1 %>
         <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content text-bg-light">
@@ -81,37 +83,36 @@
             </div>
           </div>
         </div>
-        <tr>
-          <td class="text-table-std"><%= guest.first_name %></td>
-          <td class="text-table-std"><%= guest.last_name%></td>
-          <td class="text-table-std"><%= guest.email_address%></td>
-          <td class="text-table-std"><%= guest.phone_number%></td>
-          <% if guest.invitation_status ==  "invite_not_sent"%>
-            <td class="text-table-status" id="status-not-invited-pill">
-              <p><%= guest.invitation_status.humanize %></p>
-            </td>
-          <% elsif guest.invitation_status ==  "invited" %>
-            <td class="text-table-status" id="status-invited-pill">
-              <p><%= guest.invitation_status.humanize %></p>
-            </td>
-          <% elsif guest.invitation_status ==  "accepted" %>
-            <td class="text-table-status" id="status-accepted-pill">
-              <p><%= guest.invitation_status.humanize %></p>
-            </td>
-          <% else guest.invitation_status ==  "declined" %>
-            <td class="text-table-status" id="status-declined-pill">
-              <p><%= guest.invitation_status.humanize %></p>
-            </td>
-          <% end %>
-          <td class="text-table-status">
-            <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>"> </i>
-            <i class="fa-solid fa-paper-plane fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>" > </i>
-            <%= link_to(event_guest_path(@event, guest), class: "guest", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
-              <i class="fa-solid fa-trash fa-xs ml-2"></i>
-            <% end %>
+        </td>
+        <td class="text-table-std"><%= guest.first_name %></td>
+        <td class="text-table-std"><%= guest.last_name%></td>
+        <td class="text-table-std"><%= guest.email_address%></td>
+        <td class="text-table-std"><%= guest.phone_number%></td>
+        <% if guest.invitation_status ==  "invite_not_sent"%>
+          <td class="text-table-status" id="status-not-invited-pill">
+            <p><%= guest.invitation_status.humanize %></p>
           </td>
-        </tr>
-      <% end %>
-    </table>
-
+        <% elsif guest.invitation_status ==  "invited" %>
+          <td class="text-table-status" id="status-invited-pill">
+            <p><%= guest.invitation_status.humanize %></p>
+          </td>
+        <% elsif guest.invitation_status ==  "accepted" %>
+          <td class="text-table-status" id="status-accepted-pill">
+            <p><%= guest.invitation_status.humanize %></p>
+          </td>
+        <% else guest.invitation_status ==  "declined" %>
+          <td class="text-table-status" id="status-declined-pill">
+            <p><%= guest.invitation_status.humanize %></p>
+          </td>
+        <% end %>
+        <td class="text-table-status">
+          <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>"> </i>
+          <i class="fa-solid fa-paper-plane fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>" > </i>
+          <%= link_to(event_guest_path(@event, guest), class: "guest", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
+            <i class="fa-solid fa-trash fa-xs ml-2"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>

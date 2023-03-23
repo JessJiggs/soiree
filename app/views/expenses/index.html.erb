@@ -51,6 +51,7 @@
     </div>
     <table class="table">
       <tr class="alt-bg">
+      <th class="text-table-std"> # </th>
         <th class="text-table-std"> Name</th>
         <th class="text-table-std"> Amount Spent</th>
         <th class="text-table-category"> Category</th>
@@ -59,8 +60,9 @@
         <th class="text-table-action"> Actions</th>
       </tr>
       <tbody>
-        <% @expenses.each do |expense| %>
           <tr>
+        <% @expenses.each_with_index do |expense, index| %>
+        <td> <%= index + 1 %>
             <%= simple_form_for [@event, expense] do |f| %>
               <div class="modal fade" id="editExpense<%= expense.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editExpenseLabel" aria-hidden="true">
                 <div class="modal-dialog">
