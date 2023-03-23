@@ -52,7 +52,6 @@
 select{
   border: none;
   outline: none;
-  background-color: grey;
   width: 100%;
   padding-left: 5px;
   cursor: pointer;
@@ -69,7 +68,7 @@ input.add{
   box-shadow: none;
   font-size: 20px;
   font-weight: bold;
-  background-color: grey;
+  background-color: $theme-green;
   width: 60px;
   text-align: center;
   cursor: pointer;
