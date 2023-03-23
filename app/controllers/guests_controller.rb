@@ -3,8 +3,6 @@ class GuestsController < ApplicationController
     @event = Event.find(params[:event_id])
     @guest = Guest.new
 
-    @invitation_status = [invite_not_sent: "Invite not sent", invited: "Invite sent", accepted: "Accepted", declined: "Declined"]
-
     if params[:query].present?
       @guests = @event.guests.search_by_first_name_and_last_name_and_email_address_and_phone_number_and_invitation_status(params[:query]).order(updated_at: :desc)
     else

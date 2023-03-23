@@ -1,23 +1,93 @@
 
 
-.show-guests{
-  border: 2px solid #BA937C;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
 .search-actions{
   width: 100%;
+  display: flex;
   margin-top: 10px;
   margin-bottom: 15px;
-  display: flex;
+  margin-left: 10px;
+  margin-right: 12.5;
   align-items: center;
 }
 
 .actions{
   width: 800px;
   display: flex;
-  justify-content: space-between;
+}
+
+
+#status-not-invited-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  p {
+    // opacity: 0.6;
+    color: black;
+    background: rgba(230, 126, 34, 0.6);
+    text-align: center;
+    max-width: fit-content;
+    padding: 4px 25px ;
+    border-radius: 10px;
+    margin-bottom: 0;
+  }
+
+}
+
+#status-invited-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  p {
+    // opacity: 0.6;
+    color: black;
+    background: rgba(255, 198, 90, 0.6);
+    text-align: center;
+    max-width: fit-content;
+    padding: 4px 25px ;
+    border-radius: 10px;
+    margin-bottom: 0;
+  }
+
+}
+
+#status-accepted-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  p {
+    // opacity: 0.6;
+    color: black;
+    background: rgba(171, 203, 152, 0.6);
+    text-align: center;
+    max-width: fit-content;
+    padding: 4px 25px ;
+    border-radius: 10px;
+    margin-bottom: 0;
+  }
+
+}
+
+#status-declined-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  p {
+    // opacity: 0.6;
+    color: black;
+    background: rgba(213, 158, 158, 0.6);
+    text-align: center;
+    max-width: fit-content;
+    padding: 4px 25px ;
+    border-radius: 10px;
+    margin-bottom: 0;
+  }
+
 }
