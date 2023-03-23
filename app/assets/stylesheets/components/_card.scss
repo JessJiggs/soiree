@@ -103,6 +103,9 @@
   height: max-content;
   gap: 20px;
   margin-bottom: 40px;
+  a {
+    position: relative;
+  }
   .todo-card{
     width: 100%;
     .i{

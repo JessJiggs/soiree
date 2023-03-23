@@ -96,21 +96,9 @@
       <% end %>
       </div>
 
-      <div class="dashboard-card", style="width: 630px">
+      <div class="dashboard-card", style="width: 800px">
         <h2>mood board</h2>
-          <div class="row justify-content-between">
-            <div class="col-md-auto">
-              <%= image_tag("mood_board_1.jpg", width: 210) %>
-            </div>
-            <div class="col-md-auto">
-              <%= image_tag("mood_board_3.jpg", width: 210) %>
-            </div>
-          </div>
-          <div class="row justify-content-centre">
-            <div class="col-md-auto">
-              <%= image_tag("mood_board_4.jpg", width: 420) %>
-            </div>
-          </div>
+        <a data-pin-do="embedBoard" data-pin-board-width="800" data-pin-scale-height="800" data-pin-scale-width="320" href="<%=@event.pinterest_board%>"></a>
       </div>
   </div>
 </div>

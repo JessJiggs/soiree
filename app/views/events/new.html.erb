@@ -32,8 +32,8 @@
         <%= f.input :est_guests, label: "Estimated Guests" %>
         <%= f.input :total_budget, label: "Budget" %>
       </div>
-      <%= f.input :photo, as: :file, input_html: {  data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: { class: 'image-input'}, label: 'Upload file'%>
-
+      <%= f.input :photo, as: :file, input_html: {  data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label: 'Upload file'%>
+      <%= f.input :pinterest_board, label: "Link to pinterest board" %>
       <%= f.button :button, "Create Event", class: "btn btn-secondary", label: false  %>
     <% end %>
   </div>

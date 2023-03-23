@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_102638) do
     t.float "total_budget"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pinterest_board"
   end
 
   create_table "expenses", force: :cascade do |t|
