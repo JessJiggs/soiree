@@ -208,7 +208,8 @@ event13 = Event.create!(
   venue_name: "Vineyard Hotel",
   venue_address: "Claremont, Cape Town",
   est_guests: 300, #int
-  total_budget: 200000
+  total_budget: 200000,
+  pinterest_board: "https://za.pinterest.com/doubleuniquedecor/caramel-safari-wedding/"
 )
 
 collab12 = Collaboration.create!(
@@ -293,7 +294,7 @@ exp17 = Expense.create!(
 )
 exp18 = Expense.create!(
   event_id: event13.id,
-  name: "@Floraelle - 'decor_flwr'",# category and or tagable ? @suppliers ?
+  name: "Floraelle flowers'",# category and or tagable ? @suppliers ?
   amount_spent: 5876.55,
   category_list: "Decor",
   status: 1,
@@ -352,7 +353,8 @@ event23 = Event.create!(
   venue_name: "Baylonstorenepia",
   venue_address: "Meadowridge, Cape Town",
   est_guests: 20, #int
-  total_budget: 20000 #decimal
+  total_budget: 20000, #decimal
+  pinterest_board: "https://za.pinterest.com/jennifergifforddesigns/small-backyard-wedding/"
 )
 collab22 = Collaboration.create!(
   user_id: user011.id,#eve is still the event owner
@@ -505,7 +507,8 @@ event33 = Event.create!(
   venue_name: "Constantia Estate",
   venue_address: "Constantia, Cape Town",
   est_guests: 80, #int
-  total_budget: 50000 #decimal
+  total_budget: 50000, #decimal
+  pinterest_board: "https://za.pinterest.com/kikickennedy/wedding-inspo/"
 )
 collab32 = Collaboration.create!(
   user_id: user011.id,#eve is still the event owner
@@ -546,8 +549,8 @@ guest37 = Guest.create!(
 
 task35 = Task.create!(
   event_id: event33.id,
-  name: "book entertainment - dj and fire dancers",
-  description: "none",
+  name: "book entertainment",
+  description: "dj and fire dancers",
   due_date: DateTime.new(2023, 4, 6, 12, 0, 0),
   status: :to_do
 )
@@ -558,7 +561,7 @@ assign36 = Assignment.create!(
 
 task36 = Task.create!(
   event_id: event33.id,
-  name: "bill client for the deposit on crockery",
+  name: "bill for crockery",
   description: "we discussed a budget update and they approved - please incl in update",
   due_date: DateTime.new(2023, 4, 2, 14, 0, 0),
   status: :doing
