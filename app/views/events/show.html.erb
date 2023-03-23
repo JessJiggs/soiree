@@ -61,7 +61,15 @@
 
       <%= link_to event_tasks_path(@event) do %>
         <div class="dashboard-card", style="width:450px">
-          <h2>today's tasks</h2>
+          <h2>
+          <% if @todays_tasks.count > 0 %>
+              today's
+            <% else %>
+              upcoming
+           <% end %>
+           tasks
+           </h2>
+          <% if @todays_tasks.count > 0 %>
             <% @todays_tasks.each do |task| %>
               <div class="card-task event-task">
                   <div class="head">
@@ -72,6 +80,18 @@
                   <p class="status"><%= task.status %></p>
               </div>
             <% end %>
+            <% else %>
+              <% @todo_tasks.each do |task| %>
+                <div class="card-task event-task">
+                    <div class="head">
+                      <p class="name"><%= task.name %></p>
+                      <p><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "event-avatar" %></p>
+                    </div>
+                    <p class="description"><%= task.description %></p>
+                    <p class="status"><%= task.status %></p>
+                </div>
+              <% end %>
+          <% end %>
         </div>
       <% end %>
       </div>
