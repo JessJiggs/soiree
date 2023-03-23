@@ -5,8 +5,4 @@ class Task < ApplicationRecord
   has_many :users, through: :collaborations
   acts_as_taggable_on :categories
   enum :status, %i[to_do doing done]
-
-  def done?
-    done
-  end
 end

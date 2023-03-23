@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [ :update, :destroy ]
-  before_action :set_event, only: [ :create, :index, :update, :destroy ]
+  before_action :set_task, only: [ :update, :destroy, :mark_as_done ]
+  before_action :set_event, only: [ :create, :index, :update, :destroy, :mark_as_done ]
 
   def create
     collaborations = Collaboration.where(user_id: params[:user_id], event_id: params[:event_id])
@@ -12,6 +12,11 @@ class TasksController < ApplicationController
     else
       redirect_to event_tasks_path(@event), status: :unprocessable_entity, notice: "Task was not successfully created."
     end
+  end
+
+  def mark_as_done
+    @task.done!
+    redirect_to event_tasks_path(@event)
   end
 
   def index

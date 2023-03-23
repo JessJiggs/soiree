@@ -1,0 +1,100 @@
+.d-flex {
+  gap: 80px;
+}
+
+.table-chart {
+  width: 100%;
+  // margin: 15px;
+  // padding: 8px;
+  // border: none;
+
+}
+
+
+.table-expense {
+  width: 65%;
+  // margin: 4px;
+  // padding: 8px;
+  // border: none;
+}
+
+.table-expense,th {
+  border: 2px solid $secondary-color !important;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: $light-green;
+  border: none;
+}
+
+.table-expense, td {
+  padding: 10px;
+  border: none;
+}
+
+.text-table-std, th {
+  text-align: left;
+}
+
+.text-table-std, td {
+  text-align: left;
+  border: none;
+}
+
+.text-table-status, th {
+  text-align: center;
+}
+
+.text-table-status, td {
+  text-align: center;
+  border: none;
+}
+
+
+.pie-chart-expense{
+  display: flex;
+  margin-top: 70px;
+  margin-bottom: 15px;
+  width: 35%;
+  align-items: center;
+}
+
+
+#status-unpaid-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  p {
+    // opacity: 0.6;
+    color: black;
+    background: rgba(213, 158, 158, 0.6);
+    text-align: center;
+    max-width: fit-content;
+    padding: 4px 25px ;
+    border-radius: 10px;
+    margin-bottom: 0;
+  }
+
+}
+
+#status-paid-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  p {
+    // opacity: 0.6;
+    color: black;
+    background: rgba(171, 203, 152, 0.6);
+    text-align: center;
+    max-width: fit-content;
+    padding: 4px 25px ;
+    border-radius: 10px;
+    margin-bottom: 0;
+  }
+
+}
