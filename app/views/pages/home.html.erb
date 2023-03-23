@@ -57,7 +57,7 @@
         <h2>calendar</h2>
         <div class="todo-card">
           <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
-              <%= date.cwday %>
+              <%= date.day %>
                 <% events.each do |event| %>
                 <div>
                   <%= event.name %>
