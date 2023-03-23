@@ -84,32 +84,28 @@
                 <td class="text-table-std"><%= expense.name %></td>
                 <td class="text-table-std"><%= expense.amount_spent%></td>
                 <td class="text-table-category"><%= expense.category_list%></td>
-                <td class="text-table-status"> <%= expense.status.humanize%></td>
-                <td class="text-table-std"> <%= expense.due_date.strftime("%d %B %Y") %></td>
-                <td class="text-table-action">
-                  <% if expense.status == "unpaid"%>
-                    <%= link_to mark_as_paid_path(@event, expense), data: {turbo_method: :patch} do %>
-                      <i class="fa-regular fa-circle-check fa-lg ml-2" data-toggle="tooltip" data-placement="top" title="Mark as paid"></i>
-                  <% end %>
-                  <% end %>
-                  <i class="fa-solid fa-pen fa-sm ml-2" data-toggle="tooltip" data-placement="top" title="Edit expense" data-bs-toggle="modal" data-bs-target="#editExpense<%= expense.id %>"> </i>
-                  <%= link_to(event_expense_path(@event, expense), class: "expense", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
-                    <i class="fa-solid fa-trash fa-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete expense"></i>
-                  <% end %>
+                  <% if expense.status ==  "paid"%>
+                    <td class="text-table-status" id="status-paid-pill">
+                    <p><%= expense.status.humanize %></p>
                 </td>
-              <% else expense.status ==  "unpaid" %>
-                <td class="text-table-status" id="status-unpaid-pill">
-                  <p><%= expense.status.humanize %></p>
+                  <% else expense.status ==  "unpaid" %>
+                    <td class="text-table-status" id="status-unpaid-pill">
+                    <p><%= expense.status.humanize %></p>
                 </td>
-              <% end %>
+                  <% end %>
               <td class="text-table-std"> <%= expense.due_date.strftime("%d %B %Y") %></td>
-              <td class="text-table-action">
-                <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editExpense<%= expense.id %>"> </i>
-                <%= link_to(event_expense_path(@event, expense), class: "expense", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
-                  <i class="fa-solid fa-trash fa-xs ml-2"></i>
-                <% end %>
-              </td>
-            </tr>
+                <td class="text-table-action">
+                    <% if expense.status == "unpaid"%>
+                      <%= link_to mark_as_paid_path(@event, expense), data: {turbo_method: :patch} do %>
+                        <i class="fa-regular fa-circle-check fa-lg ml-2" data-toggle="tooltip" data-placement="top" title="Mark as paid"></i>
+                    <% end %>
+                    <% end %>
+                    <i class="fa-solid fa-pen fa-sm ml-2" data-toggle="tooltip" data-placement="top" title="Edit expense" data-bs-toggle="modal" data-bs-target="#editExpense<%= expense.id %>"> </i>
+                    <%= link_to(event_expense_path(@event, expense), class: "expense", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
+                      <i class="fa-solid fa-trash fa-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete expense"></i>
+                    <% end %>
+                  </td>
+              </tr>
           <% end %>
         </tbody>
         <tfoot class="table-foot ta: left">
