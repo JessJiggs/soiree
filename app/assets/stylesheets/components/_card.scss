@@ -288,7 +288,7 @@
 }
 
 .event-banner{
-  height: 200px;
+  height: 240px;
   width: 100%;
   object-fit: cover;
   border-radius: 20px 20px 0px 0px;
@@ -296,8 +296,10 @@
 
 
 .event-dash-card {
+width: 100%;
+
   p, i {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -329,10 +331,26 @@
 
 .event-dash-details {
   background-color: #ffffff;
-  padding: 12px;
+  padding: 20px;
+  border-radius: 0px 0px 20px 20px;
+
+  .event-dash-description {
+    font-size: 20px;
+    font-style: italic;
+    width: 70%;
+    margin: 0 auto;
+
+
+    p {
+      text-align: center;
+    }
+  }
 }
+
 
 .event-dash-numbers {
   display: flex;
   justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }

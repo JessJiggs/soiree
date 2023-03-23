@@ -7,7 +7,7 @@
     <%= link_to "guests     |   ", event_guests_path(@event), class: "sub-nav-link"%>
     <%= link_to "chat", event_messages_path(@event), class: "sub-nav-link"%>
   </div>
-  <div class="event-dashboard d-flex">
+  <div class="event-dashboard">
       <div class="d-flex flex-column">
         <div class="dashboard-card">
           <h2>details</h2>
@@ -17,11 +17,13 @@
               <p><i class="fa-solid fa-location-dot"></i> <%= @event.venue_name %></p>
             </div>
             <div class="event-dash-details">
-              <p><i class="fa-solid fa-circle-info"></i> <%= @event.description %></p>
-              <p><i class="fa-solid fa-clock"></i> <%= @event.start_date.strftime("%d %B %Y %-l%P") %> - <%= @event.end_date.strftime("%d %B %Y %-l%P") %></p>
               <div class="event-dash-numbers">
                 <p><i class="fa-sharp fa-solid fa-people-group"></i> <%= @event.est_guests %></p>
-                <p><i class="fa-sharp fa-solid fa-dollar-sign"></i>R <%= @event.total_budget %></p>
+                <p class="text-center"><i class="fa-solid fa-clock"></i> <%= @event.start_date.strftime("%e %b | %l%P") %></p>
+                <p><i class="fa-sharp fa-solid fa-dollar-sign"></i> <%= @event.total_budget %></p>
+              </div>
+              <div class="event-dash-description">
+                <p><%= @event.description %></p>
               </div>
             </div>
           </div>
