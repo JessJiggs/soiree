@@ -43,7 +43,7 @@
               <h5 class="mb-3"><%=day%></h5>
               <ul>
                 <% tasks.each do |task|%>
-                  <li><%= task.name.capitalize%> - <em><%=(task.event.name)%></em></li>
+                  <li><em><%=(task.event.name)%></em> - <%= task.name.capitalize%></li>
                 <% end %>
               </ul>
             </div>
