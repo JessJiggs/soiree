@@ -75,7 +75,7 @@
                     <%= f.input :last_name, label: "Last Name" %>
                     <%= f.input :email_address, label: "Email" %>
                     <%= f.input :phone_number, label: "Phone number" %>
-                    <%= f.input :invitation_status, collection: [:invite_not_sent.humanize, :invited, :accepted, :declined], label: "Invitation status" %>
+                    <%= f.input :invitation_status, collection: [:invite_not_sent, :invited, :accepted, :declined], label: "Invitation status" %>
                     <%= f.button :submit, "edit guest", class:"btn-action" %>
                   </div>
                 </div>
