@@ -5,11 +5,19 @@
   outline: none;
   border: none;
   border-radius: $border-radius;
+  font-weight: bolder;
   color: white;
   cursor: pointer;
 }
 
 .btn-action {
+  background-color: $accent-color;
+  &:hover {
+    background-color: $accent-color-hover;
+  }
+}
+
+.btn-action-2 {
   background-color: $accent-color;
   &:hover {
     background-color: $accent-color-hover;

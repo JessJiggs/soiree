@@ -29,11 +29,12 @@
   }
   p.category{
     size: 12px;
-    color: white;
-    background-color: rgba(186,147,124,0.6);
+    color: $accent-color;
+    background-color: $light-yellow;
     width:fit-content;
     border-radius: 5px;
     padding: 5px;
+    font-weight: bolder;
   }
 }
 
@@ -66,7 +67,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: rgba(186,147,124,0.6);
+  background: $accent-color;
   border-radius: 10px;
   width: 237px;
   height: 81px;
@@ -90,7 +91,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $light-gray;
+  background-color: $light-green;
   justify-content: center;
   border: none;
   border-radius: 15px;
@@ -98,7 +99,8 @@
   padding-bottom: 15px;
   padding-left: 20px;
   padding-right: 20px;
-  width: 100%;
+  // width: 100%;
+  width: 330px;
   height: max-content;
   gap: 20px;
   margin-bottom: 40px;
@@ -159,8 +161,77 @@
     }
   }
 
+.my-dashboard-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $light-green;
+  justify-content: center;
+  border: none;
+  border-radius: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  width: 330px;
+  height: 845px;
+  gap: 20px;
+  margin-bottom: 40px;
+  h2 {
+    letter-spacing: 2px;
+  }
+  .scroll {
+    overflow-y:auto;
+    overflow-x: hidden;
+  }
+}
+
+#my-dashboard-event-card{
+  width: 100%;
+  position: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+  height:270px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
+  &:hover {
+    box-shadow: 0px 2px 2px 0px $theme-yellow
+  }
+
+  .event-card-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+  .event-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    color: $primary-color;
+  }
+  h5{
+      color: $primary-color;
+      font-family: $font-family-sans-serif;
+      font-size: 16px;
+      font-weight: bolder;
+      text-align: left;
+  }
+  p{
+    font-size: 12px;
+    }
+  }
+
 #dashboard-card-events {
-    width: 450px;
+  width: 450px;
+  .search{
+
+  }
 }
 
 #dashboard-card-calendar {
@@ -180,6 +251,8 @@
   padding: 15px;
   flex: 1;
   border-radius: 5px;
+  width: 100%;
+  position: inherit;
   h5{
     color: $primary-color;
     font-family: $font-family-sans-serif;
