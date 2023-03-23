@@ -52,14 +52,14 @@
         <%= link_to event_expenses_path(@event) do %>
           <div class="dashboard-card">
             <h2>expenses</h2>
-            <%= pie_chart(@pie_chart_expenses, donut: true, legend: "right", colors: ["#C6A4D7", "#FFC65A", "#ABCB98", "rgba(230, 126, 34, 0.6)", "#0D6EFD", "#D59E9E", "#CCCCCC", "white", ]) %>
+            <%= pie_chart(@pie_chart_expenses, donut: true, legend: "top", colors: ["#C6A4D7", "#FFC65A", "#ABCB98", "rgba(230, 126, 34, 0.6)", "#0D6EFD", "#D59E9E", "#CCCCCC", "white", ]) %>
           </div>
         <% end %>
 
         <%= link_to event_guests_path(@event) do %>
           <div class="dashboard-card">
             <h2>guests</h2>
-            <%= pie_chart @event.guests.group(:invitation_status).count, donut: true, legend: "right", colors: ["#C6A4D7", "#FFC65A", "#ABCB98", "rgba(230, 126, 34, 0.6)", "#0D6EFD", "#D59E9E", "#CCCCCC", "white", ] %>
+            <%= pie_chart @event.guests.group(:invitation_status).count, donut: true, legend: "top", colors: ["#C6A4D7", "#FFC65A", "#ABCB98", "rgba(230, 126, 34, 0.6)", "#0D6EFD", "#D59E9E", "#CCCCCC", "white", ] %>
           </div>
         <% end %>
       </div>
