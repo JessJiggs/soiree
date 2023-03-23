@@ -354,3 +354,13 @@ width: 100%;
   margin-top: 12px;
   margin-bottom: 12px;
 }
+
+
+.status{
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: rgba(214, 159, 159, 0.8);
+  width: min-content;
+  color: $white;
+  font-size: 12px;
+}

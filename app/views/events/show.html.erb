@@ -82,7 +82,7 @@
                         <p><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "event-avatar" %></p>
                       </div>
                       <p class="description"><%= task.description %></p>
-                      <p class="status"><%= task.status %></p>
+                      <p class="status"><%= task.status.humanize %></p>
                   </div>
                 <% end %>
                 <% else %>
@@ -93,7 +93,7 @@
                           <p><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "event-avatar" %></p>
                         </div>
                         <p class="description"><%= task.description %></p>
-                        <p class="status"><%= task.status %></p>
+                        <p class="status"><%= task.status.humanize %></p>
                     </div>
                   <% end %>
               <% end %>
