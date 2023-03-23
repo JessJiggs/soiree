@@ -2,14 +2,13 @@
   <div class="input-container">
     <h2>Create New Event</h2>
     <%= simple_form_for(@event) do |f| %>
-          <%= f.input :name, placeholder: "Event Name", label: "Event Name" %>
-      <%= f.input :description, placeholder: "About Event", label: "Event Description" %>
+          <%= f.input :name, label: "Event Name" %>
+      <%= f.input :description, label: "Event Description" %>
       <div class="flex-inputs">
           <div class="row">
             <div class="col">
               <%= f.input :start_date, as: :string,
                 label: "Start Date",
-                placeholder: "Start Date",
                 wrapper_html: { class: "mb-4" },
                 label_html: { class: "form-label text-secondary fw-bold" },
                 input_html: { data: { controller: "flatpickr" } } %>
@@ -19,7 +18,6 @@
             <div class="col">
               <%= f.input :end_date, as: :string,
                   label: "End Date",
-                  placeholder: "End Date",
                   wrapper_html: { class: "mb-4" },
                   label_html: { class: "form-label text-secondary fw-bold" },
                   input_html: { data: { controller: "flatpickr" } } %>
@@ -27,12 +25,12 @@
           </div>
       </div>
       <div class="flex-inputs">
-        <%= f.input :venue_name, placeholder: "Venue", label: "Venue" %>
-        <%= f.input :venue_address, placeholder: "Address..", label: "Address" %>
+        <%= f.input :venue_name, label: "Venue" %>
+        <%= f.input :venue_address, label: "Address" %>
       </div>
       <div class="flex-inputs">
-        <%= f.input :est_guests, placeholder: "Estimated Guests", label: "Estimated Guests" %>
-        <%= f.input :total_budget, placeholder: "Budget", label: "Budget" %>
+        <%= f.input :est_guests, label: "Estimated Guests" %>
+        <%= f.input :total_budget, label: "Budget" %>
       </div>
       <%= f.input :photo, as: :file, input_html: {  data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: { class: 'image-input'}, label: 'Upload file'%>
 

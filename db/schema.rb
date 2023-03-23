@@ -97,6 +97,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_073156) do
     t.index ["event_id"], name: "index_guests_on_event_id"
   end
 
+  create_table "meetings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "user_id", null: false
