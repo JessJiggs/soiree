@@ -29,11 +29,12 @@
   }
   p.category{
     size: 12px;
-    color: white;
-    background-color: rgba(186,147,124,0.6);
+    color: $accent-color;
+    background-color: $light-yellow;
     width:fit-content;
     border-radius: 5px;
     padding: 5px;
+    font-weight: bolder;
   }
 }
 
@@ -42,7 +43,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: rgba(186,147,124,0.6);
+  background: $accent-color;
   border-radius: 10px;
   width: 237px;
   height: 81px;
@@ -66,7 +67,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $light-gray;
+  background-color: $light-green;
   justify-content: center;
   border: none;
   border-radius: 15px;
