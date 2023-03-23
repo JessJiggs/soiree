@@ -13,25 +13,24 @@
 </div>
 
 
-<div class="chath1 mt-5">
-  <h3 class="text-start">#<%= @event.name %></h3>
-</div>
-  <div class="messages" data-event-subscription-target="messages">
-    <% @event.messages.each do |message| %>
-      <%= render "message", message: message %>
+  <div class="chat">
+      <div class="messages" data-event-subscription-target="messages">
+        <% @event.messages.each do |message| %>
+          <%= render "message", message: message %>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="input send-form">
+    <%= simple_form_for [@event, @message],
+      html: { data: { action: "turbo:submit-end->event-subscription#resetForm" }, class: "d-flex" } do |f|
+    %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message #{@event.name}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
     <% end %>
   </div>
-</div>
-
-  <%= simple_form_for [@event, @message],
-      html: { data: { action: "turbo:submit-end->event-subscription#resetForm" }, class: "d-flex" } do |f|
-
-  %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message ##{@event.name}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
 </div>
