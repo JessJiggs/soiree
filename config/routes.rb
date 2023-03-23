@@ -2,13 +2,9 @@ Rails.application.routes.draw do
   get 'sass/home'
   devise_for :users
   root to: "pages#home"
-  # events # index show on dash
-  # tasks # dont need a whole new page - do from event
-
+  resources :notes, only: %i[create]
   resources :events, only: %i[new create show update] do
     resources :messages, only: %i[create index ]
-
-    # define route to collaboration
     resources :collaborations, only: %i[create]
     resources :tasks, only: %i[create index update destroy] do
       resources :assignments, only: %i[create]
