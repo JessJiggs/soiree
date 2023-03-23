@@ -9,8 +9,4 @@ class Expense < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
-  def paid!
-    status == :paid
-  end
 end

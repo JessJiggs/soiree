@@ -39,6 +39,7 @@ class ExpensesController < ApplicationController
     @event = Event.find(params[:event_id])
     @expense = Expense.find(params[:id])
     @expense.paid!
+    @expense.save
     redirect_to event_expenses_path(@event)
   end
 

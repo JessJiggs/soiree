@@ -97,8 +97,10 @@
                 <td class="text-table-status"> <%= expense.status.humanize%></td>
                 <td class="text-table-std"> <%= expense.due_date.strftime("%d %B %Y") %></td>
                 <td class="text-table-action">
-                  <%= link_to mark_as_paid_path(@event, expense), data: {turbo_method: :patch} do %>
-                    <i class="fa-sharp fa-regular fa-circle-check fa-lg ml-2" data-toggle="tooltip" data-placement="top" title="Mark as paid"></i>
+                  <% if expense.status == "unpaid"%>
+                    <%= link_to mark_as_paid_path(@event, expense), data: {turbo_method: :patch} do %>
+                      <i class="fa-sharp fa-regular fa-circle-check fa-lg ml-2" data-toggle="tooltip" data-placement="top" title="Mark as paid"></i>
+                  <% end %>
                   <% end %>
                   <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editExpense<%= expense.id %>"> </i>
                   <%= link_to(event_expense_path(@event, expense), class: "expense", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) do%>
