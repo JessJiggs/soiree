@@ -11,15 +11,10 @@ class GuestsController < ApplicationController
       @guests = @event.guests.order(updated_at: :desc)
     end
 
-    @invite_not_sent_guests = @event.guests.invite_not_sent.count
-    @invited_guests = @event.guests.invited.count
-    @accepted_guests = @event.guests.accepted.count
-    @declined_guests = @event.guests.declined.count
-
-    @guests_not_sent = @event.est_guests - @invite_not_sent_guests
-    @guests_invited = @event.est_guests - @invited_guests - @accepted_guests - @declined_guests
-    @guests_accepted = @event.est_guests - @invited_guests - @declined_guests
-    @guests_declined = @event.est_guests - @invited_guests - @accepted_guests
+    @guests_not_sent = @event.guests.invite_not_sent.count
+    @guests_invited = @event.guests.invited.count
+    @guests_accepted = @event.guests.accepted.count
+    @guests_declined =  @event.guests.declined.count
 
   end
 
