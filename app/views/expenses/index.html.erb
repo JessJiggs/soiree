@@ -17,7 +17,7 @@
         {name: "Remaining Budget", data: [["R",@event.total_budget - @expenses.sum(:amount_spent)]]}],
         stacked: true,  height: "100px",  colors: ["#FFC65A","#C6A4D7"] %>
   </div>
-
+<br>
   <div class="search-actions d-flex mt-4">
     <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
@@ -33,8 +33,8 @@
       <button type="button"  class="btn btn-secondary">upload invoice</button>
     </div>
   </div>
-
-  <div class="d-flex mt-4">
+<br>
+  <div class="mt-4 d-flex">
     <div class="modal fade" id="addExpense" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addExpenseLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -114,7 +114,7 @@
     </div>
     <div>
 
-      <div class="event-graph d-flex mt-4">
+      <div class="ml-10 event-graph">
         <%= pie_chart(@pie_chart_expenses, donut: true, colors: ["#E67E22", "#FFC65A", "#ABCB98", "#D59E9E", "#0D6EFD", "#CCCCCC", "white", "#C6A4D7"]) %>
       </div>
     </div>

@@ -33,7 +33,7 @@
   <div class="table">
     <div class="modal fade" id="addGuest" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addGuestLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content text-bg-light">
           <div class="modal-header">
             <h5 class="modal-title" id="addGuestLabel">New guest</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -65,7 +65,7 @@
           <%= simple_form_for [@event, guest], data: {turbo: false} do |f| %>
             <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
               <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content text-bg-light">
                   <div class="modal-header">
                     <h5 class="modal-title" id="editGuestLabel">Edit guest</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
