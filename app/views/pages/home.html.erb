@@ -65,7 +65,16 @@
       <div class="my-dashboard-card scroll" id="dashboard-card-notes">
             <h2>notes</h2>
             <div class="todo-card">
-              <h5>Monday</h5>
+          
+          <%= simple_form_for(@note) do |f| %>
+            <%= f.input :content %>
+            <br>
+            <%= f.button :button, "Add Note", class:"btn-action" %>
+          <% end %>
+        </div>
+              <% @notes.each do |note| %>
+             <p><%= note.content%></em></p>
+              <% end %>
             </div>
       </div>
     </div>
