@@ -1,4 +1,4 @@
-<div class="container-standard">
+<div class="container">
   <h1 class="page-title"><%= @event.name %></h1>
   <div>
     <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
@@ -7,7 +7,7 @@
     <%= link_to "guests     |   ", event_guests_path(@event), class: "sub-nav-link", id: "this-page"%>
     <%= link_to "chat", event_messages_path(@event), class: "sub-nav-link"%>
   </div>
-  <div class="barchart mb-5">
+  <div class="barchart">
     <%= bar_chart [
       {name: "Invite not sent", data: [["#",@guests_not_sent]]},
       {name: "Invite sent", data: [["#",@guests_invited]]},
@@ -15,13 +15,13 @@
       {name: "Declined", data: [["#",@guests_declined]]}],
       stacked: true,  height: "100px", colors: ["#E67E22", "#FFC65A", "#ABCB98", "#D59E9E" ] %>
   </div>
-  <div class="search-actions d-flex justify-content-between align-items-center">
+  <div class="search-actions">
     <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
         <%= text_field_tag :query,
             params[:query],
             class: "search-bar border-0",
-            placeholder: "Search..."%>
+            placeholder: "Search guests..."%>
       <% end %>
     </div>
     <div class="actions">
@@ -76,7 +76,7 @@
                     <%= f.input :email_address, label: "Email" %>
                     <%= f.input :phone_number, label: "Phone number" %>
                     <%= f.input :invitation_status, collection: [:invite_not_sent, :invited, :accepted, :declined], label: "Invitation status" %>
-                    <%= f.button :submit, "edit guest", class:"btn-action" %>
+                    <%= f.button :submit, "save", class:"btn-action" %>
                   </div>
                 </div>
               </div>
@@ -86,7 +86,15 @@
           <td class="text-table-std"><%= guest.last_name%></td>
           <td class="text-table-std"><%= guest.email_address%></td>
           <td class="text-table-std"><%= guest.phone_number%></td>
-          <td class="text-table-status"><strong><%= guest.invitation_status.humanize %></strong></td>
+          <% if guest.invitation_status ==  "invite_not_sent"%>
+            <td class="text-table-status" id="status-not-invited-pill"><p><%= guest.invitation_status.humanize %></p></td>
+            <% elsif guest.invitation_status ==  "invited" %>
+            <td class="text-table-status" id="status-invited-pill"><p><%= guest.invitation_status.humanize %></p></td>
+            <% elsif guest.invitation_status ==  "accepted" %>
+            <td class="text-table-status" id="status-accepted-pill"><p><%= guest.invitation_status.humanize %></p></td>
+            <% else guest.invitation_status ==  "declined" %>
+            <td class="text-table-status" id="status-declined-pill"><p><%= guest.invitation_status.humanize %></p></td>
+          <% end %>
           <td class="text-table-status">
             <i class="fa-solid fa-pen fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>"> </i>
             <i class="fa-solid fa-paper-plane fa-xs ml-2" data-bs-toggle="modal" data-bs-target="#editGuest<%= guest.id %>" > </i>
