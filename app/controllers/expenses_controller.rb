@@ -10,7 +10,7 @@ class ExpensesController < ApplicationController
     else
       @expenses = @event.expenses.order(updated_at: :desc)
     end
-    
+
     categories = ["Catering", "Bar", "Entertainment", "Decor", "Venue", "Services", "Transport", "Other"]
 
     @status = [unpaid: "Unpaid", paid: "Paid"]
@@ -33,6 +33,14 @@ class ExpensesController < ApplicationController
     else
       redirect_to event_expenses_path(@event), status: :unprocessable_entity, notice: "Expense was not successfully added."
     end
+  end
+
+  def mark_as_paid
+    @event = Event.find(params[:event_id])
+    @expense = Expense.find(params[:id])
+    @expense.paid!
+    @expense.save
+    redirect_to event_expenses_path(@event)
   end
 
   def update
