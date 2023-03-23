@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
     if current_user
+      @events = current_user.events
       @notes = current_user.notes
       @note = Note.new
       if params[:query].present?

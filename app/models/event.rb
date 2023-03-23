@@ -1,12 +1,11 @@
 class Event < ApplicationRecord
   has_one_attached :photo
   has_many :collaborations, dependent: :destroy
+  has_many :users, through: :collaborations
   has_many :expenses, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :guests, dependent: :destroy
   has_many :messages, dependent: :destroy
-
-
   validates :name, presence: true
   validates :description, presence: true
   validates :start_date, presence: true

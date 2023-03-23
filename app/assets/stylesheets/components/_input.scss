@@ -1,4 +1,4 @@
-.input, select{
+.input {
   width: 100%;
   padding: 10px 15px;
   border: 1px solid $primary-color;
@@ -47,4 +47,30 @@
   border: 1px solid rgba(152,140,151,0.8);
   border-radius: 5px;
   background-color: white;
+}
+
+select{
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-left: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.add-container{
+  display: flex;
+  width: 100%;
+}
+input.add{
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: $theme-green;
+  width: 60px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
 }
