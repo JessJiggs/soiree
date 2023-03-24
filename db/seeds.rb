@@ -701,8 +701,8 @@ user02.photo.attach(io: file, filename: 'lady1.png', content_type: 'image/png')
 event43 = Event.create!(
   name: "Escargot: Granny's Birthday",
   description: "A golden Birthday Party for our golden Granny",
-  start_date: DateTime.new(2023, 3, 26, 16, 0, 0), # add date
-  end_date: DateTime.new(2023, 3, 26, 20, 0, 0), #date format
+  start_date: DateTime.new(2023, 4, 7, 16, 0, 0), # add date
+  end_date: DateTime.new(2023, 4, 7, 20, 0, 0), #date format
   venue_name: "Welgemeend",
   venue_address: "Greenpoint, Cape Town",
   est_guests: 30, #int
@@ -732,7 +732,7 @@ task47 = Task.create!(
   event_id: event43.id,
   name: "Chill Champagne",
   description: "....nobody likes warm bubbles",
-  due_date: DateTime.new(2023, 3, 25, 14, 0, 0),
+  due_date: DateTime.new(2023, 4, 7, 8, 0, 0),
   status: :doing
 )
 assign48 = Assignment.create!(
