@@ -1,7 +1,7 @@
 <div class="container-standard">
   <h1 class="page-title">My dashboard</h1>
-  <div class="dashboard">
-    <div class="my-dashboard-card" id="dashboard-card-events">
+  <div class="event-dashboard">
+    <div class="dashboard-card" id="dashboard-card-events">
       <h2>events</h2>
       <div style="width: 100%">
         <%= form_with method: :get, class: "search" do %>
@@ -30,7 +30,8 @@
         <% end %>
       </div>
     </div>
-    <div class="my-dashboard-card">
+
+    <div class="dashboard-card">
       <h2>tasks</h2>
       <div class="scroll" style="width: 100%">
         <% if @grouped_tasks.empty? %>
@@ -51,7 +52,8 @@
         <% end %>
       </div>
     </div>
-    <div class="">
+
+    <div class="calendar-notes">
       <div class="dashboard-card">
         <h2>calendar</h2>
         <div class="todo-card">
@@ -65,7 +67,7 @@
           <% end %>
         </div>
       </div>
-      <div class="my-dashboard-card scroll" id="dashboard-card-notes">
+      <div class="dashboard-card scroll" id="">
         <h2>notes</h2>
         <div class="todo-card">
           <% @notes.each do |note| %>
