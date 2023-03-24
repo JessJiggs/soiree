@@ -43,3 +43,10 @@ tr:nth-child(even) {
   background-color: $light-green;
   border: none;
 }
+
+.table {
+  .scroll {
+  overflow-y:auto;
+  overflow-x: hidden;
+  }
+}

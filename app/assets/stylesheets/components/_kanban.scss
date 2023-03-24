@@ -22,8 +22,14 @@
  }
  .btn {
   background-color: $secondary-color;
+  &:hover{
+    background-color: $secondary-color-hover;
+  }
  }
  i {
-  color: $accent-color
+  color: $accent-color;
+  &:hover{
+    color: $primary-color;
+  }
  }
 }

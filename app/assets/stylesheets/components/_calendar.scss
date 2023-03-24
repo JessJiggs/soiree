@@ -1,11 +1,16 @@
 
 .simple-calendar{
   text-align: center;
+  margin: 0px;
+  .day{
+
+  }
 }
 .table {
   background-color: white;
 }
 .calendar-heading{
+  margin-bottom: 5px;
   .calendar-title{
     font-size: 25px;
     font-weight: bold;
@@ -13,10 +18,14 @@
   }
 
   a{
-    color: $theme-green;
+    color: $accent-color;
   }
 }
 
 .day{
   font-size: 12px;
+}
+
+.has-events{
+  font-weight: bolder;
 }

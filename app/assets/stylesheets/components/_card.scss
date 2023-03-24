@@ -173,8 +173,7 @@
   padding-bottom: 15px;
   padding-left: 25px;
   padding-right: 25px;
-  width: 330px;
-  height: 845px;
+  height: 720px;
   gap: 20px;
   margin-bottom: 40px;
   h2 {
@@ -228,21 +227,32 @@
   }
 
 #dashboard-card-events {
-  width: 510px;
+  width: 480px;
+  .search{
+
+  }
+}
+
+#dashboard-card-tasks {
+  width: 350px;
   .search{
 
   }
 }
 
 #dashboard-card-calendar {
-  width: 400px;
-  height: 365px;
-  margin-bottom: 0px;
+  width: 450px;
+  height: 360px;
+  .todo-card {
+    padding: 0px;
+    margin-bottom: 0px;
+    background-color: transparent;
+  }
 }
 
 #dashboard-card-notes {
-  width: 400px;
-  height: 400px;
+  width: 450px;
+  height: 370px;
   margin-bottom: 0px;
 }
 
@@ -265,8 +275,13 @@
     font-size: 12px;
     margin-bottom: 5px;
   }
+
+  ul {
+    margin-bottom: 0px;
+  }
   li {
     font-size: 14px;
+    margin-bottom: 0;
   }
   a {
     color: $text-color;
@@ -367,7 +382,7 @@ width: 100%;
   padding: 4px 8px;
   border-radius: 3px;
   background-color: rgba(214, 159, 159, 0.8);
-  width: min-content;
+  width: max-content;
   color: $white;
   font-size: 12px;
 }

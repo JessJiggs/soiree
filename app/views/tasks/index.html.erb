@@ -25,14 +25,14 @@
             <p class="mb-2">Assignee</p>
             <%= select_tag :user_id, options_from_collection_for_select(@collaborators, 'id', 'first_name' ), label: "Assignee", class:"form-control" %>
             <br>
-            <%= f.button :button, "Add task", class:"btn-action" %>
+            <%= f.button :button, "Add task", class:"btn btn-action" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="task-stats d-flex justify-content-between mt-5">
+  <div class="task-stats d-flex justify-content-between mt-5 mb-5">
     <div class="card-task-stat">
       <p class="text-white text-center mb-0">Completed Tasks</p>
       <p class="text-white text-center text-large"><%= @done_tasks.count %></p>

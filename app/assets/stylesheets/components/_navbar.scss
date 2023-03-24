@@ -33,6 +33,10 @@ nav{
       margin-top: 10px;
       background-color: #EFCD89;
       color: $primary-color;
+    &:hover {
+      background-color: $primary-color;
+      color: $accent-color;
+    }
   }
   // a.logo{
   //   font-size: 25px;
