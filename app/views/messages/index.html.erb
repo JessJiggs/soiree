@@ -3,16 +3,14 @@
   data-event-subscription-event-id-value="<%= @event.id %>"
 >
 
-<h1 class="page-title"><%= @event.name %></h1>
 <div mb-5>
+<h1 class="page-title"><%= @event.name %></h1>
     <%= link_to "overview    |   ", event_path(@event), class: "sub-nav-link"%>
     <%= link_to "tasks    |   ", event_tasks_path(@event), class: "sub-nav-link"%>
     <%= link_to "expenses    |   ", event_expenses_path(@event), class: "sub-nav-link"%>
     <%= link_to "guests     |   ", event_guests_path(@event), class: "sub-nav-link"%>
     <%= link_to "chat", event_messages_path(@event), class: "sub-nav-link", id: "this-page"%>
 </div>
-
-
   <div class="chat">
       <div class="messages" data-event-subscription-target="messages">
         <% @event.messages.each do |message| %>
