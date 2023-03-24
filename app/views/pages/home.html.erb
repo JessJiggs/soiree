@@ -52,45 +52,11 @@
         <% end %>
       </div>
     </div>
-<<<<<<< HEAD
-  <div class="">
-      <div class="my-dashboard-card" id="dashboard-card-calendar">
-=======
-
     <div class="calendar-notes">
       <div class="dashboard-card">
->>>>>>> master
         <h2>calendar</h2>
         <div class="todo-card">
           <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
-<<<<<<< HEAD
-                <% events.each do |event| %>
-                <div>
-                  <%= event.name %>
-                </div>
-              <% end %>
-          <% end %>
-      </div>
-    </div>
-
-      <div class="my-dashboard-card scroll" id="dashboard-card-notes">
-          <h2>notes</h2>
-          <div class="scroll" style="width: 100%">
-            <div>
-              <% @notes.each do |note| %>
-                <p><%= note.content%></em></p>
-              <% end %>
-            </div>
-            <div class="todo-card">
-              <%= simple_form_for(@note) do |f| %>
-                <%= f.input :content %>
-                <br>
-                <%= f.button :button, "Add Note", class:"btn-action" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-=======
             <%= date.day %>
             <% events.each do |event| %>
               <div>
@@ -118,7 +84,6 @@
           </div>
         </div>
       </div>
->>>>>>> master
     </div>
   </div>
 </div>
