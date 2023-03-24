@@ -53,7 +53,7 @@
           </div>
     </div>
   <div class="">
-      <div class="dashboard-card">
+      <div class="my-dashboard-card" id="dashboard-card-calendar">
         <h2>calendar</h2>
         <div class="todo-card">
 x
@@ -68,19 +68,21 @@ x
     </div>
 
       <div class="my-dashboard-card scroll" id="dashboard-card-notes">
-            <h2>notes</h2>
-            <div class="todo-card">
-
-          <%= simple_form_for(@note) do |f| %>
-            <%= f.input :content %>
-            <br>
-            <%= f.button :button, "Add Note", class:"btn-action" %>
-          <% end %>
-        </div>
+          <h2>notes</h2>
+          <div class="scroll" style="width: 100%">
+            <div>
               <% @notes.each do |note| %>
-             <p><%= note.content%></em></p>
+                <p><%= note.content%></em></p>
               <% end %>
             </div>
-      </div>
+            <div class="todo-card">
+              <%= simple_form_for(@note) do |f| %>
+                <%= f.input :content %>
+                <br>
+                <%= f.button :button, "Add Note", class:"btn-action" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
     </div>
 </div>
