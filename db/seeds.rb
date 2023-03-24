@@ -792,7 +792,7 @@ event63 = Event.create!(
 file = File.open(File.join(__dir__, 'img/fox_bachelors.png'))
 event63.photo.attach(io: file, filename: 'fox_bachelors.png', content_type: 'image/png')
 collab62 = Collaboration.create!(
-  user_id: user11.id,
+  user_id: user011.id,
   event_id: event63.id,
   role: :owner
 )
