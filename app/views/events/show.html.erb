@@ -82,7 +82,11 @@
                         <p class="name"><%= task.name %></p>
                         <p><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "event-avatar" %></p>
                       </div>
-                      <p class="status"><%= task.status.humanize %></p>
+                      <% if task.status == "to_do" %>
+                        <p class="status"><%= task.status.humanize %></p>
+                      <% else %>
+                        <p class="status-doing"><%= task.status.humanize %></p>
+                      <% end %>
                   </div>
                 <% end %>
                 <% else %>
