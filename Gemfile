@@ -79,8 +79,6 @@ end
 gem "devise"
 gem "chartkick"
 
-
-gem "dotenv-rails", groups: %i[development test]
 gem "cloudinary"
 
 gem "groupdate", "~> 6.2"
@@ -88,5 +86,3 @@ gem "faker"
 gem "pg_search"
 
 gem 'acts-as-taggable-on', '~> 9.0'
-
-gem "pg_search"
