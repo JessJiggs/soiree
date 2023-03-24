@@ -39,6 +39,7 @@
 }
 
 .event-task{
+  display: flex;
   flex-direction: column;
   width: 100%;
   border-bottom: 1px solid grey;
@@ -401,4 +402,18 @@ width: 100%;
   width: max-content;
   color: $white;
   font-size: 12px;
+}
+
+.status-doing {
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: rgba(218, 153, 12, 0.65);
+  width: max-content;
+  color: $white;
+  font-size: 12px;
+}
+
+.status , .status-doing{
+  align-self: flex-end;
+  text-align: end;
 }

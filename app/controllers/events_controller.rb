@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @tasks = @event.tasks
     today_date = Date.today.strftime('%Y-%m-%d')
-    @todays_tasks = @tasks.filter { |date| date.due_date.strftime('%Y-%m-%d') == today_date && date.status == "to_do" }
+    @todays_tasks = @tasks.filter { |date| date.due_date.strftime('%Y-%m-%d') == today_date}
     @todo_tasks = @tasks.filter { |task| task.status == "to_do" }
     @expenses = @event.expenses
     @guests = @event.guests
