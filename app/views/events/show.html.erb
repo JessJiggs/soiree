@@ -20,7 +20,7 @@
               <div class="event-dash-numbers">
                 <p><i class="fa-sharp fa-solid fa-people-group"></i> <%= @event.est_guests %></p>
                 <p class="text-center"><i class="fa-solid fa-clock"></i> <%= @event.start_date.strftime("%e %b | %l%P") %></p>
-                <p><i class="fa-sharp fa-solid fa-dollar-sign"></i> <%= @event.total_budget %></p>
+                <p><i class="fa-solid fa-r"></i> <%= @event.total_budget %></p>
               </div>
               <div class="event-dash-description">
                 <p><%= @event.description %></p>
@@ -33,7 +33,7 @@
                   <% @collaborators.each do |collaborator| %>
                   <% if collaborator.user.photo.attached? %>
                     <div>
-                        <%= cl_image_tag collaborator.user.photo.key, crop: :fill, class: "event-avatar" %>
+                        <%= cl_image_tag collaborator.user.photo.key, crop: :fill, class: "event-avatar-collab" %>
                     </div>
                     <% else %>
                     <p><%= collaborator.user.first_name  %> <%= collaborator.user.last_name %></p>
@@ -74,7 +74,7 @@
               <% end %>
               tasks
               </h2>
-              <div class="event-task-card scroll">
+              <div class="event-tasks scroll">
               <% if @todays_tasks.count > 0 %>
                 <% @todays_tasks.each do |task| %>
                   <div class="card-task event-task">
@@ -107,7 +107,7 @@
 
           <div class="dashboard-card", id="dashboard-card-mood", style="width: 450px">
             <h2>mood board</h2>
-            <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="400" data-pin-scale-width="320" data-turbo="false" href="<%=@event.pinterest_board%>"></a>
+            <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="400" data-pin-scale-width="320" data-turbo="false" data-controller="pin" href="<%=@event.pinterest_board%>"></a>
           </div>
         </div>
     </div>

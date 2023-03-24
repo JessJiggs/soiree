@@ -19,5 +19,8 @@ application.register("hello", HelloController)
 import PhotoPreviewController from "./photo_preview_controller"
 application.register("photo-preview", PhotoPreviewController)
 
+import PinController from "./pin_controller"
+application.register("pin", PinController)
+
 import TooltipController from "./tooltip_controller"
 application.register("tooltip", TooltipController)
