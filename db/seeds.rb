@@ -43,7 +43,6 @@ user01 = User.create!(
   email: "adam@test.com",
   password: '123456'
 )
-
 file = File.open(File.join(__dir__, 'img/avatar_adam.png'))
 user01.photo.attach(io: file, filename: 'avatar_adam.png', content_type: 'image/png')
 
@@ -57,7 +56,6 @@ event03 = Event.create!(
   est_guests: 21,
   total_budget: 4500
 )
-
 collab02 = Collaboration.create!(
   user_id: user01.id,
   event_id: event03.id,
@@ -75,8 +73,6 @@ assign05 = Assignment.create!(
   collaboration_id: collab02.id,
   task_id: task04.id
 )
-
-
 task05 = Task.create!(
   event_id: event03.id,
   name: "pay dj",
@@ -88,7 +84,6 @@ assign06 = Assignment.create!(
   collaboration_id: collab02.id,
   task_id: task05.id
 )
-
 task06 = Task.create!(
   event_id: event03.id,
   name: "order pizza",
@@ -100,7 +95,6 @@ assign07 = Assignment.create!(
   collaboration_id: collab02.id,
   task_id: task06.id
 )
-
 task07 = Task.create!(
   event_id: event03.id,
   name: "buy a new lumo shirt",
@@ -139,6 +133,22 @@ exp08 = Expense.create!(
   due_date: DateTime.new(2023, 4, 1)
 )
 
+guest05 = Guest.create!(
+  event_id: event03.id,
+  first_name: "Sarah",
+  last_name: "McGraw",
+  email_address: "eric@test.com",
+  phone_number: "1234567098",
+  invitation_status: :invite_not_sent
+)
+guest06 = Guest.create!(
+  event_id: event03.id,
+  first_name: "Eric",
+  last_name: "Clayptone",
+  email_address: "eric@test.com",
+  phone_number: "1234567098",
+  invitation_status: :invited
+)
 guest07 = Guest.create!(
   event_id: event03.id,
   first_name: "Sandy",
@@ -163,22 +173,6 @@ guest09 = Guest.create!(
   phone_number: "1236540890",
   invitation_status: :declined
 )
-guest06 = Guest.create!(
-  event_id: event03.id,
-  first_name: "Eric",
-  last_name: "Clayptone",
-  email_address: "eric@test.com",
-  phone_number: "1234567098",
-  invitation_status: :invited
-)
-guest05 = Guest.create!(
-  event_id: event03.id,
-  first_name: "Sarah",
-  last_name: "McGraw",
-  email_address: "eric@test.com",
-  phone_number: "1234567098",
-  invitation_status: :invite_not_sent
-)
 
 puts "user01 = #{user01.first_name}, user id: #{user01.id}, user email: #{user01.email}"
 puts "Event03 =This is #{user01.first_name}'s '#{event03.name} ' (with event_id#{event03.id}), taking place on #{event03.start_date}, at #{event03.venue_name}"
@@ -197,74 +191,42 @@ user011 = User.create!(
   password: '123456'
 )
 
-file = File.open(File.join(__dir__, 'img/avatar_eve.png'))
-user011.photo.attach(io: file, filename: 'avatar_eve.png', content_type: 'image/png')
-
 event13 = Event.create!(
-  name: "Zepadelle",
-  description: "Safari themed wedding for the Zepelinni's",
-  start_date: DateTime.new(2023, 3, 26, 15, 0, 0), # add date
-  end_date: DateTime.new(2023, 3, 27, 0, 0, 0), #date format
+  name: "Ops Strategy Workshop",
+  description: "Workshop for Gooi Operationss Strategy 'Q3-2023 and beyond",
+  start_date: DateTime.new(2023, 3, 27, 13, 0, 0),
+  end_date: DateTime.new(2023, 3, 27, 18, 0, 0),
   venue_name: "Vineyard Hotel",
   venue_address: "Claremont, Cape Town",
-  est_guests: 300, #int
-  total_budget: 200000,
-  pinterest_board: "https://za.pinterest.com/doubleuniquedecor/caramel-safari-wedding/"
+  est_guests: 12, #int
+  total_budget: 8500,
+  pinterest_board: "https://za.pinterest.com/classbento/team-building-activities/"
 )
-
+file = File.open(File.join(__dir__, 'img/avatar_eve.png'))
+user011.photo.attach(io: file, filename: 'avatar_eve.png', content_type: 'image/png')
 collab12 = Collaboration.create!(
   user_id: user011.id,
   event_id: event13.id,
   role: :owner
 )
 
-task14 = Task.create!(
-  event_id: event13.id,
-  name: "Pay Floraelle - church Flowers",
-  description: "Pay Floraelle for the church Flowers, update the budget",
-  due_date: DateTime.new(2023, 3, 22, 10, 0, 0),
-  status: :to_do
-)
-assign15 = Assignment.create!(
-  collaboration_id: collab12.id,
-  task_id: task14.id
-)
-
-exp16 = Expense.create!(
-  event_id: event13.id,
-  name: "welcome drinks",
-  amount_spent: 5800.99,
-  category_list: "Bar",
-  status: 0,
-  due_date: DateTime.new(2023, 3, 26)
-)
-
-guest17 = Guest.create!(
-event_id: event13.id,
-first_name: "Harold",
-last_name: "Murakiasetti",
-email_address: "harold@test.com",
-phone_number: "1234567890",
-invitation_status: :invited
-)
-
 task15 = Task.create!(
   event_id: event13.id,
-  name: "Call Rob for plumbus",
+  name: "Call Rik for plumbus",
   description: "he still owes you a favour back for the spares",
-  due_date: DateTime.new(2023, 3, 22, 10, 30, 0),
+  due_date: DateTime.new(2023, 3, 27, 10, 30, 0),
   status: :to_do
 )
 assign16 = Assignment.create!(
-  collaboration_id: collab12.id, # change this ?
+  collaboration_id: collab12.id,
   task_id: task15.id
 )
 
 task16 = Task.create!(
   event_id: event13.id,
-  name: "book caterer",
-  description: "make sure you book the caterer for the canapes. NO FISH! ***Allergy warning!",
-  due_date: DateTime.new(2023, 3, 24),
+  name: "Book Chef Sara",
+  description: "Alma for canapes is the bombD! Make sure its salty enough. NO FISH! ***Allergy warning!",
+  due_date: DateTime.new(2023, 3, 24, 13, 0, 0),
   status: :doing
 )
 assign17 = Assignment.create!(
@@ -275,57 +237,48 @@ assign17 = Assignment.create!(
 task17 = Task.create!(
   event_id: event13.id,
   name: "Book DJ BoogeyWoogey",
-  description: "Madmoiselle said she liked BGweegys set the most - lets book her asap so we don't miss out - shes a hoot",
-  due_date: DateTime.new(2023, 3, 20),
-  status: :done
+  description: "BGweegys set and teaching style is the most fun. Perfect post workshop activity for this team",
+  due_date: DateTime.new(2023, 3, 24, 15, 0, 0),
+  status: :to_do
 )
 assign18 = Assignment.create!(
-  collaboration_id: collab12.id, # change ?
+  collaboration_id: collab12.id,
   task_id: task17.id
 )
 
+exp16 = Expense.create!(
+  event_id: event13.id,
+  name: "Welcome drinks",
+  amount_spent: 650,
+  category_list: "Bar",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 26, 8, 0, 0)
+)
 exp17 = Expense.create!(
   event_id: event13.id,
-  name: "welcome snacks",
-  amount_spent: 1500,
+  name: "Alma - late lunch for team",
+  amount_spent: 1750,
   category_list: "Catering",
   status: 0,
-  due_date: DateTime.new(2023, 3, 24)
-)
-exp18 = Expense.create!(
-  event_id: event13.id,
-  name: "Floraelle flowers'",# category and or tagable ? @suppliers ?
-  amount_spent: 5876.55,
-  category_list: "Decor",
-  status: 1,
-  due_date: DateTime.new(2023, 3, 22)
+  due_date: DateTime.new(2023, 3, 24, 8, 0, 0)
 )
 exp19 = Expense.create!(
   event_id: event13.id,
   name: "DJ BJWG",
-  amount_spent: 7050,
+  amount_spent: 3000,
   category_list: "Entertainment",
   status: 1,
-  due_date: DateTime.new(2023, 3, 22)
+  due_date: DateTime.new(2023, 3, 22, 8, 0, 0)
+)
+exp199 = Expense.create!(
+  event_id: event13.id,
+  name: "Plumbus",
+  amount_spent: 750,
+  category_list: "Services",
+  status: 1,
+  due_date: DateTime.new(2023, 3, 20, 8, 0, 0)
 )
 
-guest18 = Guest.create!(
-  event_id: event13.id,
-  first_name: "Humpty",
-  last_name: "Dumpty",
-  email_address: "humpty@test.com",
-  phone_number: "1234567890",
-  invitation_status: :accepted
-)
-
-guest19 = Guest.create!(
-  event_id: event13.id,
-  first_name: "Micky",
-  last_name: "Mouse",
-  email_address: "micky@test.com",
-  phone_number: "1234567890",
-  invitation_status: :invited
-)
 guest16 = Guest.create!(
   event_id: event13.id,
   first_name: "Minnie",
@@ -334,10 +287,27 @@ guest16 = Guest.create!(
   phone_number: "1234567890",
   invitation_status: :invited
 )
+guest18 = Guest.create!(
+  event_id: event13.id,
+  first_name: "Humpty",
+  last_name: "Dumpty",
+  email_address: "humpty@test.com",
+  phone_number: "1234567890",
+  invitation_status: :accepted
+)
+guest19 = Guest.create!(
+  event_id: event13.id,
+  first_name: "Micky",
+  last_name: "Mouse",
+  email_address: "micky@test.com",
+  phone_number: "1234567890",
+  invitation_status: :invited
+)
+
 puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
 puts "Event13 = This is #{user011.first_name}'s #{event13.name} (event_id#{event13.id}), taking place on #{event13.start_date}, at #{event13.venue_name}"
-file = File.open(File.join(__dir__, 'img/safari-wedding.png'))
-event13.photo.attach(io: file, filename: 'safari-wedding.png', content_type: 'image/png')
+file = File.open(File.join(__dir__, 'img/workshop3.png'))
+event13.photo.attach(io: file, filename: 'workshop3.png', content_type: 'image/png')
 puts "************************--------************************"
 ###################################################################################
 # EVE - second event
@@ -348,8 +318,8 @@ puts "************************--------************************"
 event23 = Event.create!(
   name: "Fox Wedding",
   description: "Mr and Mrs Fox are re-newing their vows and celebrating 10 years together with their besties",
-  start_date: DateTime.new(2023, 4, 1, 19, 0, 0),# add date
-  end_date: DateTime.new(2023, 4, 2, 23, 0, 0), #date format
+  start_date: DateTime.new(2023, 4, 10, 19, 0, 0),# add date
+  end_date: DateTime.new(2023, 4, 10, 23, 0, 0), #date format
   venue_name: "Baylonstorenepia",
   venue_address: "Meadowridge, Cape Town",
   est_guests: 20, #int
@@ -362,37 +332,6 @@ collab22 = Collaboration.create!(
   role: :owner
 )
 
-
-task24 = Task.create!(
-  event_id: event23.id,
-  name: "Pay Floraelle for the Reception Hall Flowers",
-  description: "Pay Floraelle for the Reception Hall Flowers, update the budget",
-  due_date: DateTime.new(2023, 3, 28, 16, 0, 0),
-  status: :to_do
-)
-
-assign25 = Assignment.create!(
-  collaboration_id: collab22.id,
-  task_id: task14.id
-)
-
-exp26 = Expense.create!(
-  event_id: event23.id,
-  name: "welcome drinks",
-  amount_spent: 5800.99,
-  category_list: "Bar",
-  status: 0,
-  due_date: DateTime.new(2023, 3, 28)
-)
-
-guest27 = Guest.create!(
-  event_id: event23.id,
-  first_name: "Hector",
-  last_name: "Peters",
-  email_address: "hector@test.com",
-  phone_number: "1234567890",
-  invitation_status: :invited
-)
 
 task25 = Task.create!(
   event_id: event23.id,
@@ -430,9 +369,18 @@ assign28 = Assignment.create!(
   task_id: task27.id
 )
 
+exp26 = Expense.create!(
+  event_id: event23.id,
+  name: "sunset drinks",
+  amount_spent: 5800.99,
+  category_list: "Bar",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 28)
+)
+
 exp27 = Expense.create!(
   event_id: event23.id,
-  name: "welcome drinks",
+  name: "after-dinner apéritif",
   amount_spent: 1800,
   category_list: "Bar",
   status: 0,
@@ -455,6 +403,25 @@ exp29 = Expense.create!(
   due_date: DateTime.new(2023, 3, 30)
 )
 
+
+guest26 = Guest.create!(
+  event_id: event23.id,
+  first_name: "Auzo",
+  last_name: "Floot",
+  email_address: "Auzo@test.com",
+  phone_number: "1234567890",
+  invitation_status: :accepted
+)
+
+guest27 = Guest.create!(
+  event_id: event23.id,
+  first_name: "Ravi",
+  last_name: "Raj",
+  email_address: "Ravi@test.com",
+  phone_number: "1234567890",
+  invitation_status: :accepted
+)
+
 guest28 = Guest.create!(
   event_id: event23.id,
   first_name: "Hillary",
@@ -472,22 +439,8 @@ guest29 = Guest.create!(
   phone_number: "1234567890",
   invitation_status: :accepted
 )
-guest26 = Guest.create!(
-  event_id: event23.id,
-  first_name: "Auzo",
-  last_name: "Floot",
-  email_address: "Auzo@test.com",
-  phone_number: "1234567890",
-  invitation_status: :accepted
-)
-guest27 = Guest.create!(
-  event_id: event23.id,
-  first_name: "Ravi",
-  last_name: "Raj",
-  email_address: "Ravi@test.com",
-  phone_number: "1234567890",
-  invitation_status: :accepted
-)
+
+
 puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
 puts "This is #{user011.first_name}'s '#{event23.name}' (event_id#{event23.id}), taking place on #{event23.start_date}, at #{event23.venue_name}"
 file = File.open(File.join(__dir__, 'img/fox-wedding.png'))
@@ -501,13 +454,13 @@ puts "************************--------************************"
 
 event33 = Event.create!(
   name: "James Wedding",
-  description: "Bonnie and Clyde are having a small home wedding but oozes class",
-  start_date: DateTime.new(2023, 4, 11, 19, 0, 0),# add date
-  end_date: DateTime.new(2023, 4, 12, 23, 0, 0), #date format
+  description: "Bonnie and Clyde are having a small COWBOY themed home wedding that oozes class",
+  start_date: DateTime.new(2023, 4, 1, 14, 0, 0),# add date
+  end_date: DateTime.new(2023, 4, 2, 0, 0, 0), #date format
   venue_name: "Constantia Estate",
   venue_address: "Constantia, Cape Town",
-  est_guests: 80, #int
-  total_budget: 50000, #decimal
+  est_guests: 50, #int
+  total_budget: 90000, #decimal
   pinterest_board: "https://za.pinterest.com/kikickennedy/wedding-inspo/"
 )
 collab32 = Collaboration.create!(
@@ -516,35 +469,28 @@ collab32 = Collaboration.create!(
   role: :owner
 )
 
+task33 = Task.create!(
+  event_id: event33.id,
+  name: "Call Rik for Plumbus",
+  description: "He still owes you a favour back for the spares",
+  due_date: DateTime.new(2023, 3, 28, 10, 30, 0),
+  status: :to_do
+)
+assign1 = Assignment.create!(
+  collaboration_id: collab32.id,
+  task_id: task33.id
+)
+
 task34 = Task.create!(
   event_id: event33.id,
   name: "Pay Violet - Flowers",
   description: "Pay violet for flowers and update budget",
-  due_date: DateTime.new(2023, 4, 8, 16, 0, 0),
+  due_date: DateTime.new(2023, 3, 29, 16, 0, 0),
   status: :to_do
 )
-
 assign35 = Assignment.create!(
   collaboration_id: collab32.id,
   task_id: task34.id
-)
-
-exp36 = Expense.create!(
-  event_id: event33.id,
-  name: "All bar drinks",
-  amount_spent: 9800.50,
-  category_list: "Bar",
-  status: 0,
-  due_date: DateTime.new(2023, 3, 29)
-)
-
-guest37 = Guest.create!(
-  event_id: event33.id,
-  first_name: "Pascal",
-  last_name: "Scala",
-  email_address: "pascal@test.com",
-  phone_number: "1234567890",
-  invitation_status: :invited
 )
 
 task35 = Task.create!(
@@ -563,7 +509,7 @@ task36 = Task.create!(
   event_id: event33.id,
   name: "bill for crockery",
   description: "we discussed a budget update and they approved - please incl in update",
-  due_date: DateTime.new(2023, 4, 2, 14, 0, 0),
+  due_date: DateTime.new(2023, 3, 27, 14, 0, 0),
   status: :doing
 )
 assign37 = Assignment.create!(
@@ -582,6 +528,7 @@ assign38 = Assignment.create!(
   collaboration_id: collab32.id,
   task_id: task37.id
 )
+
 task38 = Task.create!(
   event_id: event33.id,
   name: "Find cowboy boots",
@@ -589,66 +536,105 @@ task38 = Task.create!(
   due_date: DateTime.new(2023, 3, 23, 15, 30, 0),
   status: :doing
 )
-assign38 = Assignment.create!(
+assign389 = Assignment.create!(
   collaboration_id: collab32.id,
   task_id: task38.id
 )
 
-exp37 = Expense.create!(
+
+exp26 = Expense.create!(
   event_id: event33.id,
-  name: "Mobile bar service",
-  amount_spent: 6700,
+  name: "sunset drinks",
+  amount_spent: 5800.99,
   category_list: "Bar",
   status: 0,
-  due_date: DateTime.new(2023, 3, 23)
-)
-exp38 = Expense.create!(
-  event_id: event33.id,
-  name: "Decor - flowers'",
-  amount_spent: 4005.67,
-  category_list: "Decor",
-  status: 0,
-  due_date: DateTime.new(2023, 3, 22)
-)
-exp39 = Expense.create!(
-  event_id: event33.id,
-  name: "Bubble machine",
-  amount_spent: 1250,
-  category_list: "Entertainment",
-  status: 0,
-  due_date: DateTime.new(2023, 3, 31)
+  due_date: DateTime.new(2023, 3, 28, 15, 30, 0)
 )
 
+exp27 = Expense.create!(
+  event_id: event33.id,
+  name: "after-dinner apéritif",
+  amount_spent: 1800,
+  category_list: "Bar",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 29, 15, 30, 0)
+)
+
+exp28 = Expense.create!(
+  event_id: event33.id,
+  name: "Riettas Flowers",
+  amount_spent: 5876.55,
+  category_list: "Decor",
+  status: 1,
+  due_date: DateTime.new(2023, 3, 20, 8, 0, 0)
+)
+
+exp299 = Expense.create!(
+  event_id: event33.id,
+  name: "Jays Security",
+  amount_spent: 5890,
+  category_list: "Services",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 30, 14, 30, 0)
+)
+
+exp288 = Expense.create!(
+  event_id: event33.id,
+  name: "Venue Deposit",
+  amount_spent: 18000,
+  category_list: "Venue",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 31, 15, 30, 0)
+)
+
+exp366 = Expense.create!(
+  event_id: event33.id,
+  name: "Mobile bar drinks",
+  amount_spent: 9800.50,
+  category_list: "Bar",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 29, 15, 30, 0)
+)
+
+exp376 = Expense.create!(
+  event_id: event33.id,
+  name: "Plumbus",
+  amount_spent: 2700,
+  category_list: "Services",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 23, 12, 0, 0)
+)
+
+exp378 = Expense.create!(
+  event_id: event33.id,
+  name: "lemon basil sorbet",
+  amount_spent: 2700,
+  category_list: "Catering",
+  status: 0,
+  due_date: DateTime.new(2023, 3, 27, 12, 0, 0)
+)
+
+guest37 = Guest.create!(
+  event_id: event33.id,
+  first_name: "Barry",
+  last_name: "Kleon",
+  email_address: "barry@test.com",
+  phone_number: "1234567890",
+  invitation_status: :invited
+)
 guest38 = Guest.create!(
   event_id: event33.id,
   first_name: "Deidre",
   last_name: "Kleon",
   email_address: "deidre@test.com",
   phone_number: "1234567890",
-  invitation_status: :invited
-)
-
-guest39 = Guest.create!(
-  event_id: event33.id,
-  first_name: "Nala",
-  last_name: "Lion",
-  email_address: "nala@test.com",
-  phone_number: "1234567890",
   invitation_status: :accepted
 )
-guest36 = Guest.create!(
+guest35 = Guest.create!(
   event_id: event33.id,
-  first_name: "Simba",
-  last_name: "Lion",
-  email_address: "simba@test.com",
-  phone_number: "1234567890",
-  invitation_status: :accepted
-)
-guest37 = Guest.create!(
-  event_id: event33.id,
-  first_name: "Lesego",
+  first_name: "Leah",
   last_name: "Ndahm",
-  email_address: "lesego@test.com",
+  email_address: "leah@test.com",
   phone_number: "1234567890",
   invitation_status: :accepted
 )
@@ -714,24 +700,22 @@ user06.photo.attach(io: file, filename: 'jafaa.png', content_type: 'image/png')
 
 
 event43 = Event.create!(
-  name: "Escargot",
-  description: "Mermaid themed Beach Wedding",
-  start_date: DateTime.new(2023, 3, 26, 13, 0, 0), # add date
-  end_date: DateTime.new(2023, 3, 27, 19, 0, 0), #date format
+  name: "Escargot: Granny's Birthday",
+  description: "A golden Birthday Party for our golden Granny",
+  start_date: DateTime.new(2023, 3, 26, 16, 0, 0), # add date
+  end_date: DateTime.new(2023, 3, 26, 20, 0, 0), #date format
   venue_name: "Welgemeend",
   venue_address: "Greenpoint, Cape Town",
-  est_guests: 40, #int
-  total_budget: 30000
+  est_guests: 30, #int
+  total_budget: 20000
 )
-file = File.open(File.join(__dir__, 'img/mermaid_wedding.png'))
-event43.photo.attach(io: file, filename: 'mermaid_wedding.png', content_type: 'image/png')
-
+file = File.open(File.join(__dir__, 'img/birthday1.png'))
+event43.photo.attach(io: file, filename: 'birthday1.png', content_type: 'image/png')
 collab42 = Collaboration.create!(
   user_id: user011.id,
   event_id: event43.id,
   role: :owner
 )
-
 
 event53 = Event.create!(
   name: "Conroy Wedding",
@@ -745,13 +729,11 @@ event53 = Event.create!(
 )
 file = File.open(File.join(__dir__, 'img/farm_wedding.png'))
 event53.photo.attach(io: file, filename: 'farm_wedding.png', content_type: 'image/png')
-
 collab52 = Collaboration.create!(
   user_id: user011.id,
   event_id: event53.id,
   role: :owner
 )
-
 
 event63 = Event.create!(
   name: "Fox Bachelor Party",
@@ -765,39 +747,19 @@ event63 = Event.create!(
 )
 file = File.open(File.join(__dir__, 'img/fox_bachelors.png'))
 event63.photo.attach(io: file, filename: 'fox_bachelors.png', content_type: 'image/png')
-
 collab62 = Collaboration.create!(
-  user_id: user02.id,
+  user_id: user11.id,
   event_id: event63.id,
   role: :owner
 )
 
 
-event73 = Event.create!(
-  name: "Riavelet",
-  description: "Sas Octopus Wedding",
-  start_date: DateTime.new(2023, 4, 10, 13, 0, 0), # add date
-  end_date: DateTime.new(2023, 4, 11, 19, 0, 0), #date format
-  venue_name: "Elands",
-  venue_address: "Constantia, Cape Town",
-  est_guests: 10, #int
-  total_budget: 30000
-)
-file = File.open(File.join(__dir__, 'img/wine_farm_wed.png'))
-event73.photo.attach(io: file, filename: 'wine_farm_wed.png', content_type: 'image/png')
-
-collab72 = Collaboration.create!(
-  user_id: user02.id,
-  event_id: event73.id,
-  role: :owner
-)
-
 ###########################################################################################################################
 # Faker data for guests
 invitations = ["invite_not_sent", "invited", "accepted", "declined"]
 puts "************************--------************************"
-puts "generating guestlist"
-30.times do
+puts "generating guestlist - James wedding"
+47.times do
 first_name = Faker::Name.first_name
 last_name = Faker::Name.last_name
 guest = Guest.create!(
@@ -810,4 +772,39 @@ guest = Guest.create!(
   invitation_status: invitations.sample
 )
 puts "Event_id,#{event33.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."
+end
+
+puts "************************--------************************"
+puts "generating guestlist - Workshop"
+9.times do
+first_name = Faker::Name.first_name
+last_name = Faker::Name.last_name
+guest = Guest.create!(
+  event_id: event13.id,
+  first_name: first_name,
+  last_name: last_name,
+  email_address: Faker::Internet.email(name: first_name, domain: last_name),
+  phone_number: Faker::PhoneNumber.cell_phone,
+  # invitation_status: :invited,
+  invitation_status: invitations.sample
+)
+puts "Event_id,#{event13.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."
+end
+
+
+puts "************************--------************************"
+puts "generating guestlist - birthday"
+30.times do
+first_name = Faker::Name.first_name
+last_name = Faker::Name.last_name
+guest = Guest.create!(
+  event_id: event43.id,
+  first_name: first_name,
+  last_name: last_name,
+  email_address: Faker::Internet.email(name: first_name, domain: last_name),
+  phone_number: Faker::PhoneNumber.cell_phone,
+  # invitation_status: :invited,
+  invitation_status: invitations.sample
+)
+puts "Event_id,#{event43.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."
 end
