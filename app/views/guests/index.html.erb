@@ -15,6 +15,7 @@
       {name: "Declined", data: [["#",@guests_declined]]}],
       stacked: true,  height: "100px", colors: ["#E67E22", "#FFC65A", "#ABCB98", "#D59E9E" ] %>
   </div>
+  <br>
   <div class="search-actions">
     <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
@@ -30,6 +31,7 @@
       <p class="btn btn-secondary mb-0">import guests</p>
     </div>
   </div>
+  <br>
   <div class="modal fade" id="addGuest" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addGuestLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content text-bg-light">
@@ -50,6 +52,7 @@
       </div>
     </div>
   </div>
+  <br>
   <div class="scroll" style="width: 100%">
   <table class="table">
     <tr>
@@ -61,29 +64,29 @@
       <th class="text-table-status"> Invitation Status</th>
       <th class="text-table-status"> Action </th>
     </tr>
-      <tr>
-    <% @guests.each_with_index do |guest, index| %>
+    <tr>
+      <% @guests.each_with_index do |guest, index| %>
         <td> <%= index + 1 %>
-        <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content text-bg-light">
-              <div class="modal-header">
-                <h5 class="modal-title" id="editGuestLabel">Edit guest</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <%= simple_form_for [@event, guest] do |f| %>
-                  <%= f.input :first_name, label: "First Name" %>
-                  <%= f.input :last_name, label: "Last Name" %>
-                  <%= f.input :email_address, label: "Email" %>
-                  <%= f.input :phone_number, label: "Phone number" %>
-                  <%= f.input :invitation_status, collection: [:invite_not_sent, :invited, :accepted, :declined], label: "Invitation status" %>
-                  <%= f.button :button, "save", class:"btn-action" %>
-                <% end %>
+          <div class="modal fade" id="editGuest<%= guest.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editGuestLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content text-bg-light">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editGuestLabel">Edit guest</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for [@event, guest] do |f| %>
+                    <%= f.input :first_name, label: "First Name" %>
+                    <%= f.input :last_name, label: "Last Name" %>
+                    <%= f.input :email_address, label: "Email" %>
+                    <%= f.input :phone_number, label: "Phone number" %>
+                    <%= f.input :invitation_status, collection: [:invite_not_sent, :invited, :accepted, :declined], label: "Invitation status" %>
+                    <%= f.button :button, "save", class:"btn-action" %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </td>
         <td class="text-table-std"><%= guest.first_name %></td>
         <td class="text-table-std"><%= guest.last_name%></td>
