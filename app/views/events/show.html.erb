@@ -74,7 +74,7 @@
               <% end %>
               tasks
               </h2>
-              <div class="scroll">
+              <div class="event-tasks scroll">
               <% if @todays_tasks.count > 0 %>
                 <% @todays_tasks.each do |task| %>
                   <div class="card-task event-task">
@@ -99,8 +99,6 @@
               </div>
             </div>
           <% end %>
-
-
           <div class="dashboard-card", id="dashboard-card-mood", style="width: 450px">
             <h2>mood board</h2>
             <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="400" data-pin-scale-width="320" data-turbo="false" href="<%=@event.pinterest_board%>"></a>
