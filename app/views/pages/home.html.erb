@@ -1,7 +1,7 @@
 <div class="container-standard">
   <h1 class="page-title">My dashboard</h1>
-  <div class="dashboard">
-    <div class="my-dashboard-card" id="dashboard-card-events">
+  <div class="event-dashboard">
+    <div class="dashboard-card" id="dashboard-card-events">
       <h2>events</h2>
       <div style="width: 100%">
         <%= form_with method: :get, class: "search" do %>
@@ -31,56 +31,60 @@
       </div>
     </div>
 
-    <div class="my-dashboard-card">
-          <h2>tasks</h2>
-          <div class="scroll" style="width: 100%">
-            <% if @grouped_tasks.empty? %>
-              <div class="todo-card">
-              <p> You have no tasks!!! </p>
-              </div>
-            <% else %>
-              <% @grouped_tasks.each do |day, tasks| %>
-              <div class="todo-card">
-                <h5 class="mb-3"><%=day%></h5>
-                <ul>
-                  <% tasks.each do |task|%>
-                    <li><%= task.name.capitalize%> - <em><%=(task.event.name)%></em></li>
-                  <% end %>
-                </ul>
-              </div>
-              <% end %>
-            <% end %>
+    <div class="dashboard-card">
+      <h2>tasks</h2>
+      <div class="scroll" style="width: 100%">
+        <% if @grouped_tasks.empty? %>
+          <div class="todo-card">
+            <p> You have no tasks!!! </p>
           </div>
+        <% else %>
+          <% @grouped_tasks.each do |day, tasks| %>
+            <div class="todo-card">
+              <h5 class="mb-3"><%=day%></h5>
+              <ul>
+                <% tasks.each do |task|%>
+                  <li><em><%=(task.event.name)%></em> - <%= task.name.capitalize%></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  <div class="">
+
+    <div class="calendar-notes">
       <div class="dashboard-card">
         <h2>calendar</h2>
         <div class="todo-card">
-x
           <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
-                <% events.each do |event| %>
-                <div>
-                  <%= event.name %>
-                </div>
-              <% end %>
-          <% end %>
-      </div>
-    </div>
-
-      <div class="my-dashboard-card scroll" id="dashboard-card-notes">
-            <h2>notes</h2>
-            <div class="todo-card">
-
-          <%= simple_form_for(@note) do |f| %>
-            <%= f.input :content %>
-            <br>
-            <%= f.button :button, "Add Note", class:"btn-action" %>
+            <%= date.day %>
+            <% events.each do |event| %>
+              <div>
+                <%= event.name %>
+              </div>
+            <% end %>
           <% end %>
         </div>
-              <% @notes.each do |note| %>
-             <p><%= note.content%></em></p>
-              <% end %>
+      </div>
+      <div class="dashboard-card scroll" id="">
+        <h2>notes</h2>
+        <div class="todo-card">
+          <% @notes.each do |note| %>
+            <div class="underline" >
+              <ul>
+                <li><em><%= note.content%></em></li>
+              </ul>
             </div>
+          <% end %>
+          <div class="mt-4 width ">
+          <%= simple_form_for(@note) do |f| %>
+          <strong>  <%= f.input :content %> </strong>
+            <%= f.button :button, "Add Note", class:"btn-action" %>
+          <% end %>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>
