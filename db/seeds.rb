@@ -16,7 +16,7 @@ require "faker"
 venues = ["Rooftop Buiten", "Rusticana", "Welgemeend", "Mountain Manor Guest House", "LukKron", "The Argyle", "The Lookout", "Vineyard Hotel"]
 addresses = ["Gardens, Cape Town", "Rondebosch, Cape Town", "Constantia, Cape Town", "Greenpoint, Cape Town", "Salt River, Cape Town", "Vredehoek, Cape Town", "Meadowridge, Cape Town"]
 expense_categories = ["Food", "Drink", "Entertainment", "Decor", "Venue", "Services"]
-
+invitations = ["invite_not_sent", "invited", "accepted", "declined"]
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 puts "-" * 20
 puts "Cleaning database..."
@@ -184,7 +184,7 @@ puts "************************--------************************"
 # EVE - An event planner who plans multiple events at once.
 # An Event (that belongs to Eve)
 # 01 - user, 02 - collab, 03 - event, 04 - task, 05 - assignment, 06 - expense, 07 - guest.
-user011 = User.create!(
+user11 = User.create!(
   first_name: "Eve",
   last_name: "Lorde",
   email: " eve@test.com",
@@ -203,9 +203,9 @@ event13 = Event.create!(
   pinterest_board: "https://za.pinterest.com/classbento/team-building-activities/"
 )
 file = File.open(File.join(__dir__, 'img/avatar_eve.png'))
-user011.photo.attach(io: file, filename: 'avatar_eve.png', content_type: 'image/png')
+user11.photo.attach(io: file, filename: 'avatar_eve.png', content_type: 'image/png')
 collab12 = Collaboration.create!(
-  user_id: user011.id,
+  user_id: user11.id,
   event_id: event13.id,
   role: :owner
 )
@@ -279,40 +279,57 @@ exp199 = Expense.create!(
   due_date: DateTime.new(2023, 3, 20, 8, 0, 0)
 )
 
-guest16 = Guest.create!(
-  event_id: event13.id,
-  first_name: "Minnie",
-  last_name: "Mouse",
-  email_address: "minnie@test.com",
-  phone_number: "1234567890",
-  invitation_status: :invited
-)
-guest18 = Guest.create!(
-  event_id: event13.id,
-  first_name: "Humpty",
-  last_name: "Dumpty",
-  email_address: "humpty@test.com",
-  phone_number: "1234567890",
-  invitation_status: :accepted
-)
-guest19 = Guest.create!(
-  event_id: event13.id,
-  first_name: "Micky",
-  last_name: "Mouse",
-  email_address: "micky@test.com",
-  phone_number: "1234567890",
-  invitation_status: :invited
-)
+# guest16 = Guest.create!(
+#   event_id: event13.id,
+#   first_name: "Minnie",
+#   last_name: "Mouse",
+#   email_address: "minnie@test.com",
+#   phone_number: "1234567890",
+#   invitation_status: :invited
+# )
+# guest18 = Guest.create!(
+#   event_id: event13.id,
+#   first_name: "Humpty",
+#   last_name: "Dumpty",
+#   email_address: "humpty@test.com",
+#   phone_number: "1234567890",
+#   invitation_status: :accepted
+# )
+# guest19 = Guest.create!(
+#   event_id: event13.id,
+#   first_name: "Micky",
+#   last_name: "Mouse",
+#   email_address: "micky@test.com",
+#   phone_number: "1234567890",
+#   invitation_status: :invited
+# )
 
-puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
-puts "Event13 = This is #{user011.first_name}'s #{event13.name} (event_id#{event13.id}), taking place on #{event13.start_date}, at #{event13.venue_name}"
+
+puts "************************--------************************"
+puts "user11 = #{user11.first_name}, user id: #{user11.id}, user email: #{user11.email}"
+puts "Event13 = This is #{user11.first_name}'s #{event13.name} (event_id#{event13.id}), taking place on #{event13.start_date}, at #{event13.venue_name}"
 file = File.open(File.join(__dir__, 'img/workshop3.png'))
 event13.photo.attach(io: file, filename: 'workshop3.png', content_type: 'image/png')
 puts "************************--------************************"
+puts "generating guestlist - Workshop"
+12.times do
+first_name = Faker::Name.first_name
+last_name = Faker::Name.last_name
+guest = Guest.create!(
+  event_id: event13.id,
+  first_name: first_name,
+  last_name: last_name,
+  email_address: Faker::Internet.email(name: first_name, domain: last_name),
+  phone_number: Faker::PhoneNumber.cell_phone,
+  # invitation_status: :invited,
+  invitation_status: invitations.sample
+)
+puts "Event_id,#{event13.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."
+end
 ###################################################################################
 # EVE - second event
 # 01 - user, 02 - collab, 03 - event, 04 - task, 05 - assignment, 06 - expense, 07 - guest.
-# therefore Eve user011, collab22, event23, task24, assign25, exp26, guest27
+# therefore Eve user11, collab22, event23, task24, assign25, exp26, guest27
 
 
 event23 = Event.create!(
@@ -327,7 +344,7 @@ event23 = Event.create!(
   pinterest_board: "https://za.pinterest.com/jennifergifforddesigns/small-backyard-wedding/"
 )
 collab22 = Collaboration.create!(
-  user_id: user011.id,#eve is still the event owner
+  user_id: user11.id,#eve is still the event owner
   event_id: event23.id,
   role: :owner
 )
@@ -441,8 +458,8 @@ guest29 = Guest.create!(
 )
 
 
-puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
-puts "This is #{user011.first_name}'s '#{event23.name}' (event_id#{event23.id}), taking place on #{event23.start_date}, at #{event23.venue_name}"
+puts "user11 = #{user11.first_name}, user id: #{user11.id}, user email: #{user11.email}"
+puts "This is #{user11.first_name}'s '#{event23.name}' (event_id#{event23.id}), taking place on #{event23.start_date}, at #{event23.venue_name}"
 file = File.open(File.join(__dir__, 'img/fox-wedding.png'))
 event23.photo.attach(io: file, filename: 'fox-wedding.png', content_type: 'image/png')
 puts "************************--------************************"
@@ -464,7 +481,7 @@ event33 = Event.create!(
   pinterest_board: "https://za.pinterest.com/kikickennedy/wedding-inspo/"
 )
 collab32 = Collaboration.create!(
-  user_id: user011.id,#eve is still the event owner
+  user_id: user11.id,#eve is still the event owner
   event_id: event33.id,
   role: :owner
 )
@@ -614,37 +631,54 @@ exp378 = Expense.create!(
   due_date: DateTime.new(2023, 3, 27, 12, 0, 0)
 )
 
-guest37 = Guest.create!(
-  event_id: event33.id,
-  first_name: "Barry",
-  last_name: "Kleon",
-  email_address: "barry@test.com",
-  phone_number: "1234567890",
-  invitation_status: :invited
-)
-guest38 = Guest.create!(
-  event_id: event33.id,
-  first_name: "Deidre",
-  last_name: "Kleon",
-  email_address: "deidre@test.com",
-  phone_number: "1234567890",
-  invitation_status: :accepted
-)
-guest35 = Guest.create!(
-  event_id: event33.id,
-  first_name: "Leah",
-  last_name: "Ndahm",
-  email_address: "leah@test.com",
-  phone_number: "1234567890",
-  invitation_status: :accepted
-)
 
-puts "user011 = #{user011.first_name}, user id: #{user011.id}, user email: #{user011.email}"
-puts "This is #{user011.first_name}'s '#{event33.name}' (event_id#{event33.id}), taking place on #{event33.start_date}, at #{event33.venue_name}"
-file = File.open(File.join(__dir__, 'img/James-wedding.png'))
-event33.photo.attach(io: file, filename: 'James-wedding.png', content_type: 'image/png')
-puts "************************--------************************"
 
+# guest37 = Guest.create!(
+  #   event_id: event33.id,
+  #   first_name: "Barry",
+  #   last_name: "Kleon",
+  #   email_address: "barry@test.com",
+  #   phone_number: "1234567890",
+  #   invitation_status: :invited
+  # )
+  # guest38 = Guest.create!(
+#   event_id: event33.id,
+#   first_name: "Deidre",
+#   last_name: "Kleon",
+#   email_address: "deidre@test.com",
+#   phone_number: "1234567890",
+#   invitation_status: :accepted
+# )
+# guest35 = Guest.create!(
+  #   event_id: event33.id,
+  #   first_name: "Leah",
+  #   last_name: "Ndahm",
+  #   email_address: "leah@test.com",
+  #   phone_number: "1234567890",
+  #   invitation_status: :accepted
+  # )
+
+  puts "************************--------************************"
+  puts "user11 = #{user11.first_name}, user id: #{user11.id}, user email: #{user11.email}"
+  puts "This is #{user11.first_name}'s '#{event33.name}' (event_id#{event33.id}), taking place on #{event33.start_date}, at #{event33.venue_name}"
+  file = File.open(File.join(__dir__, 'img/James-wedding.png'))
+  event33.photo.attach(io: file, filename: 'James-wedding.png', content_type: 'image/png')
+  puts "************************--------************************"
+  puts "generating guestlist - James wedding"
+  50.times do
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  guest = Guest.create!(
+    event_id: event33.id,
+    first_name: first_name,
+    last_name: last_name,
+    email_address: Faker::Internet.email(name: first_name, domain: last_name),
+    phone_number: Faker::PhoneNumber.cell_phone,
+    # invitation_status: :invited,
+    invitation_status: invitations.sample
+  )
+  puts "Event_id,#{event33.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."
+  end
 
 ###########################################################################################################################
 # more users:
@@ -657,41 +691,6 @@ user02 = User.create!(
 file = File.open(File.join(__dir__, 'img/lady1.png'))
 user02.photo.attach(io: file, filename: 'lady1.png', content_type: 'image/png')
 
-user03 = User.create!(
-  first_name: "Abi",
-  last_name: "Gosch",
-  email: "Abi@test.com",
-  password: '123456'
-)
-file = File.open(File.join(__dir__, 'img/abi_g.png'))
-user03.photo.attach(io: file, filename: 'abi_g.png', content_type: 'image/png')
-
-user04 = User.create!(
-  first_name: "Jiggs",
-  last_name: "Verh",
-  email: "jiggs@test.com",
-  password: '123456'
-)
-file = File.open(File.join(__dir__, 'img/jiggs.png'))
-user04.photo.attach(io: file, filename: 'jiggs.png', content_type: 'image/png')
-
-user05 = User.create!(
-  first_name: "Yonela",
-  last_name: "Joh",
-  email: "Yonela@test.com",
-  password: '123456'
-)
-file = File.open(File.join(__dir__, 'img/yonela.png'))
-user05.photo.attach(io: file, filename: 'yonela.png', content_type: 'image/png')
-
-user06 = User.create!(
-  first_name: "Jafaa",
-  last_name: "Mo",
-  email: "jafaa@test.com",
-  password: '123456'
-)
-file = File.open(File.join(__dir__, 'img/jafaa.png'))
-user06.photo.attach(io: file, filename: 'jafaa.png', content_type: 'image/png')
 
 # shell events
 # venues = ["Rooftop Buiten", "Rusticana", "Welgemeend", "Mountain Manor Guest House", "LukKron", "The Argyle", "The Lookout", "Vineyard Hotel"]
@@ -712,10 +711,53 @@ event43 = Event.create!(
 file = File.open(File.join(__dir__, 'img/birthday1.png'))
 event43.photo.attach(io: file, filename: 'birthday1.png', content_type: 'image/png')
 collab42 = Collaboration.create!(
-  user_id: user011.id,
+  user_id: user11.id,
   event_id: event43.id,
   role: :owner
 )
+
+task46 = Task.create!(
+  event_id: event43.id,
+  name: "Order Cake",
+  description: "Please book cake lady before she runs out of chocolate",
+  due_date: DateTime.new(2023, 3, 24, 14, 0, 0),
+  status: :doing
+)
+assign47 = Assignment.create!(
+  collaboration_id: collab42.id,
+  task_id: task46.id
+)
+
+task47 = Task.create!(
+  event_id: event43.id,
+  name: "Chill Champagne",
+  description: "....nobody likes warm bubbles",
+  due_date: DateTime.new(2023, 3, 25, 14, 0, 0),
+  status: :doing
+)
+assign48 = Assignment.create!(
+  collaboration_id: collab42.id,
+  task_id: task47.id
+)
+
+puts "************************--------************************"
+puts "generating guestlist - birthday"
+30.times do
+first_name = Faker::Name.first_name
+last_name = Faker::Name.last_name
+guest = Guest.create!(
+  event_id: event43.id,
+  first_name: first_name,
+  last_name: last_name,
+  email_address: Faker::Internet.email(name: first_name, domain: last_name),
+  phone_number: Faker::PhoneNumber.cell_phone,
+  # invitation_status: :invited,
+  invitation_status: invitations.sample
+)
+puts "Event_id,#{event43.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."
+end
+
+####################
 
 event53 = Event.create!(
   name: "Conroy Wedding",
@@ -730,10 +772,12 @@ event53 = Event.create!(
 file = File.open(File.join(__dir__, 'img/farm_wedding.png'))
 event53.photo.attach(io: file, filename: 'farm_wedding.png', content_type: 'image/png')
 collab52 = Collaboration.create!(
-  user_id: user011.id,
+  user_id: user11.id,
   event_id: event53.id,
   role: :owner
 )
+
+#####################
 
 event63 = Event.create!(
   name: "Fox Bachelor Party",
@@ -754,57 +798,20 @@ collab62 = Collaboration.create!(
 )
 
 
-###########################################################################################################################
-# Faker data for guests
-invitations = ["invite_not_sent", "invited", "accepted", "declined"]
-puts "************************--------************************"
-puts "generating guestlist - James wedding"
-47.times do
-first_name = Faker::Name.first_name
-last_name = Faker::Name.last_name
-guest = Guest.create!(
-  event_id: event33.id,
-  first_name: first_name,
-  last_name: last_name,
-  email_address: Faker::Internet.email(name: first_name, domain: last_name),
-  phone_number: Faker::PhoneNumber.cell_phone,
-  # invitation_status: :invited,
-  invitation_status: invitations.sample
+event53 = Event.create!(
+  name: "Graduation - Le Wagon #1177",
+  description: "A celebration of the greatness that was this batch",
+  start_date: DateTime.new(2023, 3, 24, 17, 0, 0), # add date
+  end_date: DateTime.new(2023, 3, 24, 20, 0, 0), #date format
+  venue_name: "R&Y Rooftop",
+  venue_address: "Salt River, Cape Town",
+  est_guests: 80, #int
+  total_budget: 10000
 )
-puts "Event_id,#{event33.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."
-end
-
-puts "************************--------************************"
-puts "generating guestlist - Workshop"
-9.times do
-first_name = Faker::Name.first_name
-last_name = Faker::Name.last_name
-guest = Guest.create!(
-  event_id: event13.id,
-  first_name: first_name,
-  last_name: last_name,
-  email_address: Faker::Internet.email(name: first_name, domain: last_name),
-  phone_number: Faker::PhoneNumber.cell_phone,
-  # invitation_status: :invited,
-  invitation_status: invitations.sample
+file = File.open(File.join(__dir__, 'img/grad_lewag.png'))
+event53.photo.attach(io: file, filename: 'grad_lewag.png', content_type: 'image/png')
+collab53 = Collaboration.create!(
+  user_id: user11.id,
+  event_id: event53.id,
+  role: :owner
 )
-puts "Event_id,#{event13.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."
-end
-
-
-puts "************************--------************************"
-puts "generating guestlist - birthday"
-30.times do
-first_name = Faker::Name.first_name
-last_name = Faker::Name.last_name
-guest = Guest.create!(
-  event_id: event43.id,
-  first_name: first_name,
-  last_name: last_name,
-  email_address: Faker::Internet.email(name: first_name, domain: last_name),
-  phone_number: Faker::PhoneNumber.cell_phone,
-  # invitation_status: :invited,
-  invitation_status: invitations.sample
-)
-puts "Event_id,#{event43.id}, Guest name: #{guest[:first_name]},#{guest[:last_name]}, guest id: #{guest.id}, email: #{guest.email_address}, phone: #{guest.phone_number}, invitation_status: #{guest[:invitation_status]}."
-end
