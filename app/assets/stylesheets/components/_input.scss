@@ -59,7 +59,10 @@ select{
 
 .add-container{
   display: flex;
-  width: 100%;
+  width: 60%;
+  margin: 0 auto;
+  border-radius: 2px;
+  gap: 4px;
 }
 input.add{
   border: none;
@@ -67,8 +70,10 @@ input.add{
   box-shadow: none;
   font-size: 20px;
   font-weight: bold;
+  width: 48px;
   background-color: $theme-green;
-  width: 60px;
   text-align: center;
   cursor: pointer;
+  color: white;
+  border-radius: 4px;
 }

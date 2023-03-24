@@ -14,7 +14,6 @@
         stacked: true,  height: "100px",  colors: ["#FFC65A","#C6A4D7"] %>
   </div>
   <br>
-
   <div class="search-actions d-flex mt-4">
     <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
@@ -47,7 +46,7 @@
               <%= f.input :category_list, collection: [:Catering, :Bar, :Entertainment, :Decor, :Venue, :Services, :Transport, :Other], label: "Category" %>
               <%= f.input :status, collection: [:unpaid, :paid,], label: "Status" %>
               <%= f.input :due_date, as: :string, input_html: { data: { controller: "flatpickr" } }, label: false %>
-              <%= f.button :button, "Edit", class:"btn-action" %>
+              <%= f.button :button, "Add Expense", class:"btn-action" %>
             <% end %>
           </div>
         </div>
@@ -66,7 +65,7 @@
       <tbody>
           <tr>
         <% @expenses.each_with_index do |expense, index| %>
-        <td> <%= index + 1 %>
+        <td class="text-table-std"> <%= index + 1 %>
             <%= simple_form_for [@event, expense] do |f| %>
               <div class="modal fade" id="editExpense<%= expense.id %>"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editExpenseLabel" aria-hidden="true">
                 <div class="modal-dialog">
