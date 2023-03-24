@@ -92,7 +92,7 @@
   flex-direction: column;
   align-items: center;
   background-color: $light-green;
-  justify-content: center;
+  justify-content: flex-start;
   border: none;
   border-radius: 15px;
   padding-top: 15px;
@@ -103,6 +103,10 @@
   height: max-content;
   gap: 20px;
   margin-bottom: 40px;
+  .scroll {
+    overflow-y:auto;
+    overflow-x: hidden;
+  }
   a {
     position: relative;
   }
@@ -161,12 +165,20 @@
     }
   }
 
+#dashboard-card-details{
+  height: 820px;
+}
+
+#dashboard-card-mood {
+  height: 396px
+}
+
 .my-dashboard-card{
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: $light-green;
-  justify-content: center;
+  justify-content: flex-start;
   border: none;
   border-radius: 15px;
   padding-top: 15px;
