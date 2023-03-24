@@ -118,10 +118,8 @@
   .event-card{
     display: flex;
     gap: 10px;
-    background-color: white;
     border-radius: 5px;
     width: 100%;
-    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
     .event-card-content {
       display: flex;
       flex-direction: column;
@@ -136,7 +134,8 @@
         text-align: left;
     }
     p{
-      // font-size: 14px;
+      font-size: 16px;
+      color: black;
     }
 
       .event-content{
@@ -146,7 +145,6 @@
         justify-content: flex-start;
         text-align: start;
         padding: 10px;
-        background-color: white;
         p{
           margin: 0;
           padding: 0;
@@ -220,7 +218,7 @@
   h5{
       color: $primary-color;
       font-family: $font-family-sans-serif;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bolder;
       text-align: left;
   }
@@ -230,7 +228,7 @@
   }
 
 #dashboard-card-events {
-  width: 450px;
+  width: 510px;
   .search{
 
   }
@@ -255,19 +253,22 @@
   border-radius: 5px;
   width: 100%;
   position: inherit;
-  margin-bottom: 20px;
-  border: 2px solid $accent-color;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   h5{
     color: $accent-color;
     font-family: $font-family-sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bolder;
     text-align: left;
   }
   p{
     font-size: 12px;
     margin-bottom: 5px;
+  }
+  li {
+    font-size: 14px;
+  }
+  a {
+    color: $text-color;
   }
 }
 
@@ -292,7 +293,80 @@
   justify-content: space-around;
 }
 
-.card-content {
-  margin-left: 10px;
-  margin-right: 10px;
+.event-banner{
+  height: 240px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px 20px 0px 0px;
+}
+
+
+.event-dash-card {
+width: 100%;
+
+  p, i {
+    font-size: 16px;
+  }
+}
+
+.event-dash-img {
+  position: relative;
+
+  img {
+    opacity: 0.8;
+  }
+
+  i {
+    color: #ffffff;
+    text-shadow: 2px 2px black;
+  }
+
+  p {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    margin: 0px;
+    color: #ffffff;
+    font-size: 20px;
+    text-shadow: 2px 2px black;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-variant: small-caps;
+  }
+}
+
+.event-dash-details {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 0px 0px 20px 20px;
+
+  .event-dash-description {
+    font-size: 20px;
+    font-style: italic;
+    width: 70%;
+    margin: 0 auto;
+
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+
+.event-dash-numbers {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+
+.status{
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: rgba(214, 159, 159, 0.8);
+  width: min-content;
+  color: $white;
+  font-size: 12px;
 }
