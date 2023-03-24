@@ -9,7 +9,7 @@
   </div>
   <div class="event-dashboard">
       <div class="d-flex flex-column">
-        <div class="dashboard-card">
+        <div class="dashboard-card" id="dashboard-card-details">
           <h2>details</h2>
           <div class="event-dash-card">
             <div class="event-dash-img">
@@ -65,7 +65,7 @@
 
       <div class="d-flex flex-column">
           <%= link_to event_tasks_path(@event) do %>
-            <div class="dashboard-card", style="width:450px">
+            <div class="dashboard-card", style="width:450px; height: 396px">
               <h2>
               <% if @todays_tasks.count > 0 %>
                   today's
@@ -74,6 +74,7 @@
               <% end %>
               tasks
               </h2>
+              <div class="scroll">
               <% if @todays_tasks.count > 0 %>
                 <% @todays_tasks.each do |task| %>
                   <div class="card-task event-task">
@@ -81,7 +82,6 @@
                         <p class="name"><%= task.name %></p>
                         <p><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "event-avatar" %></p>
                       </div>
-                      <p class="description"><%= task.description %></p>
                       <p class="status"><%= task.status.humanize %></p>
                   </div>
                 <% end %>
@@ -92,16 +92,16 @@
                           <p class="name"><%= task.name %></p>
                           <p><%= cl_image_tag task.users.map { |user| user.photo.key}, class: "event-avatar" %></p>
                         </div>
-                        <p class="description"><%= task.description %></p>
                         <p class="status"><%= task.status.humanize %></p>
                     </div>
                   <% end %>
               <% end %>
+              </div>
             </div>
           <% end %>
 
 
-          <div class="dashboard-card", style="width: 450px">
+          <div class="dashboard-card", id="dashboard-card-mood", style="width: 450px">
             <h2>mood board</h2>
             <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="400" data-pin-scale-width="320" data-turbo="false" href="<%=@event.pinterest_board%>"></a>
           </div>

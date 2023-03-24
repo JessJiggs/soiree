@@ -56,6 +56,12 @@ h3{
   font-size: 24px;
   color: $secondary-color-alt;
   text-align: center;
+  .dashboard-date{
+    font-weight:200;
+    margin-left:20px;
+    color: $primary;
+    font-style: italic;
+  }
 }
 
 h4{
@@ -80,3 +86,13 @@ p{
 }
 
 $text-large: 36px;
+
+.dashboard-date{
+  font-family: $headings-font-family;
+  text-align: left;
+  font-weight:200;
+  color: $primary-color;
+  font-style: italic;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}

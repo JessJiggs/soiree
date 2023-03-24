@@ -1,7 +1,8 @@
 <div class="container-standard">
-  <h1 class="page-title">My dashboard</h1>
+  <h1 class="mb-4">Hello <%=current_user.first_name.capitalize%>!</h1>
+  <br>
   <div class="event-dashboard">
-    <div class="dashboard-card" id="dashboard-card-events">
+    <div class="my-dashboard-card" id="dashboard-card-events">
       <h2>events</h2>
       <div style="width: 100%">
         <%= form_with method: :get, class: "search" do %>
@@ -31,7 +32,7 @@
       </div>
     </div>
 
-    <div class="dashboard-card">
+    <div class="my-dashboard-card" id="event-card-tasks">
       <h2>tasks</h2>
       <div class="scroll" style="width: 100%">
         <% if @grouped_tasks.empty? %>
@@ -52,24 +53,25 @@
         <% end %>
       </div>
     </div>
-
-    <div class="calendar-notes">
-      <div class="dashboard-card">
-        <h2>calendar</h2>
-        <div class="todo-card">
-          <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
-            <%= date.day %>
-            <% events.each do |event| %>
-              <div>
-                <%= event.name %>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
+    <div class="d-flex flex-column" style="height: 720px">
+      <div class="calendar-notes">
+          <div class="my-dashboard-card" id="dashboard-card-calendar">
+            <h2>calendar</h2>
+            <div class="todo-card">
+              <%= week_calendar(number_of_weeks: 2, attribute: :start_date, events: @events) do |date, events| %>
+                <%= date.day %>
+                <% events.each do |event| %>
+                  <div>
+                    <%= event.name %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
       </div>
-      <div class="dashboard-card scroll" id="">
+      <div class="my-dashboard-card" id="dashboard-card-notes">
         <h2>notes</h2>
-        <div class="todo-card">
+        <div class="todo-card scroll">
           <% @notes.each do |note| %>
             <div class="underline" >
               <ul>
@@ -79,12 +81,12 @@
           <% end %>
           <div class="mt-4 width ">
           <%= simple_form_for(@note) do |f| %>
-          <strong>  <%= f.input :content %> </strong>
-            <%= f.button :button, "Add Note", class:"btn-action" %>
+          <strong>  <%= f.input :content, label:false %> </strong>
+            <%= f.button :button, "Add Note", class:"btn btn-action m-0" %>
           <% end %>
           </div>
         </div>
       </div>
-    </div>
+  </div>
   </div>
 </div>
