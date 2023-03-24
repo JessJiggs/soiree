@@ -33,7 +33,7 @@
                   <% @collaborators.each do |collaborator| %>
                   <% if collaborator.user.photo.attached? %>
                     <div>
-                        <%= cl_image_tag collaborator.user.photo.key, crop: :fill, class: "event-avatar" %>
+                        <%= cl_image_tag collaborator.user.photo.key, crop: :fill, class: "event-avatar-collab" %>
                     </div>
                     <% else %>
                     <p><%= collaborator.user.first_name  %> <%= collaborator.user.last_name %></p>
