@@ -1,5 +1,7 @@
 <div class="container-standard">
+  <% if user_signed_in? %>
   <h1 class="mb-4">Hello <%=current_user.first_name.capitalize%>!</h1>
+  <% end %>
   <br>
   <div class="event-dashboard">
     <div class="my-dashboard-card" id="dashboard-card-events">
