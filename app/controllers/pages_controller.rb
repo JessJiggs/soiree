@@ -11,16 +11,16 @@ class PagesController < ApplicationController
       this_weeks_tasks = tasks.flatten.select { |task| task.due_date >= Date.today && task.due_date <= Date.today + 14 }
       this_weeks_tasks = this_weeks_tasks.sort_by { |task| task.due_date }
 
-      @grouped_tasks = this_weeks_tasks.group_by { |task| task.due_date.strftime("%A - %e/%m") }
-      @grouped_tasks.sort_by
+    @grouped_tasks = this_weeks_tasks.group_by { |task| task.due_date.strftime("%A - %e/%m") }
+    @grouped_tasks.sort_by
 
-      if params[:query].present?
-        @events = current_user.events.search_by_name(params[:query]).order(updated_at: :desc)
-      else
-        @events = current_user.events
-      end
+    if params[:query].present?
+      @events = current_user.events.search_by_name(params[:query]).order(updated_at: :desc)
     else
-      render "pages/landing_page"
+      @events = current_user.events
     end
+    # else
+    #   render "pages/landing_page"
+    # end
   end
 end
