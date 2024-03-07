@@ -19,8 +19,8 @@ class PagesController < ApplicationController
     else
       @events = current_user.events
     end
-    # else
-    #   render "pages/landing_page"
-    # end
+    else
+      render "pages/landing_page"
+    end
   end
 end
